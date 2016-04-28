@@ -55,10 +55,10 @@ namespace mooshak_2._0.Models
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Lykilorð")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Muna eftir mér")]
         public bool RememberMe { get; set; }
     }
 

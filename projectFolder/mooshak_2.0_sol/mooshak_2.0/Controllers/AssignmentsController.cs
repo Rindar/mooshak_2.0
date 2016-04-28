@@ -16,6 +16,7 @@ namespace mooshak_2._0.Controllers
             return View();
         }
 
+
         //the method that is called to see details for an assignment
         public ActionResult Details (int id) 
         {
