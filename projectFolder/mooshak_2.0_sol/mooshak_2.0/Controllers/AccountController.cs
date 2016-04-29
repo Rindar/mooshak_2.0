@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using mooshak_2._0.Models;
+using mooshak_2._0.Models.Entities;
 
 namespace mooshak_2._0.Controllers
 {
@@ -152,8 +153,15 @@ namespace mooshak_2._0.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
+
+                //Roles.AddUserToRole(model.Email, model.Role);
+                //UserManager.AddToRole(user.UserName, model.Role);
                 var result = await UserManager.CreateAsync(user, model.Password);
+                var newUser = new User(){};
+                newUser.userName = model.Email;
+                newUser.role = model.Role;
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

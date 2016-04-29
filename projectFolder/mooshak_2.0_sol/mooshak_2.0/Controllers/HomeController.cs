@@ -17,10 +17,25 @@ namespace mooshak_2._0.Controllers
     {
         public ActionResult Index()
         {
-         
-            return View();
+            if (User.IsInRole("student"))
+            {
+                return RedirectToAction("Index", "Student");
+            }
+            else if (User.IsInRole("teacher"))
+            {
+                return RedirectToAction("Index", "Teacher");
+            }
+            else if (User.IsInRole("admin"))
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                return View();
+            }
+            
         }
-        [Authorize(Roles = "admin")]
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application admin description page.";

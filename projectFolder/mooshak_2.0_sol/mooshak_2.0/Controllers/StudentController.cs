@@ -9,6 +9,7 @@ namespace mooshak_2._0.Controllers
     public class StudentController : Controller
     {
         // GET: Student
+        [Authorize(Roles = "student")]
         public ActionResult Index()
         {
             return View();

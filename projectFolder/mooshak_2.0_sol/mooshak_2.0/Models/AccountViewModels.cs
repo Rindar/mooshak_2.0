@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
+using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
@@ -80,10 +82,14 @@ namespace mooshak_2._0.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-   
+        [Required]
+        [Display(Name = "Select a Role")]
+        
+
+        public string Role { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -101,7 +107,7 @@ namespace mooshak_2._0.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
