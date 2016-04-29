@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Security;
+using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
 
 namespace mooshak_2._0.Models
 {
@@ -79,6 +82,8 @@ namespace mooshak_2._0.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+   
     }
 
     public class ResetPasswordViewModel

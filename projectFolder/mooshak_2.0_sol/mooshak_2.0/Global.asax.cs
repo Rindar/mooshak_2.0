@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using mooshak_2._0.Helpers;
+using mooshak_2._0.Models;
 
 namespace mooshak_2._0
 {
@@ -16,6 +18,8 @@ namespace mooshak_2._0
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ApplicationDbContext context = new ApplicationDbContext();
+            IdentityHelper.SeedIdentities(context);
         }
     }
 }

@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using mooshak_2._0.Models;
+using mooshak_2._0.Models.Entities;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 
 namespace mooshak_2._0.Controllers
@@ -13,19 +17,20 @@ namespace mooshak_2._0.Controllers
     {
         public ActionResult Index()
         {
+         
             return View();
         }
-
+        [Authorize(Roles = "admin")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application admin description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Help()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Help page";
 
             return View();
         }
