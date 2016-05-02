@@ -10,6 +10,8 @@ namespace mooshak_2._0.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public string Address { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
 
@@ -26,7 +28,7 @@ namespace mooshak_2._0.Models
         public DbSet<Assignment>          assignments { get; set; } // NOTE!:we have to do this for all the entity classes
         public DbSet<AssignmentMilestone> milestones  { get; set; } // like this
         public DbSet<Course>              courses     { get; set; }
-        public DbSet<User>                users       { get; set; }
+        //public DbSet<User>                users       { get; set; }
         //public DbSet<UserRole> UserRoles { get; set; } 
 
         public context()
