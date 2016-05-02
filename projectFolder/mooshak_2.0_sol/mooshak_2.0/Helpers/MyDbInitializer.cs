@@ -10,7 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace mooshak_2._0.Helpers
 {
-    public class MyDbInitializer : DropCreateDatabaseAlways<context>
+    //public class MyDbInitializer : DropCreateDatabaseAlways<context>
+    public class MyDbInitializer : DropCreateDatabaseIfModelChanges<context>
     {
         protected override void Seed(context context)
         {
