@@ -9,11 +9,11 @@ namespace mooshak_2._0.Services
 {
     public class AssignmentsService
     {
-        private ApplicationDbContext _db;
+        private context _db;
 
         public AssignmentsService()
         {
-            _db = new ApplicationDbContext();
+            _db = new context();
         }
        public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
         {
@@ -23,18 +23,17 @@ namespace mooshak_2._0.Services
         public AssignmentViewModel GetAssignmentByID(int assignmentID)
         {
             //gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
-            var assignment = _db.Assignments.SingleOrDefault(x => x.id == assignmentID);
+            var assignment = _db.assignments.SingleOrDefault(x => x.id == assignmentID);
             if(assignment == null)
             {
                 //TODO: throw an exeption, an error has occured
             }
             //Does the assignment contain any milestones ?(can return many milestones if the assignment contains multiple parts)
             //Here we recive only the milestone for the assignment with the correct AssignmentID
-            var milestones = _db.Milestones.Where(x => x.assignmentID == assignmentID)
+            var milestones = _db.milestones.Where(x => x.assignmentID == assignmentID)
                 .Select(x => new AssignmentMilestoneViewModel //creates an object that contains the milestone that we return 
                 {
                     Title = x.title    
-
                 })
                 .ToList();//will return an empy list if the assignment contains no milestones
 

@@ -21,21 +21,23 @@ namespace mooshak_2._0.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class context : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Assignment> Assignments { get; set; } // NOTE!:we have to do this for all the entity classes
-        public DbSet<AssignmentMilestone> Milestones { get; set; } // like this
+        public DbSet<Assignment>          assignments { get; set; } // NOTE!:we have to do this for all the entity classes
+        public DbSet<AssignmentMilestone> milestones  { get; set; } // like this
+        public DbSet<Course>              courses     { get; set; }
+        public DbSet<User>                users       { get; set; }
         //public DbSet<UserRole> UserRoles { get; set; } 
-        
-        public ApplicationDbContext()
+
+        public context()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static ApplicationDbContext Create()
+        public static context Create()
         {
 
-            return new ApplicationDbContext();
+            return new context();
         }
 
     }
