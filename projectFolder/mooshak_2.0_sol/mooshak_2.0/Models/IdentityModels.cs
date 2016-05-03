@@ -23,7 +23,7 @@ namespace mooshak_2._0.Models
         }
     }
 
-    public class context : IdentityDbContext<ApplicationUser>
+    public class Dbcontext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Assignment>          assignments { get; set; } // NOTE!:we have to do this for all the entity classes
         public DbSet<AssignmentMilestone> milestones  { get; set; } // like this
@@ -31,15 +31,14 @@ namespace mooshak_2._0.Models
         //public DbSet<User>                users       { get; set; }
         //public DbSet<UserRole> UserRoles { get; set; } 
 
-        public context()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public Dbcontext() : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static context Create()
+        public static Dbcontext Create()
         {
 
-            return new context();
+            return new Dbcontext();
         }
 
     }

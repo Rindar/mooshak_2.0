@@ -31,7 +31,7 @@ namespace mooshak_2._0.Controllers
 
 
             ApplicationUser newUser = new ApplicationUser() { Email = "email", UserName = "username" };
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new context()));
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new Dbcontext()));
             var result = UserManager.Create(newUser, "some password");
 
 

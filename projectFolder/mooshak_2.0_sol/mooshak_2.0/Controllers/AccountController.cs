@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using mooshak_2._0.Models;
 using mooshak_2._0.Models.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace mooshak_2._0.Controllers
 {
@@ -153,19 +154,17 @@ namespace mooshak_2._0.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+                ApplicationUser newUser = new ApplicationUser() { Email = model.Email, UserName = model.Email };
+                var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new Dbcontext()));
+                var result = UserManager.Create(newUser, model.Password);
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
-
-                //Roles.AddUserToRole(model.Email, model.Role);
-                //UserManager.AddToRole(user.UserName, model.Role);
-                var result = await UserManager.CreateAsync(user, model.Password);
-                var newUser = new User(){};
-                newUser.userName = model.Email;
-                newUser.role = model.Role;
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    SignInManager.SignIn(newUser, isPersistent:false, rememberBrowser:false);
+                    var assignToRole = model.Role;
+                    var roleresult = UserManager.AddToRole(newUser.Id, assignToRole);
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

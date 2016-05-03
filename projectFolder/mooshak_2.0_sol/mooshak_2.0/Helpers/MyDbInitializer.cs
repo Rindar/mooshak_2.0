@@ -11,9 +11,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace mooshak_2._0.Helpers
 {
     //public class MyDbInitializer : DropCreateDatabaseAlways<context>
-    public class MyDbInitializer : DropCreateDatabaseIfModelChanges<context>
+    public class MyDbInitializer : CreateDatabaseIfNotExists<Dbcontext>
     {
-        protected override void Seed(context context)
+        protected override void Seed(Dbcontext context)
         {
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));

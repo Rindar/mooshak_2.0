@@ -5,7 +5,7 @@ using System.Web;
 
 namespace mooshak_2._0.Models.ViewModels
 {
-    public class AssignmentMilestoneViewModel
+    public class ProblemViewModel
     {
         public string Title { get; set; }
     }
