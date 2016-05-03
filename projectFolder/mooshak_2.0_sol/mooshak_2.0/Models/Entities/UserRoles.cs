@@ -9,9 +9,10 @@ namespace mooshak_2._0.Models.Entities
 {
     public class UserRoles
     {
-        public const string ADMINROLE = "admin";
+        enum Roles {ADMIN,TEACHER,STUDENT};
+        /*public const string ADMINROLE = "admin";
         public const string TEACHERROLE = "teacher";
-        public const string STUDENTROLE = "student";
+        public const string STUDENTROLE = "student";*/
      
     }
 }
