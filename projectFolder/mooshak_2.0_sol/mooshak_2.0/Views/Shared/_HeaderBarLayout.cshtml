@@ -74,7 +74,15 @@
     </div>
 </nav>
 <body>
-    @Html.Partial("~/Views/Shared/_SideBarTeacherStudent.cshtml")
+    @if (User.IsInRole("admin"))
+    {
+        @Html.Partial("~/Views/Shared/_SideBarAdmin.cshtml")
+    }
+    else if(User.IsInRole("student") || User.IsInRole("teacher"))
+    {
+        @Html.Partial("~/Views/Shared/_SideBarTeacherStudent.cshtml")
+    }
+    
     <div class="container">
         @RenderBody()
         <hr/>

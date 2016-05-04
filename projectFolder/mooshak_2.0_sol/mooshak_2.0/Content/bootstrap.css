@@ -190,6 +190,8 @@ html input[disabled] {
   cursor: default;
 }
 
+
+
 input[type="checkbox"],
 input[type="radio"] {
   padding: 0;
@@ -4132,10 +4134,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
     overflow-y: visible;
   }
   .navbar-collapse .navbar-nav.navbar-left:first-child {
-    margin-left: -15px;
+    margin-left: 0px;
   }
   .navbar-collapse .navbar-nav.navbar-right:last-child {
-    margin-right: -15px;
+    margin-right: 0px;
   }
   .navbar-collapse .navbar-text:last-child {
     margin-right: 0;
@@ -5592,7 +5594,7 @@ a.list-group-item:focus {
   filter: alpha(opacity=50);
 }
 
-button.close {
+.close {
   padding: 0;
   cursor: pointer;
   background: transparent;

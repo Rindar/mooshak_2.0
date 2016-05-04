@@ -2,6 +2,7 @@
 using mooshak_2._0.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO.MemoryMappedFiles;
 using System.Linq;
 using System.Web;
 
@@ -16,9 +17,26 @@ namespace mooshak_2._0.Services
             _db = new Dbcontext();
         }
        public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
-        {
+       {
             // TODO: 
-            return null;
+            //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
+            var assignments = _db.assignments.Where(x => x.courseId == courseID);
+            if (assignments == null)
+            {
+
+                //TODO: throw an exeption, an error has occured
+            }
+            
+            //create a viewmodel fot the assignment that has a milestone
+            List<AssignmentViewModel> result = new List<AssignmentViewModel>();
+            foreach (var assignment in assignments)
+            {
+                var newViewModel = new AssignmentViewModel();
+                newViewModel.Title = assignment.title;
+                result.Add(newViewModel);
+            }
+            return result;
+           
         }
         public AssignmentViewModel GetAssignmentByID(int assignmentID)
         {
