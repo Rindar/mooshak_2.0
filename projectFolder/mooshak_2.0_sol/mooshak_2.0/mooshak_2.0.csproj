@@ -281,12 +281,16 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Assignments\Details.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Shared\_HeaderBarLayout.cshtml" />
+    <Content Include="Views\Shared\_SideBar.cshtml" />
+=======
     <Content Include="Views\Student\Courses.cshtml" />
+>>>>>>> a76bfe61878db8997a05f6106c31b9c16240c125
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
