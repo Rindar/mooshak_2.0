@@ -139,7 +139,7 @@ namespace mooshak_2._0.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         public ActionResult Register()
         {
             return View();
@@ -148,7 +148,7 @@ namespace mooshak_2._0.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
@@ -161,7 +161,6 @@ namespace mooshak_2._0.Controllers
 
                 if (result.Succeeded)
                 {
-                    SignInManager.SignIn(newUser, isPersistent:false, rememberBrowser:false);
                     var assignToRole = model.Role;
                     var roleresult = UserManager.AddToRole(newUser.Id, assignToRole);
 
