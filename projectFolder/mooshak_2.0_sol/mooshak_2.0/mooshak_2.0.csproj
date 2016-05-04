@@ -289,10 +289,16 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_HeaderBarLayout.cshtml" />
     <Content Include="Views\Shared\_SideBarTeacherStudent.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Shared\_SideBarAdmin.cshtml" />
     <Content Include="Views\Student\Course.cshtml" />
     <Content Include="Views\Student\Submission.cshtml" />
     <Content Include="Views\Student\Assignment.cshtml" />
+=======
+    <Content Include="Views\Student\Courses.cshtml" />
+    <Content Include="Views\Teacher\Course.cshtml" />
+    <Content Include="Views\Teacher\Assignment.cshtml" />
+>>>>>>> 84bd57aa40cd834cd22983b5aced36263a2cc6f5
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
