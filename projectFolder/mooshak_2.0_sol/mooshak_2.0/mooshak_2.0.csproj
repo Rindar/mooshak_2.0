@@ -288,6 +288,8 @@
     <Content Include="Views\Shared\_HeaderBarLayout.cshtml" />
     <Content Include="Views\Shared\_SideBarTeacherStudent.cshtml" />
     <Content Include="Views\Student\Courses.cshtml" />
+    <Content Include="Views\Teacher\Course.cshtml" />
+    <Content Include="Views\Teacher\Assignment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
