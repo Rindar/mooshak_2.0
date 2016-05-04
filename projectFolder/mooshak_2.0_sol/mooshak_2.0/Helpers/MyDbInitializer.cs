@@ -21,17 +21,18 @@ namespace mooshak_2._0.Helpers
             string password = "admin1";
 
             //Create Role Admin if it does not exist
-            if (!RoleManager.RoleExists(UserRoles.ADMINROLE))
+
+            if (!RoleManager.RoleExists(UserRoles.ADMIN.ToString()))
             {
-                    var roleresult = RoleManager.Create(new IdentityRole(UserRoles.ADMINROLE));
+                var roleresult = RoleManager.Create(new IdentityRole(UserRoles.ADMIN.ToString()));
             }
-            if (!RoleManager.RoleExists(UserRoles.TEACHERROLE))
+            if (!RoleManager.RoleExists(UserRoles.TEACHER.ToString()))
             {
-                var roleresult = RoleManager.Create(new IdentityRole(UserRoles.TEACHERROLE));
+                var roleresult = RoleManager.Create(new IdentityRole(UserRoles.TEACHER.ToString()));
             }
-            if (!RoleManager.RoleExists(UserRoles.STUDENTROLE))
+            if (!RoleManager.RoleExists(UserRoles.STUDENT.ToString()))
             {
-                var roleresult = RoleManager.Create(new IdentityRole(UserRoles.STUDENTROLE));
+                var roleresult = RoleManager.Create(new IdentityRole(UserRoles.STUDENT.ToString()));
             }
             
 
@@ -43,7 +44,7 @@ namespace mooshak_2._0.Helpers
             //Add User Admin to Role Admin
             if (adminResult.Succeeded)
             {
-                var result = UserManager.AddToRole(user.Id, UserRoles.ADMINROLE);
+                var result = UserManager.AddToRole(user.Id, UserRoles.ADMIN.ToString());
             }
             base.Seed(context);
         }

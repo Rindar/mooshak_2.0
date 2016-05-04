@@ -7,12 +7,15 @@ using System.Web.Mvc;
 
 namespace mooshak_2._0.Models.Entities
 {
-    public class UserRoles
+    public enum UserRoles
     {
-        enum Roles {ADMIN,TEACHER,STUDENT};
+        ADMIN,
+        TEACHER,
+        STUDENT
+
         /*public const string ADMINROLE = "admin";
         public const string TEACHERROLE = "teacher";
         public const string STUDENTROLE = "student";*/
-     
-    }
+
+    };
 }
