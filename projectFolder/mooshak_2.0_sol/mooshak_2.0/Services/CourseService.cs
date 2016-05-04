@@ -25,7 +25,7 @@ namespace mooshak_2._0.Services
             // TODO: 
                 List<CourseViewModel> result = new List<CourseViewModel>();
 
-                var courses = from course in _db.courses select course;
+               /* var courses = from course in _db.courses select course;
                 foreach (var course in courses)
                 {
                     var newViewModel = new CourseViewModel();
@@ -34,7 +34,7 @@ namespace mooshak_2._0.Services
                     //newViewModel.Teacher
                     result.Add(newViewModel);
                 }
-
+                */
                 return result;
             }
             public CourseViewModel GetCourseByID(int CourseID)

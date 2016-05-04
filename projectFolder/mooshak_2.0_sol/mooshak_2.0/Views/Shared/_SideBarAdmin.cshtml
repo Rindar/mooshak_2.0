@@ -4,11 +4,22 @@
         <div class="span2">
             <ul class="nav navbar-nav">
                 <div class="list-group">
-                    <button type="button" class="list-group-item">Users</button>
-                    <button type="button" class="list-group-item">Courses</button>
+                    @Html.ActionLink("Users", "Userlist", "Admin", null, new { @class = "list-group-item" })
+                    @Html.ActionLink("Courses", "CourseIndex", "Course", null, new { @class = "list-group-item" })
+                   
+                    <!--<button type="button" class="list-group-item">Users</button>
+                    <button type="button" class="list-group-item">Courses</button> -->
+                   
+                    
+
+
                 </div>
             </ul>
 
         </div>
     </div>
 </div>
+
+
+
+

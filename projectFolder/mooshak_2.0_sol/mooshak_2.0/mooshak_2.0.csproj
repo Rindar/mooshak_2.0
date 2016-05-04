@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AssignmentsController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -236,6 +237,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -289,16 +291,14 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_HeaderBarLayout.cshtml" />
     <Content Include="Views\Shared\_SideBarTeacherStudent.cshtml" />
-<<<<<<< HEAD
     <Content Include="Views\Shared\_SideBarAdmin.cshtml" />
     <Content Include="Views\Student\Course.cshtml" />
     <Content Include="Views\Student\Submission.cshtml" />
     <Content Include="Views\Student\Assignment.cshtml" />
-=======
-    <Content Include="Views\Student\Courses.cshtml" />
     <Content Include="Views\Teacher\Course.cshtml" />
     <Content Include="Views\Teacher\Assignment.cshtml" />
->>>>>>> 84bd57aa40cd834cd22983b5aced36263a2cc6f5
+    <Content Include="Views\Admin\UserList.cshtml" />
+    <Content Include="Views\Course\CourseIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,6 +312,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
