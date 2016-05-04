@@ -16,7 +16,18 @@ namespace mooshak_2._0.Controllers
         }
 
         [Authorize(Roles = "student")]
-        public ActionResult Courses()
+        public ActionResult Course()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "student")]
+        public ActionResult Assignment()
+        {
+            return View();
+        }
+        [Authorize(Roles = "student")]
+        public ActionResult Submission()
         {
             return View();
         }
