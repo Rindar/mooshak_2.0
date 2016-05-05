@@ -25,10 +25,10 @@ namespace mooshak_2._0.Models
 
     public class Dbcontext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Assignment>          assignments { get; set; } // NOTE!:we have to do this for all the entity classes
+        public DbSet<Assignments>          assignments { get; set; } // NOTE!:we have to do this for all the entity classes
         public DbSet<AssignmentMilestone> milestones  { get; set; } // like this
-        public DbSet<Course>              courses     { get; set; }
-
+        public DbSet<Courses>              courses     { get; set; }
+      
         public Dbcontext() : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
@@ -39,5 +39,6 @@ namespace mooshak_2._0.Models
             return new Dbcontext();
         }
 
+        //public System.Data.Entity.DbSet<mooshak_2._0.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

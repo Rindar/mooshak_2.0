@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
+using mooshak_2._0.Controllers;
+using mooshak_2._0.Models.Entities;
 
 namespace mooshak_2._0.Controllers
 {
@@ -19,7 +21,7 @@ namespace mooshak_2._0.Controllers
         {
             CourseService _courseService = new CourseService();
             List<CourseViewModel> getAllCourses = _courseService.GetAllCourses();
-            
+
             return View(getAllCourses);
         }
 
@@ -41,10 +43,6 @@ namespace mooshak_2._0.Controllers
 
 
 
-            return View();
-        }
-        public ActionResult UserList()
-        {
             return View();
         }
 

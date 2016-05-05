@@ -5,7 +5,7 @@ using System.Web;
 
 namespace mooshak_2._0.Models.Entities
 {
-    public class Assignment
+    public class Assignments
     {
         public int id { get; set; }
         public int courseId { get; set; }
