@@ -18,12 +18,14 @@ namespace mooshak_2._0.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            
+            /*
             List<CourseViewModel> courseViewModel = _courseService.GetAllCourses();
             //var model = courseViewModel;
             //var viewModel = ViewBag.courseViewModel;
-            ViewBag.courseViewModel = courseViewModel;
+            ViewBag.courseViewModel = courseViewModel; //comment this out to get the changes from skúli
             return View(ViewBag.courseViewModel);
+            */
+            return View();
         }
 
         public ActionResult Course()

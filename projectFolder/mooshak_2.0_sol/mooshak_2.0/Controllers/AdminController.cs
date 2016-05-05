@@ -18,11 +18,13 @@ namespace mooshak_2._0.Controllers
         // GET: Admin
         [Authorize(Roles = "admin")]
         public ActionResult Index()
-        {
+        {/*
             CourseService _courseService = new CourseService();
             List<CourseViewModel> getAllCourses = _courseService.GetAllCourses();
 
             return View(getAllCourses);
+            */
+            return View();
         }
 
         public ActionResult CreateUser()

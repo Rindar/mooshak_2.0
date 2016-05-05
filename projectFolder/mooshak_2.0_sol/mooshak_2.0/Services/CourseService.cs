@@ -24,28 +24,29 @@ namespace mooshak_2._0.Services
         public CourseService()
         {
         }
+        /*
+       public List<CourseViewModel> GetAllCourses()
+       {
+           // TODO: 
 
-        public List<CourseViewModel> GetAllCourses()
-        {
-            // TODO: 
 
+           List<Course> allCourses = (from courses in _db.courses select courses).ToList();
 
-            List<Course> allCourses = (from courses in _db.courses select courses).ToList();
+           List<CourseViewModel> courseViewModel = new List<CourseViewModel>();
 
-            List<CourseViewModel> courseViewModel = new List<CourseViewModel>();
+           foreach (var course in allCourses)
+           {
+               courseViewModel.Add(new CourseViewModel()
+               {
+                   Title = course.name,
+                   Assignments = _assignmentsService.GetAssignmentsInCourse(course.id)
+                   //teacher
+               });
+           }
+           return courseViewModel;
 
-            foreach (var course in allCourses)
-            {
-                courseViewModel.Add(new CourseViewModel()
-                {
-                    Title = course.name,
-                    Assignments = _assignmentsService.GetAssignmentsInCourse(course.id)
-                    //teacher
-                });
-            }
-            return courseViewModel;
-        }
-
+       }
+        */
         public CourseViewModel GetCourseByID(int CourseID)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")

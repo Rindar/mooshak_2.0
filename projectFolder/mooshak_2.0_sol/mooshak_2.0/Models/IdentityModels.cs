@@ -27,13 +27,12 @@ namespace mooshak_2._0.Models
     {
         public DbSet<Assignments>          assignments { get; set; } // NOTE!:we have to do this for all the entity classes
         public DbSet<AssignmentMilestone> milestones  { get; set; } // like this
-<<<<<<< HEAD
+
         public DbSet<Courses>              courses     { get; set; }
       
-=======
-        public DbSet<Course>             courses     { get; set; }
 
->>>>>>> 0769bd14c21d1eb308146378f302064faefcdf93
+  
+
         public Dbcontext() : base("DefaultConnection", throwIfV1Schema: false)
         {
         }

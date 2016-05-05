@@ -4,29 +4,30 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-<<<<<<< HEAD
+
 using mooshak_2._0.Models;
 using System.Security.Claims;
 using mooshak_2._0.Models.Entities;
-=======
+
 using mooshak_2._0.Services;
-using mooshak_2._0.Models;
+
 using Microsoft.AspNet.Identity.EntityFramework;
->>>>>>> 0769bd14c21d1eb308146378f302064faefcdf93
+
 
 namespace mooshak_2._0.Controllers
 {
     public class CourseController : Controller
     {
-<<<<<<< HEAD
 
 
-        public ActionResult CourseIndex()
-=======
+
+       /* public ActionResult CourseIndex()
+        
+
         private CourseService _service = new CourseService();
+        */
         // GET: Assignments
-        public ActionResult Index()
->>>>>>> 0769bd14c21d1eb308146378f302064faefcdf93
+        public ActionResult CourseIndex()
         {
             var db = new Dbcontext();
             return View(db.courses.ToList());
@@ -65,12 +66,13 @@ namespace mooshak_2._0.Controllers
             var listTable = new Dbcontext();
             return View(listTable.courses.ToList());
         }
-
+        /*
         //the method that is called to see details for an assignment
         public ActionResult Details(int id)
         {
             var viewModel = _service.GetCourseByID(id); // creates a viewmodel for the assignment
             return View(viewModel);
         }
+        */
     }
 }
