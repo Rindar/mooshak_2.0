@@ -10,7 +10,7 @@ namespace mooshak_2._0.Services
 {
     public class AssignmentsService
     {
-        private Dbcontext _db;
+        public Dbcontext _db;
 
         public AssignmentsService()
         {
