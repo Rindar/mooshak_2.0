@@ -4,6 +4,7 @@
 @using mooshak_2._0.Models.Entities
 @using mooshak_2._0.Models.ViewModels
 @using mooshak_2._0.Services
+<<<<<<< HEAD
 @using mooshak_2._0.Models
 @model List<CourseViewModel>
 <div class="container-fluid">
@@ -18,10 +19,16 @@
                     }
                 </div>
             </ul>
+=======
+@ViewBag.courseViewModel
+>>>>>>> d52916e4f2a080d8f539ac8651eec12b036eb54f
 
-        </div>
-        <div class="span10">
-
-        </div>
-    </div>
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        @foreach (var item in ViewBag.courseViewModel)
+        {
+            <li>vla</li>
+            @Html.ActionLink("SomeCourse", "About", "Home", null, new {@class = "list-group-item"})
+        }
+    </ul>
 </div>
