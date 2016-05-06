@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Antlr.Runtime.Misc;
 using mooshak_2._0.Models;
 using mooshak_2._0.Models.Entities;
 using mooshak_2._0.Models.ViewModels;
@@ -18,12 +19,11 @@ namespace mooshak_2._0.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            
-            List<CourseViewModel> courseViewModel = _courseService.GetAllCourses();
+            List<CourseViewModel> ListOfCourseViewModels = new ListStack<CourseViewModel>();
+            ListOfCourseViewModels = _courseService.GetAllCourses();
             //var model = courseViewModel;
             //var viewModel = ViewBag.courseViewModel;
-            ViewBag.courseViewModel = courseViewModel;
-            return View(ViewBag.courseViewModel);
+            return View(ListOfCourseViewModels);
         }
 
         public ActionResult Course()
