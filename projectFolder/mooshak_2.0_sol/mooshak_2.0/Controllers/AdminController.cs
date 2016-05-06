@@ -19,7 +19,7 @@ namespace mooshak_2._0.Controllers
         {
             CourseService _courseService = new CourseService();
             List<CourseViewModel> getAllCourses = _courseService.GetAllCourses();
-            
+
             return View(getAllCourses);
         }
 
