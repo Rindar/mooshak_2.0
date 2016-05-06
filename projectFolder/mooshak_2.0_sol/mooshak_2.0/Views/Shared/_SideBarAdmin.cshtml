@@ -1,15 +1,8 @@
+@model List<mooshak_2._0.Models.ViewModels.CourseViewModel>
 ﻿
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span2">
-            <ul class="nav navbar-nav">
-                <div class="list-group">
-                    @Html.ActionLink("Users", "Userlist", "Admin", null, new { @class = "list-group-item" })
-                    @Html.ActionLink("Courses", "CourseIndex", "Course", null, new { @class = "list-group-item" })
-                </div>
-            </ul>
-
-        </div>
-    </div>
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        <li>@Html.ActionLink("Users", "Userlist", "Admin")</li>
+        <li>@Html.ActionLink("Courses", "CourseIndex", "Course")</li>
+    </ul>
 </div>
-
