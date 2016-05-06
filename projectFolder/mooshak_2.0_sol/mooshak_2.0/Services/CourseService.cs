@@ -18,7 +18,7 @@ namespace mooshak_2._0.Services
 
         public CourseService(AssignmentsService assignmentsService)
         {
-            _assignmentsService = assignmentsService;
+            _assignmentsService = new AssignmentsService();
         }
 
         public CourseService()
@@ -32,18 +32,18 @@ namespace mooshak_2._0.Services
 
             List<Course> allCourses = (from courses in _db.courses select courses).ToList();
 
-            List<CourseViewModel> courseViewModel = new List<CourseViewModel>();
+            List<CourseViewModel> courseViewModelList = new List<CourseViewModel>();
 
             foreach (var course in allCourses)
             {
-                courseViewModel.Add(new CourseViewModel()
-                {
-                    Title = course.name,
-                    Assignments = _assignmentsService.GetAssignmentsInCourse(course.id)
+                CourseViewModel courseViewModel = new CourseViewModel();
+                courseViewModel.Title = course.name;
+                courseViewModel.Assignments = _assignmentsService.GetAssignmentsInCourse(course.id);
                     //teacher
-                });
+                
+                courseViewModelList.Add(courseViewModel);
             }
-            return courseViewModel;
+            return courseViewModelList;
         }
 
         public CourseViewModel GetCourseByID(int CourseID)

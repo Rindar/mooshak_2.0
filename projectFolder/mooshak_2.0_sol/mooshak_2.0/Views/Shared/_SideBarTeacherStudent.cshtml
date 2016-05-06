@@ -4,6 +4,7 @@
 @using mooshak_2._0.Models.Entities
 @using mooshak_2._0.Models.ViewModels
 @using mooshak_2._0.Services
+@using mooshak_2._0.Models
 @model List<CourseViewModel>
 <div class="container-fluid">
     <div class="row-fluid">
@@ -12,7 +13,7 @@
                 <div class="list-group">
                     @foreach (var course in Model)
                     {
-                        <li>bla</li>
+                        @course.Title
                         @Html.ActionLink("SomeCourse", "About", "Home", null, new {@class = "list-group-item"})
                     }
                 </div>
