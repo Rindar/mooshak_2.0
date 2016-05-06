@@ -59,5 +59,20 @@ namespace mooshak_2._0.Controllers
             var listTable = new Dbcontext();
             return View(listTable.courses.ToList());
         }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var db = new Dbcontext();
+            var model = db.courses.Find(id);
+
+            if(model == null)
+            {
+                return HttpNotFound();
+            }
+            db.courses.Remove(model);
+            db.SaveChanges();
+            return RedirectToAction("CourseIndex");
+        }
     }
 }
