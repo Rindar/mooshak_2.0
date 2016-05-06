@@ -21,7 +21,6 @@ namespace mooshak_2._0.Controllers
         {
             List<CourseViewModel> ListOfCourseViewModels = new ListStack<CourseViewModel>();
             ListOfCourseViewModels = _courseService.GetAllCourses();
-            ViewData["allCourses"] = ListOfCourseViewModels;
             return View(ListOfCourseViewModels);
         }
 
