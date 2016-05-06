@@ -111,6 +111,7 @@ C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.T
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\EntityFramework.xml
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+<<<<<<< HEAD
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\ApplicationInsights.config
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\roslyn\csc.exe
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -167,3 +168,9 @@ E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\moo
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\obj\Debug\mooshak_2.0.Tests.csprojResolveAssemblyReference.cache
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\obj\Debug\mooshak_2.0.Tests.dll
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\obj\Debug\mooshak_2.0.Tests.pdb
+=======
+C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Antlr3.Runtime.dll
+C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Antlr3.Runtime.dll
+C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Antlr3.Runtime.pdb
+>>>>>>> 2def73c01bda7a67945b8c1f796605fb48447dc2

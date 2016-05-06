@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using mooshak_2._0.Models.ViewModels;
+using mooshak_2._0.Services;
 
 namespace mooshak_2._0.Controllers
 {
@@ -15,7 +17,10 @@ namespace mooshak_2._0.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
-            return View();
+            CourseService _courseService = new CourseService(new AssignmentsService());
+            List<CourseViewModel> getAllCourses = _courseService.GetAllCourses();
+
+            return View(getAllCourses);
         }
 
         public ActionResult CreateUser()
@@ -34,8 +39,10 @@ namespace mooshak_2._0.Controllers
             var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new Dbcontext()));
             var result = UserManager.Create(newUser, "some password");
 
-
-
+            return View();
+        }
+        public ActionResult UserList()
+        {
             return View();
         }
 

@@ -98,7 +98,7 @@ namespace mooshak_2._0
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
         {
-            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+            return user.GenerateUserIdentity((ApplicationUserManager)UserManager);
         }
 
         public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)

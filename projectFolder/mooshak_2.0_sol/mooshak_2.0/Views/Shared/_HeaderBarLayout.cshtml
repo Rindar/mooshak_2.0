@@ -28,13 +28,14 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <li><a href="#">SomePage</a></li>
-                <li class="dropdown">
+               <!--<li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <!--TODO: tengja við courses sem nemandi eða kennari er hluti af-->
+                        <!--TODO: tengja við courses sem nemandi eða kennari er hluti af
                         <li><a href="#">Some Course</a></li>
                         <li><a href="#">Some Other Course</a></li>
                         <li><a href="#">Etc</a></li>
+                -->
                     </ul>
                 </li>
             </ul>
@@ -74,7 +75,16 @@
     </div>
 </nav>
 <body>
-    @Html.Partial("~/Views/Shared/_SideBarTeacherStudent.cshtml")
+    @if (User.IsInRole("admin"))
+    {
+        @Html.Partial("~/Views/Shared/_SideBarAdmin.cshtml")
+    }
+    @* else if(User.IsInRole("student") || User.IsInRole("teacher"))
+    {
+        @Html.Partial("~/Views/Shared/_SideBarTeacherStudent.cshtml")
+    }*@
+
+    
     <div class="container">
         @RenderBody()
         <hr/>

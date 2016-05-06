@@ -2,7 +2,50 @@
     ViewBag.Title = "Help";
     Layout = "~/Views/Shared/_HeaderBarLayout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>@ViewBag.Title</h2>
 
-<p>TODO IMPLEMENT A HELP SITE</p>
+<p>Hello, what can we help you with?</p>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+    $(function () {
+        $(".answer").hide();
+        $('#management li a').each(function () {
+            $(this).click(function () {
+                $(this).siblings(".answer").slideToggle();
+            });
+        });
+    });
+</script>
+ <ul id="management">
+    <li>
+        <a>Administrator Assistance</a>
+        <div class="answer">
+            <p>As an administrator of this system, you can create classes, assign users to classes and create
+            users.</p>
+        </div>
+    </li>
+    <li>
+        <a>Teacher Assistance</a>
+        <div class="answer">
+           <p> As a teacher of this system, you can create assignments with problems in your classes, review assignments
+               and submissions of users and grade submissions.<p>
+        </div>
+    </li>
+     <li>
+         <a>Student Assistance</a>
+         <div class="answer">
+             <p>As a student of this system, you can submit file as a solution to assignments that are open and in
+                 your network either solo or with group members if allowed, review previous assignments and your previous
+                submissions and your grade if your solution has been graded.<p>
+         </div>
+     </li>
+     <li>
+         <a>FAQ</a>
+         <div class="answer">
+             <p>
+                How do I submit my file to an assignment?  
+             <p>
+         </div>
+     </li>
+</ul>

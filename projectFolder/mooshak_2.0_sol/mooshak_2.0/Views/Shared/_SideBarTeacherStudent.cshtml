@@ -1,19 +1,13 @@
-﻿
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span2">
-            <ul class="nav navbar-nav">
-                <div class="list-group">
-                    <button type="button" class="list-group-item">Some Course</button>
-                    <button type="button" class="list-group-item">Some Course</button>
-                    <button type="button" class="list-group-item">Some Course</button>
-                    <button type="button" class="list-group-item">Some Course</button>
-                </div>
-            </ul>
+﻿@using mooshak_2._0.Models.ViewModels
+@model List<CourseViewModel>
 
-        </div>
-        <div class="span10">
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+       
+        @foreach (var course in Model)
+        {
+            <li>@Html.ActionLink(course.Title, "About", "Home")</li>
+        }
 
-        </div>
-    </div>
+    </ul>
 </div>

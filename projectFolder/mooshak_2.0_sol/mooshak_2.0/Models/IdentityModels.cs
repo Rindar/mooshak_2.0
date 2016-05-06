@@ -12,11 +12,11 @@ namespace mooshak_2._0.Models
     {
         public string Address { get; set; }
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentity(UserManager<ApplicationUser> manager)
         {
 
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            var userIdentity = manager.CreateIdentity(this, DefaultAuthenticationTypes.ApplicationCookie);
 
             // Add custom user claims here
             return userIdentity;
@@ -28,8 +28,6 @@ namespace mooshak_2._0.Models
         public DbSet<Assignment>          assignments { get; set; } // NOTE!:we have to do this for all the entity classes
         public DbSet<AssignmentMilestone> milestones  { get; set; } // like this
         public DbSet<Course>              courses     { get; set; }
-        //public DbSet<User>                users       { get; set; }
-        //public DbSet<UserRole> UserRoles { get; set; } 
 
         public Dbcontext() : base("DefaultConnection", throwIfV1Schema: false)
         {
