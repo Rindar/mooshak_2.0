@@ -17,7 +17,7 @@ namespace mooshak_2._0.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
-            CourseService _courseService = new CourseService();
+            CourseService _courseService = new CourseService(new AssignmentsService());
             List<CourseViewModel> getAllCourses = _courseService.GetAllCourses();
 
             return View(getAllCourses);

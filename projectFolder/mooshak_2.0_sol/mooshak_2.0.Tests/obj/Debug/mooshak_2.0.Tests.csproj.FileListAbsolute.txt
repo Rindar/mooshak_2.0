@@ -111,3 +111,5 @@ C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.T
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\EntityFramework.xml
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Antlr3.Runtime.dll
+C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0.Tests\bin\Debug\Antlr3.Runtime.pdb
