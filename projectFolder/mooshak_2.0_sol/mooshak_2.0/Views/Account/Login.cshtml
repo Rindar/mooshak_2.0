@@ -1,7 +1,7 @@
 ﻿@using mooshak_2._0.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Innskrá";
+    ViewBag.Title = "Log in";
     Layout = "~/Views/Shared/_HeaderBarLayout.cshtml";
 }
 
@@ -22,7 +22,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h4>Vinsamlegast skráðu þig inn.</h4>
+                <h4>Please log in</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -50,14 +50,14 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Innskrá" class="btn btn-default" />
+                        <input type="submit" value="Log in" class="btn btn-default" />
                     </div>
                 </div>
                 
-                @* Enable this once you have account confirmation enabled for password reset functionality
+                // Enable this once you have account confirmation enabled for password reset functionality
                     <p>
                         @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                    </p>
             }
         </section>
     </div>
