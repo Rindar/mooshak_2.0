@@ -16,3 +16,12 @@
 
 
 
+﻿<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        @Html.ActionLink("Users", "Userlist", "Admin", null, new { @class = "list-group-item" })
+        @Html.ActionLink("Courses", "CourseIndex", "Course", null, new { @class = "list-group-item" })
+        <!--<button type="button" class="list-group-item">Users</button>
+        <button type="button" class="list-group-item">Courses</button> -->
+    </ul>
+</div>
+
