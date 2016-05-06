@@ -1,7 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <title>Mooshak Fonseca</title>
     <meta charset="utf-8">
@@ -74,24 +72,3 @@
         </div>
     </div>
 </nav>
-<body>
-    @if (User.IsInRole("admin"))
-    {
-        @Html.Partial("~/Views/Shared/_SideBarAdmin.cshtml")
-    }
-    @* else if(User.IsInRole("student") || User.IsInRole("teacher"))
-    {
-        @Html.Partial("~/Views/Shared/_SideBarTeacherStudent.cshtml")
-    }*@
-
-    
-    <div class="container">
-        @RenderBody()
-        <hr/>
-
-    </div>
-
-<footer></footer>
-@RenderSection("scripts", required: false)
-</body>
-</html>
