@@ -10,5 +10,6 @@ namespace mooshak_2._0.Models.ViewModels
         public string Title { get; set; }
         public List<AssignmentViewModel> Assignments { get; set; }
         public string Teacher { get; set; }
+        public int ID { get; set; }
     }
 }

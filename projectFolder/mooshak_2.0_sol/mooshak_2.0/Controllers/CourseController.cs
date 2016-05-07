@@ -9,6 +9,8 @@ using mooshak_2._0.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using mooshak_2._0.Models.Entities;
 using System.Security.Claims;
+using mooshak_2._0.Models.ViewModels;
+using System.Collections;
 
 namespace mooshak_2._0.Controllers
 {
@@ -31,8 +33,8 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult CourseIndex()
         {
-            var db = new Dbcontext();
-            return View(db.courses.ToList());
+            IEnumerable<CourseViewModel> allCourses = _service.GetAllCourses();
+            return View(allCourses);
         }
 
         [HttpPost]

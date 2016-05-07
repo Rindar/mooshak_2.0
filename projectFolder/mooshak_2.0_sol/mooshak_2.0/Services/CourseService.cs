@@ -39,6 +39,7 @@ namespace mooshak_2._0.Services
                 CourseViewModel courseViewModel = new CourseViewModel();
                 courseViewModel.Title = course.name;
                 courseViewModel.Assignments = _assignmentsService.GetAssignmentsInCourse(course.id);
+                courseViewModel.ID = course.id;
                     //teacher
                 
                 courseViewModelList.Add(courseViewModel);
@@ -57,12 +58,7 @@ namespace mooshak_2._0.Services
             //Does the assignment contain any milestones ?(can return many milestones if the assignment contains multiple parts)
             //Here we recive only the milestone for the assignment with the correct AssignmentID
             var assignments = _db.assignments.Where(x => x.courseId == CourseID)
-                .Select(x => new AssignmentViewModel
-                {
-                    Title = x.title
-                })
-                //will return an empy list if the assignment contains no milestones.
-                .ToList();
+                .Select(x => new AssignmentViewModel { Title = x.title }).ToList();
 
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new CourseViewModel();
