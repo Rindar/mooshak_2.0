@@ -24,11 +24,11 @@ namespace mooshak_2._0.Services
         public CourseService()
         {
         }
-
+        
         public List<CourseViewModel> GetAllCourses()
         {
             // TODO: 
-
+            
 
             List<Course> allCourses = (from courses in _db.courses select courses).ToList();
 
@@ -45,8 +45,9 @@ namespace mooshak_2._0.Services
                 courseViewModelList.Add(courseViewModel);
             }
             return courseViewModelList;
+            
         }
-
+        
         public CourseViewModel GetCourseByID(int CourseID)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")

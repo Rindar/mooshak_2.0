@@ -11,7 +11,6 @@ namespace mooshak_2._0
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-<<<<<<< HEAD
 
             /* routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
              routes.MapRoute(
@@ -21,8 +20,6 @@ namespace mooshak_2._0
 
  );
   */
-=======
->>>>>>> 83dc740362b569648d0bac84f2ab9d54b5dfd01e
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

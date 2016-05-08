@@ -33,8 +33,8 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult CourseIndex()
         {
-            IEnumerable<CourseViewModel> allCourses = _service.GetAllCourses();
-            return View(allCourses);
+            var db = new Dbcontext();
+            return View(db.courses.ToList());
         }
 
         [HttpPost]
