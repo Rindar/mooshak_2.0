@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
+using mooshak_2._0.Models.Entities;
 
 namespace mooshak_2._0.Controllers
 {
@@ -43,7 +44,40 @@ namespace mooshak_2._0.Controllers
         }
         public ActionResult UserList()
         {
-            return View();
+            var db = new Dbcontext();
+            return View(db.Users.ToList());
+        }
+        public ActionResult UserCourses()
+        {
+            var db = new Dbcontext();
+            var q = (from t in db.courses
+                     select new { t.name });
+
+            var courses = new List<Course>();
+            foreach (var t in q)
+            {
+                courses.Add(new Course()
+                {
+                    name = t.name,
+
+        });
+            }
+            return View(db.courses);
+
+        }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            var db = new Dbcontext();
+            var model = db.Users.Find(id);
+
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            db.Users.Remove(model);
+            db.SaveChanges();
+            return RedirectToAction("UserList");
         }
 
     }
