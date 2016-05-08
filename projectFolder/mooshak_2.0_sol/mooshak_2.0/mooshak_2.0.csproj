@@ -208,6 +208,12 @@
     </Compile>
     <Compile Include="Helpers\ListItemController.cs" />
     <Compile Include="Helpers\MyDbInitializer.cs" />
+    <Compile Include="Migrations\201605082234512_SorryGuys.cs" />
+    <Compile Include="Migrations\201605082234512_SorryGuys.Designer.cs">
+      <DependentUpon>201605082234512_SorryGuys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Entities\StudentCourse.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
     <Compile Include="Models\Entities\AssignmentMilestone.cs" />
@@ -317,6 +323,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201605082234512_SorryGuys.resx">
+      <DependentUpon>201605082234512_SorryGuys.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

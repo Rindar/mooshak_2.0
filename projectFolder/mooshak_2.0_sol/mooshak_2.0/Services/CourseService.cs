@@ -8,6 +8,7 @@ using mooshak_2._0.Models;
 using mooshak_2._0.Models.Entities;
 using Microsoft.AspNet.Identity;
 using mooshak_2._0.Models.ViewModels;
+using System.Security.Principal;
 
 namespace mooshak_2._0.Services
 {
@@ -70,7 +71,20 @@ namespace mooshak_2._0.Services
             return viewModel;
         }
 
-
+        public List<CourseViewModel> GetCoursesByStudent(string id)
+        {
+            IEnumerable<StudentCourse> AllStudentCourses =  from courses in _db.studentcourse
+                                                            where courses.studentId.Equals(id)
+                                                            select courses;
+            
+            List<CourseViewModel> studentCourses = new List<CourseViewModel>();
+            foreach(var item in AllStudentCourses)
+            {
+                CourseViewModel tmpModel = GetCourseByID(item.courseId);
+                studentCourses.Add(tmpModel);
+            }
+            return studentCourses;
+        }
 
     }
 }

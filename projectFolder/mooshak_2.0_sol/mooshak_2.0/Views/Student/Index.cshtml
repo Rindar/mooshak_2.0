@@ -1,11 +1,28 @@
 ﻿@using System.Web.UI.WebControls
+@model List<mooshak_2._0.Models.ViewModels.CourseViewModel>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Mooshak Fonseca";
 }
 
-    <h1>Mooshak Fonseca</h1>
-  
+    <h1 class="page-header">Mooshak Fonseca</h1>
+    @{
+        if (!Model.Any())
+        {
+            <div class="alert">We're sorry but you aren't in any courses</div>
+        }
+        else
+        {
+            foreach (var course in Model)
+            {
+                <div class="col-xs-6 col-sm-3">
+                    <h4>@course.Title</h4>
+                    <span class="text-muted">Something else</span>
+                </div>
+            }
+        }
+    }
+
 @Html.ActionLink("Course 1", "Course", "Student", null, new { @class = "button" })
 @Html.ActionLink("Course 2", "Course", "Student", null, new { @class = "button" })
