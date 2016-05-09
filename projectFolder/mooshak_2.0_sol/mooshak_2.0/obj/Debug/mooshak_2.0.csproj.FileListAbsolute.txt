@@ -405,8 +405,7 @@ C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bi
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2._0.Migrations.SorryGuys.resources
+C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csproj.GenerateResource.Cache
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.dll
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.pdb
-C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csproj.GenerateResource.Cache
-C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2._0.Migrations.SorryGuys.resources
-C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csprojResolveAssemblyReference.cache

@@ -6,23 +6,31 @@
     ViewBag.Title = "Mooshak Fonseca";
 }
 
-    <h1 class="page-header">Mooshak Fonseca</h1>
-    @{
-        if (!Model.Any())
+<h1 class="page-header">Mooshak Fonseca</h1>
+@{
+    if (!Model.Any())
+    {
+        <div class="alert">We're sorry but you aren't in any courses</div>
+    }
+    else
+    {
+        foreach (var course in Model)
         {
-            <div class="alert">We're sorry but you aren't in any courses</div>
-        }
-        else
-        {
-            foreach (var course in Model)
-            {
-                <div class="col-xs-6 col-sm-3">
-                    <h4>@course.Title</h4>
-                    <span class="text-muted">Something else</span>
-                </div>
-            }
+            <div class="col-xs-6 col-sm-4">
+                <h4>@course.Title</h4>
+                <span class="text-muted">Something else</span>
+            </div>
         }
     }
+}
 
-@Html.ActionLink("Course 1", "Course", "Student", null, new { @class = "button" })
-@Html.ActionLink("Course 2", "Course", "Student", null, new { @class = "button" })
+<div class="col-xs-6 col-sm-4">
+    <h2>Course 1</h2>
+    <p>Lorem ipsum</p>
+    <p>@Html.ActionLink("Course 1", "Course", "Student", null, new { @class = "btn btn-primary btn-large" })</p>
+</div>
+<div class="col-xs-6 col-sm-4">
+    <h2>Course 2</h2>
+    <p>Lorem ipsum</p>
+    <p>@Html.ActionLink("Course 2", "Course", "Student", null, new { @class = "btn btn-primary btn-large" })</p>
+</div>
