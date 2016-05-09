@@ -68,11 +68,52 @@ namespace mooshak_2._0.Controllers
             return View(db.courses.ToList());
         }
 
-        
-        public ActionResult AddToCourse()
+        [HttpGet]
+        public ActionResult AddToCourse(int id)
         {
-            var allUsers = db.Users.ToList();
-            return View(allUsers);
+            AllUsersAndSomeCourseViewModel allUsersAndSomeCourseViewModel = new AllUsersAndSomeCourseViewModel()
+            {
+                theCourse = _courseService.GetCourseByID(id),
+                listOfUsers = db.Users.ToList()
+            };
+            return View(allUsersAndSomeCourseViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult AddTheUserToTheCourse(AllUsersAndSomeCourseViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (db)
+                {
+                    var newConnection = db.userCourse.Create();
+                    var theUser = db.Users.Find(model.selectedUserId).ToString();
+                    string theUserId = model.selectedUserId;
+
+                    newConnection.userID = theUserId;
+                    if (theUserId.IsNullOrWhiteSpace())
+                    {
+                        return RedirectToAction("CourseIndex");
+                    }
+
+                    newConnection.userID = theUserId;
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("CourseIndex");
+        }
+
+        
+
+        public ActionResult EditCourse(int id)
+        {
+            var model = db.courses.Find(id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(model);
         }
 
         [HttpGet]

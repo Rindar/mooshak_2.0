@@ -1,47 +1,48 @@
 ﻿@using System.Web.UI.WebControls
-@model IEnumerable<mooshak_2._0.Models.ApplicationUser>
+@using mooshak_2._0.Models.Entities
+@using mooshak_2._0.Models.ViewModels
+@using mooshak_2._0.Services
+@model mooshak_2._0.Models.ViewModels.AllUsersAndSomeCourseViewModel
 @{
-    ViewBag.Title = "Add users to a course";
+    ViewBag.Title = "Add users to " + @Model.theCourse.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add users to a course</h2>
-
-@using (Html.BeginForm()) 
+<h2>Add users to @Model.theCourse.Title</h2>
+@using (Html.BeginForm("AddTheUserToTheCourse", "Course", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.Label("User", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Users", new SelectList(Model.Select(x => new { Value = x.Id, Text = x.Email}), "Value", "Text"),
-                 "Select user to add",  new { @class = "btn btn-default dropdown-toggle"})
+                @Html.HiddenFor(m => m.theCourse.ID)
+                @Html.DropDownListFor(m => m.selectedUserId, new SelectList(Model.listOfUsers.Select(x => new {Value = x.Id, Text = x.Email}), "Value", "Text"),
+                    "Select user to add", new {@class = "btn btn-default dropdown-toggle", id = "dropdownSelecton"})
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add to course" onclick="AddUser(id)" class="btn btn-default" />
+                <input type="submit" value="Add to course" onclick="updateViewModel" class="btn btn-default" id ="addToCourseButton"/>
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "CourseIndex")
 </div>
 
 <script>
-    function AddUser(Id)
-    {
-        var toAdd = confirm("Are you sure you want to delete this User?")
+    function updateViewModel() {
+        var getSelectedUser = document.getElementById("dropdownSelecton");
+        var getSelectedUserId = getSelectedUser.options[getSelectedUser.selectedIndex].value;
+
         if(toAdd == true)
         {
-            window.location.assign("/Admin/AddUser/" + Id);
+            window.location.assign("/Course/AddTheUserToTheCourse/" + getSelectedUserId + "/" + "1");
         }
-
     }
 </script>

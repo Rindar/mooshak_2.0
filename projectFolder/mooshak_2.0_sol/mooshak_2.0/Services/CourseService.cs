@@ -68,9 +68,18 @@ namespace mooshak_2._0.Services
             return viewModel;
         }
 
+        internal void AddTheUserToTheCourse(int courseIdToInsert, string userIdToInsert)
+        {
+            _db.userCourse.Add(new UserCourse()
+            {
+                courseId = courseIdToInsert,
+                userID = userIdToInsert
+            });
+        }
+
         public List<CourseViewModel> GetCoursesByStudent(string id)
         {
-            IEnumerable<UserCourse> allUserCourses =  from courses in _db.UserCourse
+            IEnumerable<UserCourse> allUserCourses =  from courses in _db.userCourse
                                                       where courses.userID.Equals(id)
                                                       select courses;
             
