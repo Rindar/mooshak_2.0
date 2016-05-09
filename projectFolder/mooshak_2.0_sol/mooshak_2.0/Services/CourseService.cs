@@ -28,9 +28,6 @@ namespace mooshak_2._0.Services
         
         public List<CourseViewModel> GetAllCourses()
         {
-            // TODO: 
-            
-
             List<Course> allCourses = (from courses in _db.courses select courses).ToList();
 
             List<CourseViewModel> courseViewModelList = new List<CourseViewModel>();
@@ -48,7 +45,7 @@ namespace mooshak_2._0.Services
             return courseViewModelList;
             
         }
-        
+
         public CourseViewModel GetCourseByID(int CourseID)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
@@ -73,17 +70,18 @@ namespace mooshak_2._0.Services
 
         public List<CourseViewModel> GetCoursesByStudent(string id)
         {
-            IEnumerable<StudentCourse> AllStudentCourses =  from courses in _db.studentcourse
-                                                            where courses.studentId.Equals(id)
-                                                            select courses;
+            IEnumerable<UserCourse> allUserCourses =  from courses in _db.UserCourse
+                                                      where courses.userID.Equals(id)
+                                                      select courses;
             
-            List<CourseViewModel> studentCourses = new List<CourseViewModel>();
-            foreach(var item in AllStudentCourses)
+            List<CourseViewModel> userCourses = new List<CourseViewModel>();
+            foreach(var item in allUserCourses)
             {
                 CourseViewModel tmpModel = GetCourseByID(item.courseId);
-                studentCourses.Add(tmpModel);
+                userCourses.Add(tmpModel);
+
             }
-            return studentCourses;
+            return userCourses;
         }
 
     }

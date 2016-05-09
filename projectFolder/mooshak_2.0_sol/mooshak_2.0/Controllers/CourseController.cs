@@ -11,12 +11,15 @@ using mooshak_2._0.Models.Entities;
 using System.Security.Claims;
 using mooshak_2._0.Models.ViewModels;
 using System.Collections;
+using Microsoft.Ajax.Utilities;
 
 namespace mooshak_2._0.Controllers
 {
     public class CourseController : Controller
     {
         private CourseService _service = new CourseService();
+        Dbcontext db = new Dbcontext();
+
         // GET: Assignments
         public ActionResult Index()
         {
@@ -33,7 +36,6 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult CourseIndex()
         {
-            var db = new Dbcontext();
             return View(db.courses.ToList());
         }
 
@@ -43,10 +45,13 @@ namespace mooshak_2._0.Controllers
         
             if (ModelState.IsValid)
             {
-
-                using (var db = new Dbcontext())
+                using (db)
                 {
                     string new_item = Request.Form["new_item"];
+                    if (new_item.IsNullOrWhiteSpace())
+                    {
+                        return View(db.courses.ToList());
+                    }
                     var dbList = db.courses.Create();
                     dbList.name = new_item;
                     db.courses.Add(dbList);
@@ -58,14 +63,24 @@ namespace mooshak_2._0.Controllers
                 ModelState.AddModelError("", "Incorrect format has been placed");
 
             }
-            var listTable = new Dbcontext();
-            return View(listTable.courses.ToList());
+            return View(db.courses.ToList());
+        }
+
+        public ActionResult AddToCourse()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddToCourse(int idOfCourse)
+        {
+
+            return View();
         }
 
         [HttpGet]
         public ActionResult Delete(int id)
         {
-            var db = new Dbcontext();
             var model = db.courses.Find(id);
 
             if(model == null)
