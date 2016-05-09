@@ -10,6 +10,7 @@ using mooshak_2._0.Helpers;
 using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using mooshak_2._0.Models.Entities;
+using System.Data.Entity;
 
 namespace mooshak_2._0.Controllers
 {
@@ -69,10 +70,12 @@ namespace mooshak_2._0.Controllers
             {
                 return HttpNotFound();
             }
-            UserManager.Delete(userToRemove);
-            //db.SaveChanges();
-            return RedirectToAction("Index");
+            //UserManager.Delete(userToRemove);
+            db.Users.Remove(userToRemove);
+            db.SaveChanges();
+            return RedirectToAction("UserList");
         }
+
 
     }
 }

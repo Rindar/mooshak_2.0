@@ -411,3 +411,5 @@ C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\ob
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.pdb
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2._0.Migrations.SorryGuys.resources
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csproj.GenerateResource.Cache
+C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2._0.Migrations.SorryGuys.resources
+C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csproj.GenerateResource.Cache

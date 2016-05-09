@@ -18,7 +18,7 @@
             {
         <tr>
             <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Email)</td>
-            <td style="text-align: center;"><a class="pointer-arrow" onclick="deleteRow(@Html.DisplayFor(modelItem => item.Id))">Delete</a></td>
+            <td style="text-align: center;"><a class="pointer" onclick="deleteUser('@Html.DisplayFor(modelItem => item.Id)')">Delete</a></td>
         </tr>
     }
 </tbody>
@@ -27,18 +27,21 @@
     </table>
 
 <script>
-    function deleteRow(Id)
+    
+    function deleteUser(Id)
     {
-        var toDelete = confirm("Are you sure you want to delete this User?")
+      var toDelete = confirm("Are you sure you want to delete this User?");
         if(toDelete == true)
         {
-            window.location.assign("/Admin/DeleteUser/" + Id);
+            window.location.assign("/Admin/DeleteUser/"+Id);
         }
+        
+        
 
     }
 </script>
 <style type="text/css">
-    .pointer-arrow:hover {
+    .pointer:hover {
         cursor: pointer;
     }
 </style>
