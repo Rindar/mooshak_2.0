@@ -42,7 +42,7 @@ namespace mooshak_2._0.Controllers
         }
 
         [HttpPost]
-        public ActionResult CourseIndex(Course list)
+        public ActionResult CourseIndex(Course courses)
         {
         
             if (ModelState.IsValid)
@@ -65,7 +65,7 @@ namespace mooshak_2._0.Controllers
                 ModelState.AddModelError("", "Incorrect format has been placed");
 
             }
-            return View(db.courses.ToList());
+            return RedirectToAction("CourseIndex");
         }
 
         
@@ -87,6 +87,31 @@ namespace mooshak_2._0.Controllers
             db.courses.Remove(model);
             db.SaveChanges();
             return RedirectToAction("CourseIndex");
+        }
+        [HttpGet]
+        public ActionResult EditCourse(int id)
+        {
+            var db = new Dbcontext();
+            var model = new Course();
+            model = db.courses.Find(id);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult EditCourse(Course courses)
+        {
+            var db = new Dbcontext();
+            string new_item = Request.Form["new_item"];
+
+            if (ModelState.IsValid)
+            {
+
+                courses.name = new_item;
+
+                db.Entry(courses).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("CourseIndex");
+            }
+            return View(courses);
         }
     }
 }
