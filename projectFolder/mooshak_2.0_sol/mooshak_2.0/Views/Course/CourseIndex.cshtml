@@ -19,6 +19,7 @@
             <tr>
                 <th style="text-align: center;">Course Name</th>
                 <th style="text-align: center;">Edit</th>
+                <th style="text-align: center;">Add users to a course</th>
                 <th style="text-align: center;">Remove</th>
 
             </tr>
@@ -28,7 +29,7 @@
             {
                 <tr>
                     <td style="text-align: center;">@Html.DisplayFor(modelItem => item.name)</td>
-                    <td style="text-align: center;"><a href="@Url.Action("Edit", "Course")/@Html.DisplayFor(modelItem => item.id)">Edit</a></td>
+                    <td style="text-align: center;"><a href="@Url.Action("EditCourse", "Course")/@Html.DisplayFor(modelItem => item.id)">Edit</a></td>
                     <td style="text-align: center;"><a href="@Url.Action("AddToCourse", "Course")/@Html.DisplayFor(modelItem => item.id)">Add to course</a></td>
                     <td style="text-align: center;"><a class="pointer-arrow" onclick="deleteRow(@Html.DisplayFor(modelItem => item.id))">Delete</a></td>
                 </tr>
