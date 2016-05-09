@@ -10,58 +10,74 @@ namespace mooshak_2._0.Services
 {
     public class AssignmentsService
     {
-        public Dbcontext _db;
+        private Dbcontext _db;
+        private AssignmentMilestoneService _assignmentMilestoneService;
 
         public AssignmentsService()
         {
             _db = new Dbcontext();
+            _assignmentMilestoneService = new AssignmentMilestoneService();
         }
-       public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
-       {
+
+        public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
+        {
+
             // TODO: 
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
-            var assignments = _db.assignments.Where(x => x.courseId == courseID);
-            if (assignments == null)
-            {
+            var allAssignments = from assignments in _db.assignments
+                                 where assignments.courseId.Equals(courseID)
+                                 select assignments;
 
+            if (allAssignments == null)
+            {
                 //TODO: throw an exeption, an error has occured
             }
             
-            //create a viewmodel fot the assignment that has a milestone
-            List<AssignmentViewModel> result = new List<AssignmentViewModel>();
-            foreach (var assignment in assignments)
+            var assignmentViewModelList = new List<AssignmentViewModel>();
+            foreach (var assignment in allAssignments)
             {
                 var newViewModel = new AssignmentViewModel();
+                newViewModel.id = assignment.id;
                 newViewModel.Title = assignment.title;
-                result.Add(newViewModel);
+                var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id);
+                newViewModel.Milestones = milestoneViewList;
+                assignmentViewModelList.Add(newViewModel);
+
             }
-            return result;
+            return assignmentViewModelList;
            
         }
-        public AssignmentViewModel GetAssignmentByID(int assignmentID)
+        public AssignmentViewModel GetAssignmentByID(int assignmentId)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
-            var assignment = _db.assignments.SingleOrDefault(x => x.id == assignmentID);
-            if(assignment == null)
+            var assignment = (from assignments in _db.assignments
+                              where assignments.id.Equals(assignmentId)
+                              select assignments).SingleOrDefault();
+
+            if (assignment == null)
             {
-                //TODO: throw an exeption, an error has occured
+                // EXCEPTION
             }
-            //Does the assignment contain any milestones ?(can return many milestones if the assignment contains multiple parts)
-            //Here we recive only the milestone for the assignment with the correct AssignmentID
-            var milestones = _db.milestones.Where(x => x.assignmentID == assignmentID)
-                .Select(x => new ProblemViewModel //Creates an object that contains the milestone that we return 
-                {
-                    Title = x.title    
-                })
-                //will return an empy list if the assignment contains no milestones.
-                .ToList();
+            var allMilestones = from milestones in _db.milestones
+                                where milestones.assignmentID.Equals(assignmentId)
+                                select milestones;
+
+            var milestoneViewList = new List<ProblemViewModel>();
+            foreach (var milestone in allMilestones)
+            {
+                var tempViewModel = new ProblemViewModel();
+                tempViewModel.id = milestone.id;
+                tempViewModel.Title = milestone.title;
+                tempViewModel.weight = milestone.weight;
+                milestoneViewList.Add(tempViewModel);
+            }
 
             //create a viewmodel fot the assignment that has a milestone
-            var viewModel = new AssignmentViewModel 
-            {
-                Title = assignment.title,
-                Milestones = milestones
-            };
+            var viewModel = new AssignmentViewModel();
+            viewModel.id = assignment.id;
+            viewModel.Title = assignment.title;
+            viewModel.Milestones = milestoneViewList;
+
             return viewModel;
         }
     }

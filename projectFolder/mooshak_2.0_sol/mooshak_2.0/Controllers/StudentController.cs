@@ -31,12 +31,19 @@ namespace mooshak_2._0.Controllers
                 CourseViewModel model = _courseService.GetCourseByID(realID);
                 return View(model);
             }
-            return View();
+            return View("Error");
         }
 
-        public ActionResult Assignment()
+        public ActionResult Assignment(int? id)
         {
-            return View();
+            if (id.HasValue)
+            {
+                int realID = id.Value;
+                AssignmentsService _assignmentService = new AssignmentsService();
+                AssignmentViewModel model = _assignmentService.GetAssignmentByID(realID);
+                return View(model);
+            }
+            return View("Error");
         }
 
         public ActionResult Submission()

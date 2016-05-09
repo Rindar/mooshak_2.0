@@ -28,7 +28,8 @@ namespace mooshak_2._0.Services
         
         public List<CourseViewModel> GetAllCourses()
         {
-            List<Course> allCourses = (from courses in _db.courses select courses).ToList();
+            IEnumerable<Course> allCourses = from courses in _db.courses
+                                             select courses;
 
             List<CourseViewModel> courseViewModelList = new List<CourseViewModel>();
 
@@ -49,22 +50,22 @@ namespace mooshak_2._0.Services
         public CourseViewModel GetCourseByID(int CourseID)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
-            var course = _db.courses.SingleOrDefault(x => x.id == CourseID);
+            var course = (from courses in _db.courses
+                          where courses.id.Equals(CourseID)
+                          select courses).SingleOrDefault();
+
             if (course == null)
             {
                 //TODO: throw an exeption, an error has occured
             }
-            //Does the assignment contain any milestones ?(can return many milestones if the assignment contains multiple parts)
-            //Here we recive only the milestone for the assignment with the correct AssignmentID
-            var assignments = _db.assignments.Where(x => x.courseId == CourseID)
-                .Select(x => new AssignmentViewModel { Title = x.title }).ToList();
+
+            var allAssignments = _assignmentsService.GetAssignmentsInCourse(CourseID);
 
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new CourseViewModel();
-            {
-                viewModel.Title = course.name;
-                viewModel.Assignments = assignments;
-            };
+            viewModel.ID = course.id;
+            viewModel.Title = course.name;
+            viewModel.Assignments = allAssignments;
             return viewModel;
         }
 
@@ -77,9 +78,9 @@ namespace mooshak_2._0.Services
             List<CourseViewModel> userCourses = new List<CourseViewModel>();
             foreach(var item in allUserCourses)
             {
+                
                 CourseViewModel tmpModel = GetCourseByID(item.courseId);
                 userCourses.Add(tmpModel);
-
             }
             return userCourses;
         }
