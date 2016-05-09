@@ -18,12 +18,19 @@ namespace mooshak_2._0.Controllers
         public ActionResult Index()
         {
             CourseService _courseService = new CourseService(new AssignmentsService());
-            List<CourseViewModel> StudentCourses = _courseService.GetCoursesByStudent(User.Identity.GetUserId());
-            return View(StudentCourses);
+            List<CourseViewModel> UserCourses = _courseService.GetCoursesByUser(User.Identity.GetUserId());
+            return View(UserCourses);
         }
 
-        public ActionResult Course()
+        public ActionResult Course(int? id)
         {
+            if (id.HasValue)
+            {
+                int realID = id.Value;
+                CourseService _courseService = new CourseService(new AssignmentsService());
+                CourseViewModel model = _courseService.GetCourseByID(realID);
+                return View(model);
+            }
             return View();
         }
 

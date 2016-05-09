@@ -62,6 +62,19 @@ namespace mooshak_2._0.Controllers
             }
             return View(db.courses);
         }
+
+        public ActionResult AddUser(string id)
+        {
+            var userToRemove = db.Users.Find(id);
+            if (userToRemove == null)
+            {
+                return HttpNotFound();
+            }
+            UserManager.Delete(userToRemove);
+            //db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         
         public ActionResult DeleteUser(string id)
         {

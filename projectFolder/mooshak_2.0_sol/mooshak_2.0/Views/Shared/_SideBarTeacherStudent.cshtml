@@ -1,9 +1,17 @@
-﻿@using mooshak_2._0.Models.ViewModels
+﻿@using System.Web.UI.WebControls
+@using mooshak_2._0.Models.ViewModels
 @model List<CourseViewModel>
 
 <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
-       
+        @if (Model == null)
+        {
+            @
+            {
+                Response.Redirect("~/Error");
+
+            }
+        }
         @foreach (var course in Model)
         {
             <li>@Html.ActionLink(course.Title, "About", "Home")</li>
