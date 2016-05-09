@@ -213,7 +213,7 @@
       <DependentUpon>201605082234512_SorryGuys.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Entities\StudentCourse.cs" />
+    <Compile Include="Models\Entities\UserCourse.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
     <Compile Include="Models\Entities\AssignmentMilestone.cs" />
@@ -306,6 +306,8 @@
     <Content Include="Views\Admin\UserList.cshtml" />
     <Content Include="Views\Course\CourseIndex.cshtml" />
     <Content Include="Views\Admin\UserCourses.cshtml" />
+    <Content Include="Views\Course\AddToCourse.cshtml" />
+    <Content Include="Views\Course\EditCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

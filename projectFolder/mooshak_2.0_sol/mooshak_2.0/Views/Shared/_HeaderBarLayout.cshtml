@@ -6,16 +6,18 @@
             @Html.ActionLink("Mooshak Fonseca", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="#">SomePage</a></li>
-            </ul>
+            
             <ul class="nav navbar-nav navbar-right">
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">@User.Identity.GetUserName() <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <!--TODO: tengja action link við account settings page-->
-                        <li><a href="#">Account Settings</a></li>
+                        @if (Request.IsAuthenticated)
+                        {
+                            <li><a href="#">Account Settings</a></li>
+                        }
+                        
                         <li>@Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
                         <li>
                             @if (Request.IsAuthenticated)
@@ -29,7 +31,6 @@
                     </ul>
                 </li>
                 <li>
-                    <span class="glyphicon glyphicon-log-out"></span>
                     @if (Request.IsAuthenticated)
                     {
                         using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))

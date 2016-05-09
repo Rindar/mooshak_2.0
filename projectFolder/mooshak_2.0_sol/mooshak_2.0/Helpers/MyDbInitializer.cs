@@ -13,10 +13,11 @@ namespace mooshak_2._0.Helpers
     //public class MyDbInitializer : DropCreateDatabaseAlways<context>
     public class MyDbInitializer : CreateDatabaseIfNotExists<Dbcontext>
     {
-        protected override void Seed(Dbcontext context)
+        protected override void Seed(Dbcontext _db)
         {
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            //Database.SetInitializer<DbContext>(null);
+            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(_db));
+            var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_db));
             string userName = "admin@1.com";
             string password = "admin1";
 
@@ -46,7 +47,7 @@ namespace mooshak_2._0.Helpers
             {
                 var result = UserManager.AddToRole(user.Id, UserRoles.ADMIN.ToString());
             }
-            base.Seed(context);
+            base.Seed(_db);
         }
     }
 }

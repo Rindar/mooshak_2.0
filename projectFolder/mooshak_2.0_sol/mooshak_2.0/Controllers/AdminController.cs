@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using mooshak_2._0.Helpers;
 using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using mooshak_2._0.Models.Entities;
@@ -14,13 +15,15 @@ namespace mooshak_2._0.Controllers
 {
     public class AdminController : Controller
     {
+        Dbcontext db = new Dbcontext();
+        CourseService _courseService = new CourseService(new AssignmentsService());
+        UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new Dbcontext()));
+
         // GET: Admin
         [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
-            CourseService _courseService = new CourseService(new AssignmentsService());
             List<CourseViewModel> getAllCourses = _courseService.GetAllCourses();
-
             return View(getAllCourses);
         }
 
@@ -34,22 +37,17 @@ namespace mooshak_2._0.Controllers
         {
             //Validate 
             //create user
-
-
             ApplicationUser newUser = new ApplicationUser() { Email = "email", UserName = "username" };
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new Dbcontext()));
             var result = UserManager.Create(newUser, "some password");
 
             return View();
         }
         public ActionResult UserList()
         {
-            var db = new Dbcontext();
             return View(db.Users.ToList());
         }
         public ActionResult UserCourses()
         {
-            var db = new Dbcontext();
             var q = (from t in db.courses
                      select new { t.name });
 
@@ -59,23 +57,20 @@ namespace mooshak_2._0.Controllers
                 courses.Add(new Course()
                 {
                     name = t.name,
-
-        });
+                });
             }
             return View(db.courses);
-
         }
         
         public ActionResult DeleteUser(string id)
         {
-            var db = new Dbcontext();
             var userToRemove = db.Users.Find(id);
             if (userToRemove == null)
             {
                 return HttpNotFound();
             }
-            db.Users.Remove(userToRemove);
-            db.SaveChanges();
+            UserManager.Delete(userToRemove);
+            //db.SaveChanges();
             return RedirectToAction("Index");
         }
 
