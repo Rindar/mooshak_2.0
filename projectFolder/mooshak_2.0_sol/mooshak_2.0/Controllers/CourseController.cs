@@ -11,13 +11,15 @@ using mooshak_2._0.Models.Entities;
 using System.Security.Claims;
 using mooshak_2._0.Models.ViewModels;
 using System.Collections;
+using System.Web.Security;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 
 namespace mooshak_2._0.Controllers
 {
     public class CourseController : Controller
     {
-        private CourseService _service = new CourseService();
+        private CourseService _courseService = new CourseService();
         Dbcontext db = new Dbcontext();
 
         // GET: Assignments
@@ -29,7 +31,7 @@ namespace mooshak_2._0.Controllers
         //the method that is called to see details for an assignment
         public ActionResult Details(int id)
         {
-            var viewModel = _service.GetCourseByID(id); // creates a viewmodel for the assignment
+            var viewModel = _courseService.GetCourseByID(id); // creates a viewmodel for the assignment
             return View(viewModel);
         }
 
@@ -66,16 +68,11 @@ namespace mooshak_2._0.Controllers
             return View(db.courses.ToList());
         }
 
+        
         public ActionResult AddToCourse()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult AddToCourse(int idOfCourse)
-        {
-
-            return View();
+            var allUsers = db.Users.ToList();
+            return View(allUsers);
         }
 
         [HttpGet]
