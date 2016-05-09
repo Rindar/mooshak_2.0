@@ -5,10 +5,10 @@ using System.Web;
 
 namespace mooshak_2._0.Models.Entities
 {
-    public class UserCourse
+    public class UserCourses
     {
         public int id { get; set; }
-        public string userID { get; set; }
+        public string userId { get; set; }
         public int courseId { get; set; }
     }
 }

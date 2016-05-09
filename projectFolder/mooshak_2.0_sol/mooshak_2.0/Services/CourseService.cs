@@ -68,10 +68,10 @@ namespace mooshak_2._0.Services
             return viewModel;
         }
 
-        public List<CourseViewModel> GetCoursesByStudent(string id)
+        public List<CourseViewModel> GetCoursesByUser(string id)
         {
-            IEnumerable<UserCourse> allUserCourses =  from courses in _db.UserCourse
-                                                      where courses.userID.Equals(id)
+            IEnumerable<UserCourses> allUserCourses = from courses in _db.userCourses
+                                                      where courses.userId.Equals(id)
                                                       select courses;
             
             List<CourseViewModel> userCourses = new List<CourseViewModel>();
