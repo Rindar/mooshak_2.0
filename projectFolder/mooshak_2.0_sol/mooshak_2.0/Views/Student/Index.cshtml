@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Mooshak - Reykjavík University";
 }
-
+<!--
 <h1 class="page-header">Mooshak Fonseca</h1>
 @{
-    if (!Model.Any())
+    /*if (!Model.Any())
     {
         <div class="alert">We're sorry but you aren't in any courses</div>
     }
@@ -22,9 +22,16 @@
                 <p>@Html.ActionLink("Details", "Course", "Student", new { id = course.id }, new { @class = "btn btn-primary btn-large" })</p>
             </div>
         }
-    }
+    }*/
 }
+    -->
 
+<div class="col-sm-3 col-md-2 sidebar">
+    <ul class="nav nav-sidebar">
+        <li>@Html.ActionLink("Submit Solution", "Submission", "Student")</li>
+
+    </ul>
+</div>
 <div class="col-xs-6 col-sm-4">
     <h2>Course 1</h2>
     <p>Here is the description</p>

@@ -73,8 +73,9 @@ namespace mooshak_2._0.Controllers
             AllUsersAndSomeCourseViewModel allUsersAndSomeCourseViewModel = new AllUsersAndSomeCourseViewModel()
             {
                 theCourse = _courseService.GetCourseByID(id),
-                listOfUsers = db.Users.ToList()
-            };
+                listOfUsers = db.Users.ToList(),
+                allUsersInCourse = _courseService.GetUsersInSomeCourse(id)
+             };
             return View(allUsersAndSomeCourseViewModel);
         }
         
@@ -94,6 +95,12 @@ namespace mooshak_2._0.Controllers
                     {
                         return RedirectToAction("CourseIndex");
                     }
+                    
+                    //TODO: If user is already in course, dont add him 
+                    /*if (model.theCourse.ID == db.userCourse.Find(theUserId).id)
+                    {
+                        System.Diagnostics.Debug.WriteLine("works");
+                    }*/
 
                     newConnection.userId = theUserId;
                     newConnection.courseId = model.theCourse.id;
@@ -101,6 +108,7 @@ namespace mooshak_2._0.Controllers
                     db.SaveChanges();
                 }
             }
+            //TODO: Redirect to the same course again
             return RedirectToAction("CourseIndex");
         }
 
@@ -118,6 +126,21 @@ namespace mooshak_2._0.Controllers
             db.SaveChanges();
             return RedirectToAction("CourseIndex");
         }
+
+        [HttpGet]
+        public ActionResult RemoveUser(int id)
+        {
+            var model = db.userCourse.Find(id);
+            if (model == null)
+            {
+                return HttpNotFound();
+            }
+            db.userCourse.Remove(model);
+            db.SaveChanges();
+            return RedirectToAction("CourseIndex");
+        }
+        
+
 
         [HttpGet]
         public ActionResult EditCourse(int id)
