@@ -88,7 +88,5 @@ namespace mooshak_2._0.Controllers
             db.SaveChanges();
             return RedirectToAction("UserList");
         }
-
-
     }
 }

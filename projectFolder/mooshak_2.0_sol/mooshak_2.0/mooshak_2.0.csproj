@@ -314,10 +314,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AllCourseList\" />
-    <Folder Include="Views\AllUsersAndCourses\" />
-    <Folder Include="Views\CourseService\" />
-    <Folder Include="Views\ListItem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

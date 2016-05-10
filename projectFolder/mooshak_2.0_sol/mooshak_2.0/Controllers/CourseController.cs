@@ -44,7 +44,6 @@ namespace mooshak_2._0.Controllers
         [HttpPost]
         public ActionResult CourseIndex(Course courses)
         {
-        
             if (ModelState.IsValid)
             {
                 using (db)
@@ -78,7 +77,7 @@ namespace mooshak_2._0.Controllers
             };
             return View(allUsersAndSomeCourseViewModel);
         }
-        /*
+        
         [HttpPost]
         public ActionResult AddTheUserToTheCourse(AllUsersAndSomeCourseViewModel model)
         {
@@ -87,24 +86,23 @@ namespace mooshak_2._0.Controllers
                 using (db)
                 {
                     var newConnection = db.userCourse.Create();
-                    var theUser = db.Users.Find(model.selectedUserId).ToString();
+                    //var theUser = db.Users.Find(model.selectedUserId).ToString();
                     string theUserId = model.selectedUserId;
 
-                    newConnection.userID = theUserId;
+                    newConnection.userId = theUserId;
                     if (theUserId.IsNullOrWhiteSpace())
                     {
                         return RedirectToAction("CourseIndex");
                     }
 
-                    newConnection.userID = theUserId;
+                    newConnection.userId = theUserId;
+                    newConnection.courseId = model.theCourse.ID;
+                    db.userCourse.Add(newConnection);
                     db.SaveChanges();
                 }
             }
             return RedirectToAction("CourseIndex");
         }
-
-        
-    */
 
 
         [HttpGet]
@@ -120,6 +118,7 @@ namespace mooshak_2._0.Controllers
             db.SaveChanges();
             return RedirectToAction("CourseIndex");
         }
+
         [HttpGet]
         public ActionResult EditCourse(int id)
         {
@@ -128,6 +127,7 @@ namespace mooshak_2._0.Controllers
             model = db.courses.Find(id);
             return View(model);
         }
+
         [HttpPost]
         public ActionResult EditCourse(Course courses)
         {
@@ -136,9 +136,7 @@ namespace mooshak_2._0.Controllers
 
             if (ModelState.IsValid)
             {
-
                 courses.name = new_item;
-
                 db.Entry(courses).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("CourseIndex");

@@ -19,11 +19,12 @@ namespace mooshak_2._0.Services
 
         public CourseService(AssignmentsService assignmentsService)
         {
-            _assignmentsService = new AssignmentsService();
+            _assignmentsService = assignmentsService;
         }
 
         public CourseService()
         {
+            _assignmentsService = new AssignmentsService();
         }
         
         public List<CourseViewModel> GetAllCourses()
@@ -63,64 +64,26 @@ namespace mooshak_2._0.Services
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new CourseViewModel();
             {
+                viewModel.ID = CourseID;
                 viewModel.Title = course.name;
                 viewModel.Assignments = assignments;
             };
             return viewModel;
         }
-        /*
-        internal void AddTheUserToTheCourse(int courseIdToInsert, string userIdToInsert)
-        {
-            _db.userCourse.Add(new UserCourse()
-            {
-                courseId = courseIdToInsert,
-                userID = userIdToInsert
-            });
-        }
-        
-        public List<CourseViewModel> GetCoursesByStudent(string id)
-        {
-            IEnumerable<UserCourse> allUserCourses =  from courses in _db.userCourse
-                                                      where courses.userID.Equals(id)
-
-        public CourseViewModel GetCourseByID(int CourseID)
-        {
-            //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
-            var course = (from courses in _db.courses
-                          where courses.id.Equals(CourseID)
-                          select courses).SingleOrDefault();
-
-            if (course == null)
-            {
-                //TODO: throw an exeption, an error has occured
-            }
-
-            var allAssignments = _assignmentsService.GetAssignmentsInCourse(CourseID);
-
-            //create a viewmodel fot the assignment that has a milestone
-            var viewModel = new CourseViewModel();
-            viewModel.ID = course.id;
-            viewModel.Title = course.name;
-            viewModel.Assignments = allAssignments;
-            return viewModel;
-        }
         
         public List<CourseViewModel> GetCoursesByUser(string id)
         {
-            IEnumerable<UserCourses> allUserCourses = from courses in _db.userCourses
-                                                      where courses.userId.Equals(id)
-
-                                                      select courses;
+            IEnumerable<UserCourse> allUserCourses = from courses in _db.userCourse
+                                                     where courses.userId.Equals(id)
+                                                     select courses;
             
             List<CourseViewModel> userCourses = new List<CourseViewModel>();
             foreach(var item in allUserCourses)
             {
-                
                 CourseViewModel tmpModel = GetCourseByID(item.courseId);
                 userCourses.Add(tmpModel);
             }
             return userCourses;
         }
-*/
     }
 }
