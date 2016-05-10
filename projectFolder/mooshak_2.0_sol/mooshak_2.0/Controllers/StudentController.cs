@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.Identity;
-using mooshak_2._0.Controllers;
 using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using System;
@@ -17,13 +16,17 @@ namespace mooshak_2._0.Controllers
     [Authorize(Roles = "student")]
     public class StudentController : Controller
     {
+        CourseService _courseService = new CourseService(new AssignmentsService());
+        AssignmentsService _assignmentService = new AssignmentsService();
         // GET: Student
         public ActionResult Index()
         {
-            CourseService _courseService = new CourseService(new AssignmentsService());
-            //List<CourseViewModel> UserCourse = _courseService.GetCoursesByUser(User.Identity.GetUserId());
-            //return View(UserCourse);
-            return View();
+            List<CourseViewModel> UserCourse = _courseService.GetCoursesByUser(User.Identity.GetUserId());
+            if(UserCourse.Any())
+            {
+                return View(UserCourse);
+            }
+            return View("Error");
         }
 
         public ActionResult Course(int? id)
@@ -31,7 +34,6 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realID = id.Value;
-                CourseService _courseService = new CourseService(new AssignmentsService());
                 CourseViewModel model = _courseService.GetCourseByID(realID);
                 return View(model);
             }
@@ -43,21 +45,14 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realID = id.Value;
-                AssignmentsService _assignmentService = new AssignmentsService();
                 AssignmentViewModel model = _assignmentService.GetAssignmentByID(realID);
                 return View(model);
             }
             return View("Error");
         }
-     /*   public bool HasFile(this HttpPostedFileBase file)
-        {
-            return (file != null && file.ContentLength > 0) ? true : false;
-        }
-        */
-       
+
         public ActionResult Submission()
         {
-
             foreach (string upload in Request.Files)
             {
                 //if (!Request.Files[upload].HasFile()) continue;
@@ -65,7 +60,7 @@ namespace mooshak_2._0.Controllers
                 string mimeType = Request.Files[upload].ContentType;
                 Stream fileStream = Request.Files[upload].InputStream;
                 string fileName = Path.GetFileName(Request.Files[upload].FileName);
-                string userName = Request.Form["new_item"];
+                string userName = Request.Form["user_name"];
                 int fileLength = Request.Files[upload].ContentLength;
                 byte[] fileData = new byte[fileLength];
                 fileStream.Read(fileData, 0, fileLength);
@@ -85,29 +80,11 @@ namespace mooshak_2._0.Controllers
             }
             return View();
         }
-        public FileContentResult GetFile(int id)
+
+        public ActionResult Sidebar()
         {
-            SqlDataReader rdr; byte[] fileContent = null;
-            string mimeType = ""; string fileName = "";
-            const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
-
-            using (var conn = new SqlConnection(connect))
-            {
-                var qry = "SELECT FileContent, MimeType, FileName FROM Submissions WHERE ID = @ID";
-                var cmd = new SqlCommand(qry, conn);
-                cmd.Parameters.AddWithValue("@ID", id);
-                conn.Open();
-                rdr = cmd.ExecuteReader();
-                if (rdr.HasRows)
-                {
-                    rdr.Read();
-                    fileContent = (byte[])rdr["FileContent"];
-                    mimeType = rdr["MimeType"].ToString();
-                    fileName = rdr["FileName"].ToString();
-                }
-            }
-            return File(fileContent, mimeType, fileName);
+            var model = _courseService.GetCoursesByUser(User.Identity.GetUserId());
+            return PartialView("~/Views/Shared/_SideBarTeacherStudent.cshtml", model);
         }
-
     }
 }

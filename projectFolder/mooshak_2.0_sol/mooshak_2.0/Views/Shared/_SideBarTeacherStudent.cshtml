@@ -1,12 +1,17 @@
-﻿@using System.Web.UI.WebControls
-@using mooshak_2._0.Models.ViewModels
 @model List<CourseViewModel>
-
+@using System.Web.UI.WebControls
+@using mooshak_2._0.Models.ViewModels
 <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
-        @if (Model == null)
+    @{ 
+        if (Model == null)
         {
+            Response.Redirect("~/Error");
+        }
+        else {
+            if (User.IsInRole("teacher"))
             {
+<<<<<<< HEAD
                 Response.Redirect("~/Error");
             }
         }
@@ -14,5 +19,26 @@
         {
             <li>@Html.ActionLink(course.Title, "About", "Home")</li>
         }
+=======
+                foreach (var course in Model)
+                {
+                    <li>
+                        @Html.ActionLink(course.title, "Course", "Teacher", new { id = course.id })
+                    </li>
+                }
+            }
+            else if (User.IsInRole("student"))
+            {
+                foreach (var course in Model)
+                {
+                    <li>
+                        @Html.ActionLink(course.title, "Course", "Student", new { id = course.id })
+                    </li>
+                }
+            }
+        }
+    }
+>>>>>>> ecd8220bd96a310eda7b677a8c4222a62b705301
     </ul>
 </div>
+

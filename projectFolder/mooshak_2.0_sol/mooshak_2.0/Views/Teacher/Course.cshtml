@@ -1,10 +1,20 @@
-﻿
+﻿@model mooshak_2._0.Models.ViewModels.CourseViewModel
 @{
-    ViewBag.Title = "Course";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = Model.title;
 }
 
-<h2>Course</h2>
+<h2 class="page-header">@Model.title</h2>
+@{
+    foreach (var assignment in Model.assignments)
+    {
+        <div class="col-xs-6 col-sm-4">
+            <h2>@assignment.title</h2>
+            <p>Here is the description</p>
+            <p>@Html.ActionLink("Details", "Course", "Teacher", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
+        </div>
+    }
+}
 
 @Html.ActionLink("Assignment 1", "Assignment", "Student", null, new { @class = "button" })
 @Html.ActionLink("Assignment 2", "Assignment", "Student", null, new { @class = "button" })

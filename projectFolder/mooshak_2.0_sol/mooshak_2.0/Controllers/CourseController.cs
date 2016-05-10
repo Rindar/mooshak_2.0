@@ -93,7 +93,7 @@ namespace mooshak_2._0.Controllers
                     newConnection.userId = theUserId;
                     if (theUserId.IsNullOrWhiteSpace())
                     {
-                        return Redirect("/Course/AddToCourse/" + model.theCourse.ID);
+                        return Redirect("/Course/AddToCourse/" + model.theCourse.id);
                     }
                     
                     //TODO: If user is already in course, dont add him 
@@ -103,7 +103,7 @@ namespace mooshak_2._0.Controllers
                     }*/
 
                     newConnection.userId = theUserId;
-                    newConnection.courseId = model.theCourse.ID;
+                    newConnection.courseId = model.theCourse.id;
                     db.userCourse.Add(newConnection);
                     db.SaveChanges();
                 }
@@ -111,7 +111,7 @@ namespace mooshak_2._0.Controllers
             //TODO: Redirect to the same course again
             //return RedirectToRoute("/Course/AddToCourse/" + model.theCourse.ID);
             //return RedirectToAction("AddToCourse", model.theCourse.ID);
-            return Redirect("/Course/AddToCourse/" + model.theCourse.ID);
+            return Redirect("/Course/AddToCourse/" + model.theCourse.id);
         }
 
 
@@ -139,11 +139,9 @@ namespace mooshak_2._0.Controllers
             }
             db.userCourse.Remove(model);
             db.SaveChanges();
-            return RedirectToAction("CourseIndex");
+            return Redirect("/Course/AddToCourse/" + model.courseId);
         }
         
-
-
         [HttpGet]
         public ActionResult EditCourse(int id)
         {

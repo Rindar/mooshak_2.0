@@ -38,9 +38,9 @@ namespace mooshak_2._0.Services
             {
                 var newViewModel = new AssignmentViewModel();
                 newViewModel.id = assignment.id;
-                newViewModel.Title = assignment.title;
+                newViewModel.title = assignment.title;
                 var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id);
-                newViewModel.Milestones = milestoneViewList;
+                newViewModel.milestones = milestoneViewList;
                 assignmentViewModelList.Add(newViewModel);
 
             }
@@ -67,7 +67,7 @@ namespace mooshak_2._0.Services
             {
                 var tempViewModel = new ProblemViewModel();
                 tempViewModel.id = milestone.id;
-                tempViewModel.Title = milestone.title;
+                tempViewModel.title = milestone.title;
                 tempViewModel.weight = milestone.weight;
                 milestoneViewList.Add(tempViewModel);
             }
@@ -75,8 +75,8 @@ namespace mooshak_2._0.Services
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new AssignmentViewModel();
             viewModel.id = assignment.id;
-            viewModel.Title = assignment.title;
-            viewModel.Milestones = milestoneViewList;
+            viewModel.title = assignment.title;
+            viewModel.milestones = milestoneViewList;
 
             return viewModel;
         }

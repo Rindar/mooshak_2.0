@@ -6,11 +6,11 @@
 @using mooshak_2._0.Services
 @model mooshak_2._0.Models.ViewModels.AllUsersAndSomeCourseViewModel
 @{
-    ViewBag.Title = "Add users to " + @Model.theCourse.Title;
+    ViewBag.Title = "Add users to " + @Model.theCourse.title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add users to @Model.theCourse.Title</h2>
+<h2>Add users to @Model.theCourse.title</h2>
 @using (Html.BeginForm("AddTheUserToTheCourse", "Course", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.Label("User", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.HiddenFor(m => m.theCourse.ID)
+                @Html.HiddenFor(m => m.theCourse.id)
                 @Html.DropDownListFor(m => m.selectedUserId, new SelectList(Model.listOfUsers.Select(x => new {Value = x.Id, Text = x.Email}), "Value", "Text"),
                     "Select user to add", new {@class = "btn btn-default dropdown-toggle", id = "dropdownSelecton"})
             </div>
@@ -30,6 +30,9 @@
                 <input type="submit" value="Add to course" onclick="updateViewModel" class="btn btn-default" id="addToCourseButton"/>
             </div>
         </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "CourseIndex")
     </div>
 }
 <br/>
@@ -42,18 +45,18 @@
 }
 else
 {
-    <h4>Students attending @Html.DisplayFor(modelItem => Model.theCourse.Title)</h4>
-}
+    <h4>Students attending @Html.DisplayFor(modelItem => Model.theCourse.title)</h4>
 
 
-<div class="table-responsive">
-    <table class="table">
-        <thead class="thead-inverse">
-        <tr>
-            <th>Username</th>
-        </tr>
-        </thead>
-        <tbody>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Username</th>
+            </tr>
+            </thead>
+            <tbody>
             @foreach (var item in Model.allUsersInCourse)
             {
                 string userName = (from users in Model.listOfUsers where item.userId == users.Id select users.Email).SingleOrDefault();
@@ -69,13 +72,10 @@ else
                     </tr>
                 }
             }
-        </tbody>
-    </table>
-</div>
-
-    <div>
-        @Html.ActionLink("Back to List", "CourseIndex")
+            </tbody>
+        </table>
     </div>
+}
 
     <script>
         function deleteFromCourse(id) {
