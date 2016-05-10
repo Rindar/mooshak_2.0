@@ -1,4 +1,4 @@
-var Microsoft;
+﻿var Microsoft;
 (function (Microsoft) {
     var ApplicationInsights;
     (function (ApplicationInsights) {
@@ -550,7 +550,7 @@ var AI;
             this.applicationVersion = "ai.application.ver";
             this.applicationBuild = "ai.application.build";
             this.applicationTypeId = "ai.application.typeId";
-            this.deviceId = "ai.device.id";
+            this.deviceId = "ai.device.CourseId";
             this.deviceIp = "ai.device.ip";
             this.deviceLanguage = "ai.device.language";
             this.deviceLocale = "ai.device.locale";
@@ -567,19 +567,19 @@ var AI;
             this.deviceMachineName = "ai.device.machineName";
             this.deviceVMName = "ai.device.vmName";
             this.locationIp = "ai.location.ip";
-            this.operationId = "ai.operation.id";
+            this.operationId = "ai.operation.CourseId";
             this.operationName = "ai.operation.name";
             this.operationParentId = "ai.operation.parentId";
             this.operationRootId = "ai.operation.rootId";
             this.operationSyntheticSource = "ai.operation.syntheticSource";
             this.operationIsSynthetic = "ai.operation.isSynthetic";
-            this.sessionId = "ai.session.id";
+            this.sessionId = "ai.session.CourseId";
             this.sessionIsFirst = "ai.session.isFirst";
             this.sessionIsNew = "ai.session.isNew";
             this.userAccountAcquisitionDate = "ai.user.accountAcquisitionDate";
             this.userAccountId = "ai.user.accountId";
             this.userAgent = "ai.user.userAgent";
-            this.userId = "ai.user.id";
+            this.userId = "ai.user.CourseId";
             this.userStoreRegion = "ai.user.storeRegion";
             this.userAuthUserId = "ai.user.authUserId";
             this.userAnonymousUserAcquisitionDate = "ai.user.anonUserAcquisitionDate";
@@ -936,7 +936,7 @@ var Microsoft;
                 User.prototype.setAuthenticatedUserContext = function (authenticatedUserId, accountId) {
                     var isInvalidInput = !this.validateUserInput(authenticatedUserId) || (accountId && !this.validateUserInput(accountId));
                     if (isInvalidInput) {
-                        ApplicationInsights._InternalLogging.throwInternalUserActionable(1 /* WARNING */, "Setting auth user context failed. " + "User auth/account id should be of type string, and not contain commas, semi-colons, equal signs, spaces, or vertical-bars.");
+                        ApplicationInsights._InternalLogging.throwInternalUserActionable(1 /* WARNING */, "Setting auth user context failed. " + "User auth/account CourseId should be of type string, and not contain commas, semi-colons, equal signs, spaces, or vertical-bars.");
                         return;
                     }
                     this.authenticatedId = authenticatedUserId;
