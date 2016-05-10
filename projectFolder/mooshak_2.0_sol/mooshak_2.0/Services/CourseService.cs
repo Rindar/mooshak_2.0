@@ -85,5 +85,14 @@ namespace mooshak_2._0.Services
             }
             return userCourses;
         }
+
+        public List<UserCourse> GetUsersInSomeCourse(int courseId)
+        {
+            List<UserCourse> allUsersinCourse = (from usersAndCourses in _db.userCourse
+                                                 where usersAndCourses.courseId == courseId
+                                                 select usersAndCourses).ToList();
+
+            return allUsersinCourse;
+        }
     }
 }

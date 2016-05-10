@@ -13,5 +13,6 @@ namespace mooshak_2._0.Models.ViewModels
         public CourseViewModel theCourse { get; set; }
         public List<ApplicationUser> listOfUsers { get; set; }
         public string selectedUserId { get; set; }
+        public List<UserCourse> allUsersInCourse { get; set; }
     }
 }
