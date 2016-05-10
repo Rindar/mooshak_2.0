@@ -19,13 +19,9 @@
             <tr>
                 <th style="text-align: center;">Course Name</th>
                 <th style="text-align: center;">Edit</th>
-<<<<<<< HEAD
+
                 <th style="text-align: center;">Add Users</th>
                 <th style="text-align: center;">Delete</th>
-=======
-                <th style="text-align: center;">Add users to a course</th>
-                <th style="text-align: center;">Remove</th>
->>>>>>> b51185988e6e4de32908861161dda30a40b4ef4b
 
             </tr>
         </thead>
@@ -35,11 +31,7 @@
                 <tr>
                     <td style="text-align: center;">@Html.DisplayFor(modelItem => item.name)</td>
                     <td style="text-align: center;"><a href="@Url.Action("EditCourse", "Course")/@Html.DisplayFor(modelItem => item.id)">Edit</a></td>
-<<<<<<< HEAD
-                    <td style="text-align: center;"><a href="@Url.Action("AddToCourse", "Course")/@Html.DisplayFor(modelItem => item.id)">Add</a></td>
-=======
                     <td style="text-align: center;"><a href="@Url.Action("AddToCourse", "Course")/@Html.DisplayFor(modelItem => item.id)">Add to course</a></td>
->>>>>>> b51185988e6e4de32908861161dda30a40b4ef4b
                     <td style="text-align: center;"><a class="pointer-arrow" onclick="deleteRow(@Html.DisplayFor(modelItem => item.id))">Delete</a></td>
                 </tr>
             }

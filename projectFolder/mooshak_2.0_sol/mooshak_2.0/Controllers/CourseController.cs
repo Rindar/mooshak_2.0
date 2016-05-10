@@ -78,7 +78,7 @@ namespace mooshak_2._0.Controllers
             };
             return View(allUsersAndSomeCourseViewModel);
         }
-
+        /*
         [HttpPost]
         public ActionResult AddTheUserToTheCourse(AllUsersAndSomeCourseViewModel model)
         {
@@ -104,17 +104,8 @@ namespace mooshak_2._0.Controllers
         }
 
         
+    */
 
-        public ActionResult EditCourse(int id)
-        {
-            var model = db.courses.Find(id);
-            if (model == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(model);
-        }
 
         [HttpGet]
         public ActionResult Delete(int id)

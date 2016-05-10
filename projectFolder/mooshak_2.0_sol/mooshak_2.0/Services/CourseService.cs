@@ -47,7 +47,6 @@ namespace mooshak_2._0.Services
             
         }
 
-<<<<<<< HEAD
         public CourseViewModel GetCourseByID(int CourseID)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
@@ -69,7 +68,7 @@ namespace mooshak_2._0.Services
             };
             return viewModel;
         }
-
+        /*
         internal void AddTheUserToTheCourse(int courseIdToInsert, string userIdToInsert)
         {
             _db.userCourse.Add(new UserCourse()
@@ -78,12 +77,12 @@ namespace mooshak_2._0.Services
                 userID = userIdToInsert
             });
         }
-
+        
         public List<CourseViewModel> GetCoursesByStudent(string id)
         {
             IEnumerable<UserCourse> allUserCourses =  from courses in _db.userCourse
                                                       where courses.userID.Equals(id)
-=======
+
         public CourseViewModel GetCourseByID(int CourseID)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
@@ -105,12 +104,12 @@ namespace mooshak_2._0.Services
             viewModel.Assignments = allAssignments;
             return viewModel;
         }
-
+        
         public List<CourseViewModel> GetCoursesByUser(string id)
         {
             IEnumerable<UserCourses> allUserCourses = from courses in _db.userCourses
                                                       where courses.userId.Equals(id)
->>>>>>> origin/master
+
                                                       select courses;
             
             List<CourseViewModel> userCourses = new List<CourseViewModel>();
@@ -122,6 +121,6 @@ namespace mooshak_2._0.Services
             }
             return userCourses;
         }
-
+*/
     }
 }
