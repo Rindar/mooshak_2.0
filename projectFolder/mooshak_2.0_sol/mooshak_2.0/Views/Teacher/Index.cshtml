@@ -1,13 +1,31 @@
 ﻿@model List<mooshak_2._0.Models.ViewModels.CourseViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Mooshak - Reykjavík University";
     Layout = "~/Views/Shared/_Layout.cshtml";
-   @Html.Partial("_SideBarTeacherStudent", Model)
+    Html.Partial("_SideBarTeacherStudent", Model);
 }
 
-<h2>Mooshak</h2>
+<h2 class="page-header">Teacher - Dashboard - Reykjavík University</h2>
 
+@{
+    foreach (var course in Model)
+    {
+        <div class="col-xs-6 col-sm-4">
+            <h2>@course.title</h2>
+            <p>Here is the description</p>
+            <p>@Html.ActionLink("Details", "Course", "Teacher", new { id = course.id }, new { @class = "btn btn-primary btn-large" })</p>
+        </div>
+    }
+}
 
-@Html.ActionLink("Course 1", "Course", "Teacher", null, new { @class = "button" })
-@Html.ActionLink("Course 2", "Course", "Teacher", null, new { @class = "button" })
+<div class="col-xs-6 col-sm-4">
+    <h2>Course 1</h2>
+    <p>Here is the description</p>
+    <p>@Html.ActionLink("Details", "Course", "Teacher", new { id = 1 }, new { @class = "btn btn-primary btn-large" })</p>
+</div>
+<div class="col-xs-6 col-sm-4">
+    <h2>Course 2</h2>
+    <p>Here is the description</p>
+    <p>@Html.ActionLink("Details", "Course", "Teacher", new { id = 2 }, new { @class = "btn btn-primary btn-large" })</p>
+</div>

@@ -14,13 +14,17 @@ namespace mooshak_2._0.Controllers
     [Authorize(Roles = "student")]
     public class StudentController : Controller
     {
+        CourseService _courseService = new CourseService(new AssignmentsService());
+        AssignmentsService _assignmentService = new AssignmentsService();
         // GET: Student
         public ActionResult Index()
         {
-            CourseService _courseService = new CourseService(new AssignmentsService());
-            //List<CourseViewModel> UserCourse = _courseService.GetCoursesByUser(User.Identity.GetUserId());
-            //return View(UserCourse);
-            return View();
+            List<CourseViewModel> UserCourse = _courseService.GetCoursesByUser(User.Identity.GetUserId());
+            if(UserCourse.Any())
+            {
+                return View(UserCourse);
+            }
+            return View("Error");
         }
 
         public ActionResult Course(int? id)
@@ -28,7 +32,6 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realID = id.Value;
-                CourseService _courseService = new CourseService(new AssignmentsService());
                 CourseViewModel model = _courseService.GetCourseByID(realID);
                 return View(model);
             }
@@ -40,7 +43,6 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realID = id.Value;
-                AssignmentsService _assignmentService = new AssignmentsService();
                 AssignmentViewModel model = _assignmentService.GetAssignmentByID(realID);
                 return View(model);
             }
@@ -50,6 +52,12 @@ namespace mooshak_2._0.Controllers
         public ActionResult Submission()
         {
             return View();
+        }
+
+        public ActionResult Sidebar()
+        {
+            var model = _courseService.GetCoursesByUser(User.Identity.GetUserId());
+            return PartialView("~/Views/Shared/_SideBarTeacherStudent.cshtml", model);
         }
     }
 }

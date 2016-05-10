@@ -96,7 +96,7 @@ namespace mooshak_2._0.Controllers
                     }
 
                     newConnection.userId = theUserId;
-                    newConnection.courseId = model.theCourse.ID;
+                    newConnection.courseId = model.theCourse.id;
                     db.userCourse.Add(newConnection);
                     db.SaveChanges();
                 }

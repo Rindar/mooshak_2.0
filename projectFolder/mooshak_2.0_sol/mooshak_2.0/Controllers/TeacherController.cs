@@ -9,6 +9,7 @@ using mooshak_2._0.Models;
 using mooshak_2._0.Models.Entities;
 using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
+using Microsoft.AspNet.Identity;
 
 namespace mooshak_2._0.Controllers
 {
@@ -20,18 +21,30 @@ namespace mooshak_2._0.Controllers
         public ActionResult Index()
         {
             List<CourseViewModel> ListOfCourseViewModels = new ListStack<CourseViewModel>();
-            ListOfCourseViewModels = _courseService.GetAllCourses();
+            ListOfCourseViewModels = _courseService.GetCoursesByUser(User.Identity.GetUserId());
             return View(ListOfCourseViewModels);
         }
 
-        public ActionResult Course()
+        public ActionResult Course(int? id)
         {
-            return View();
+            if (id.HasValue)
+            {
+                int realID = id.Value;
+                CourseViewModel model = _courseService.GetCourseByID(realID);
+                return View(model);
+            }
+            return View("Error");
         }
 
         public ActionResult Assignment()
         {
             return View();
+        }
+
+        public ActionResult Sidebar()
+        {
+            var model = _courseService.GetCoursesByUser(User.Identity.GetUserId());
+            return PartialView("~/Views/Shared/_SideBarTeacherStudent.cshtml", model);
         }
     }
 }
