@@ -3,16 +3,16 @@
 @{
     ViewBag.Title = "Mooshak - Reykjavík University";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    Html.Partial("_SideBarTeacherStudent", Model);
+   
 }
+<h2 class="page-header">Teacher - Dashboard - Reykjavík University</h2>
 <div class="col-xs-6 col-sm-4">
     <h2>View Submitions</h2>
 
-<<<<<<< HEAD
     <p>@Html.ActionLink("Submissions", "Submissions", "Teacher", new { id = 1 }, new { @class = "btn btn-primary btn-large" })</p>
-=======
-<h2 class="page-header">Teacher - Dashboard - Reykjavík University</h2>
+</div>
 
+  
 @{
     foreach (var course in Model)
     {
@@ -33,5 +33,5 @@
     <h2>Course 2</h2>
     <p>Here is the description</p>
     <p>@Html.ActionLink("Details", "Course", "Teacher", new { id = 2 }, new { @class = "btn btn-primary btn-large" })</p>
->>>>>>> bab5ea0c74fbd043a058d7e7ed960ccfdba8067e
+
 </div>

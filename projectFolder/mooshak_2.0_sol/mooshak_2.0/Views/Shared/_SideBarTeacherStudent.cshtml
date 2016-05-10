@@ -1,28 +1,4 @@
-<<<<<<< HEAD
-﻿@using System.Web.UI.WebControls
-@using mooshak_2._0.Models.ViewModels
 @model List<CourseViewModel>
-
-<div class="col-sm-3 col-md-2 sidebar">
-    <ul class="nav nav-sidebar">
-        <h3>Courses</h3>
-        @if (Model == null)
-        {
-            {
-                Response.Redirect("~/Error");
-
-            }
-        }
-
-        @foreach (var course in Model)
-        {
-            <li>@Html.ActionLink(course.Title, "About", "Home")</li>
-        }
-
-    </ul>
-</div>
-=======
-﻿@model List<CourseViewModel>
 @using System.Web.UI.WebControls
 @using mooshak_2._0.Models.ViewModels
 <div class="col-sm-3 col-md-2 sidebar">
@@ -55,4 +31,4 @@
     }
     </ul>
 </div>
->>>>>>> bab5ea0c74fbd043a058d7e7ed960ccfdba8067e
+
