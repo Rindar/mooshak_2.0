@@ -213,6 +213,7 @@
       <DependentUpon>201605082234512_SorryGuys.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Entities\Submissions.cs" />
     <Compile Include="Models\ViewModels\CourseAndUserIDViewModel.cs" />
     <Compile Include="Models\Entities\UserCourse.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -311,6 +312,7 @@
     <Content Include="Views\Admin\UserCourses.cshtml" />
     <Content Include="Views\Course\AddToCourse.cshtml" />
     <Content Include="Views\Course\EditCourse.cshtml" />
+    <Content Include="Views\Teacher\Submissions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
