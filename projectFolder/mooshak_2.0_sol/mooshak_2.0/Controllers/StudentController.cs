@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNet.Identity;
+using mooshak_2._0.Controllers;
 using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
@@ -46,10 +49,65 @@ namespace mooshak_2._0.Controllers
             }
             return View("Error");
         }
-
+     /*   public bool HasFile(this HttpPostedFileBase file)
+        {
+            return (file != null && file.ContentLength > 0) ? true : false;
+        }
+        */
+       
         public ActionResult Submission()
         {
+
+            foreach (string upload in Request.Files)
+            {
+                //if (!Request.Files[upload].HasFile()) continue;
+
+                string mimeType = Request.Files[upload].ContentType;
+                Stream fileStream = Request.Files[upload].InputStream;
+                string fileName = Path.GetFileName(Request.Files[upload].FileName);
+                string userName = Request.Form["new_item"];
+                int fileLength = Request.Files[upload].ContentLength;
+                byte[] fileData = new byte[fileLength];
+                fileStream.Read(fileData, 0, fileLength);
+
+                const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
+                using (var conn = new SqlConnection(connect))
+                {
+                    var qry = "INSERT INTO Submissions (FileContent, MimeType, FileName, UserName) VALUES (@FileContent, @MimeType, @FileName,@UserName)";
+                    var cmd = new SqlCommand(qry, conn);
+                    cmd.Parameters.AddWithValue("@FileContent", fileData);
+                    cmd.Parameters.AddWithValue("@MimeType", mimeType);
+                    cmd.Parameters.AddWithValue("@FileName", fileName);
+                    cmd.Parameters.AddWithValue("@UserName", userName);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
             return View();
         }
+        public FileContentResult GetFile(int id)
+        {
+            SqlDataReader rdr; byte[] fileContent = null;
+            string mimeType = ""; string fileName = "";
+            const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
+
+            using (var conn = new SqlConnection(connect))
+            {
+                var qry = "SELECT FileContent, MimeType, FileName FROM Submissions WHERE ID = @ID";
+                var cmd = new SqlCommand(qry, conn);
+                cmd.Parameters.AddWithValue("@ID", id);
+                conn.Open();
+                rdr = cmd.ExecuteReader();
+                if (rdr.HasRows)
+                {
+                    rdr.Read();
+                    fileContent = (byte[])rdr["FileContent"];
+                    mimeType = rdr["MimeType"].ToString();
+                    fileName = rdr["FileName"].ToString();
+                }
+            }
+            return File(fileContent, mimeType, fileName);
+        }
+
     }
 }
