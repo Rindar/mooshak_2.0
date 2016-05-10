@@ -7,20 +7,15 @@
 <h2>Submission</h2>
 
 
-<div id="theName">@Html.DisplayFor(modelItem => User.Identity.Name)
-</div>
+<div id="theName">@Html.DisplayFor(modelItem => User.Identity.Name)</div>
     @using (Html.BeginForm("Submission", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
 
         <input type="file" name="FileUpload1" /><br />
         <input type="submit" name="Submit" id="Submit" value="Upload" />
-        <input type="hidden" name="new_item" value="@User.Identity.Name" />
+        <input type="hidden" name="user_name" value="@User.Identity.Name" />
+        
 
     }
 
-<a href="/Student/GetFile/14">Click to get file</a>
-
-
-
-    
 

@@ -4,6 +4,7 @@
 
 <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
+        <h3>Courses</h3>
         @if (Model == null)
         {
             {
@@ -11,7 +12,7 @@
 
             }
         }
-        <li>@Html.ActionLink("Submissions", "Submissions", "Teacher")</li>
+
         @foreach (var course in Model)
         {
             <li>@Html.ActionLink(course.Title, "About", "Home")</li>

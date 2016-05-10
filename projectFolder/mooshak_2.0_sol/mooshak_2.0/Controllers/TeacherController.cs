@@ -41,7 +41,7 @@ namespace mooshak_2._0.Controllers
         }
         public FileContentResult GetFile(int id)
         {
-            SqlDataReader rdr; byte[] fileContent = null;
+            SqlDataReader reader; byte[] fileContent = null;
             string mimeType = ""; string fileName = "";
             const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
 
@@ -51,13 +51,13 @@ namespace mooshak_2._0.Controllers
                 var cmd = new SqlCommand(qry, conn);
                 cmd.Parameters.AddWithValue("@ID", id);
                 conn.Open();
-                rdr = cmd.ExecuteReader();
-                if (rdr.HasRows)
+                reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    rdr.Read();
-                    fileContent = (byte[])rdr["FileContent"];
-                    mimeType = rdr["MimeType"].ToString();
-                    fileName = rdr["FileName"].ToString();
+                    reader.Read();
+                    fileContent = (byte[])reader["FileContent"];
+                    mimeType = reader["MimeType"].ToString();
+                    fileName = reader["FileName"].ToString();
                 }
             }
             return File(fileContent, mimeType, fileName);

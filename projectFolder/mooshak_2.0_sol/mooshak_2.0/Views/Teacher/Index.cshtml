@@ -5,9 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
    @Html.Partial("_SideBarTeacherStudent", Model)
 }
+<div class="col-xs-6 col-sm-4">
+    <h2>View Submitions</h2>
 
-<h2>Mooshak</h2>
-
-
-@Html.ActionLink("Course 1", "Course", "Teacher", null, new { @class = "button" })
-@Html.ActionLink("Course 2", "Course", "Teacher", null, new { @class = "button" })
+    <p>@Html.ActionLink("Submissions", "Submissions", "Teacher", new { id = 1 }, new { @class = "btn btn-primary btn-large" })</p>
+</div>

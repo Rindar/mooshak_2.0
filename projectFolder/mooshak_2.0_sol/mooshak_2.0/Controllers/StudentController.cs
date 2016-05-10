@@ -65,7 +65,7 @@ namespace mooshak_2._0.Controllers
                 string mimeType = Request.Files[upload].ContentType;
                 Stream fileStream = Request.Files[upload].InputStream;
                 string fileName = Path.GetFileName(Request.Files[upload].FileName);
-                string userName = Request.Form["new_item"];
+                string userName = Request.Form["user_name"];
                 int fileLength = Request.Files[upload].ContentLength;
                 byte[] fileData = new byte[fileLength];
                 fileStream.Read(fileData, 0, fileLength);
