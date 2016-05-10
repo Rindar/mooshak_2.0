@@ -7,8 +7,8 @@ namespace mooshak_2._0.Models.ViewModels
 {
     public class ProblemViewModel
     {
-        public int id { get; set; }
-        public string title { get; set; }
-        public int weight { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public int Weight { get; set; }
     }
 }

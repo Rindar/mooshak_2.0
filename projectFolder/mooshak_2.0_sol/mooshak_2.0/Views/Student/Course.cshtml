@@ -1,13 +1,13 @@
 ﻿@model mooshak_2._0.Models.ViewModels.CourseViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = Model.title;
+    ViewBag.Title = Model.Title;
 }
 
-<h2>@Model.title</h2>
+<h2>@Model.Title</h2>
 
 @{
-    foreach (var assignment in Model.assignments)
+    foreach (var assignment in Model.Assignments)
     {
         <div class="col-xs-6 col-sm-4">
             <h2>@assignment.title</h2>

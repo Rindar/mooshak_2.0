@@ -10,9 +10,9 @@ namespace mooshak_2._0.Models.ViewModels
     // GET: AllUsersAndCourses
     public class AllUsersAndSomeCourseViewModel
     {
-        public CourseViewModel theCourse { get; set; }
-        public List<ApplicationUser> listOfUsers { get; set; }
-        public string selectedUserId { get; set; }
-        public List<UserCourse> allUsersInCourse { get; set; }
+        public CourseViewModel TheCourse { get; set; }
+        public List<ApplicationUser> ListOfUsers { get; set; }
+        public string SelectedUserId { get; set; }
+        public List<UserCourse> AllUsersInCourse { get; set; }
     }
 }

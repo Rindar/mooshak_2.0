@@ -6,11 +6,11 @@
 @using mooshak_2._0.Services
 @model mooshak_2._0.Models.ViewModels.AllUsersAndSomeCourseViewModel
 @{
-    ViewBag.Title = "Add users to " + @Model.theCourse.title;
+    ViewBag.Title = "Add users to " + @Model.TheCourse.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add users to @Model.theCourse.title</h2>
+<h2>Add users to @Model.TheCourse.Title</h2>
 @using (Html.BeginForm("AddTheUserToTheCourse", "Course", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -20,8 +20,8 @@
         <div class="form-group">
             @Html.Label("User", htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.HiddenFor(m => m.theCourse.id)
-                @Html.DropDownListFor(m => m.selectedUserId, new SelectList(Model.listOfUsers.Select(x => new {Value = x.Id, Text = x.Email}), "Value", "Text"),
+                @Html.HiddenFor(m => m.TheCourse.Id)
+                @Html.DropDownListFor(m => m.SelectedUserId, new SelectList(Model.ListOfUsers.Select(x => new {Value = x.Id, Text = x.Email}), "Value", "Text"),
                     "Select user to add", new {@class = "btn btn-default dropdown-toggle", id = "dropdownSelecton"})
             </div>
         </div>
@@ -39,13 +39,13 @@
 <hr/>
 
 
-@if (Model.allUsersInCourse.Count == 0)
+@if (Model.AllUsersInCourse.Count == 0)
 {
     <h4>Nobody is attending this course</h4>
 }
 else
 {
-    <h4>Students attending @Html.DisplayFor(modelItem => Model.theCourse.title)</h4>
+    <h4>Students attending @Html.DisplayFor(modelItem => Model.TheCourse.Title)</h4>
 
 
 
@@ -57,9 +57,9 @@ else
             </tr>
             </thead>
             <tbody>
-            @foreach (var item in Model.allUsersInCourse)
+            @foreach (var item in Model.AllUsersInCourse)
             {
-                string userName = (from users in Model.listOfUsers where item.userId == users.Id select users.Email).SingleOrDefault();
+                string userName = (from users in Model.ListOfUsers where item.userId == users.Id select users.Email).SingleOrDefault();
                 if (userName != default(string))
                 {
                     <tr>

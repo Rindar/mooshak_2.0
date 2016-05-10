@@ -10,8 +10,8 @@ namespace mooshak_2._0.Services
 {
     public class AssignmentsService
     {
-        private Dbcontext _db;
-        private AssignmentMilestoneService _assignmentMilestoneService;
+        private readonly Dbcontext _db;
+        private readonly AssignmentMilestoneService _assignmentMilestoneService;
 
         public AssignmentsService()
         {
@@ -36,9 +36,11 @@ namespace mooshak_2._0.Services
             var assignmentViewModelList = new List<AssignmentViewModel>();
             foreach (var assignment in allAssignments)
             {
-                var newViewModel = new AssignmentViewModel();
-                newViewModel.id = assignment.id;
-                newViewModel.title = assignment.title;
+                var newViewModel = new AssignmentViewModel
+                {
+                    id = assignment.id,
+                    title = assignment.title
+                };
                 var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id);
                 newViewModel.milestones = milestoneViewList;
                 assignmentViewModelList.Add(newViewModel);
@@ -47,7 +49,7 @@ namespace mooshak_2._0.Services
             return assignmentViewModelList;
            
         }
-        public AssignmentViewModel GetAssignmentByID(int assignmentId)
+        public AssignmentViewModel GetAssignmentById(int assignmentId)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
             var assignment = (from assignments in _db.assignments
@@ -65,18 +67,22 @@ namespace mooshak_2._0.Services
             var milestoneViewList = new List<ProblemViewModel>();
             foreach (var milestone in allMilestones)
             {
-                var tempViewModel = new ProblemViewModel();
-                tempViewModel.id = milestone.id;
-                tempViewModel.title = milestone.title;
-                tempViewModel.weight = milestone.weight;
+                var tempViewModel = new ProblemViewModel
+                {
+                    Id = milestone.id,
+                    Title = milestone.title,
+                    Weight = milestone.weight
+                };
                 milestoneViewList.Add(tempViewModel);
             }
 
             //create a viewmodel fot the assignment that has a milestone
-            var viewModel = new AssignmentViewModel();
-            viewModel.id = assignment.id;
-            viewModel.title = assignment.title;
-            viewModel.milestones = milestoneViewList;
+            var viewModel = new AssignmentViewModel
+            {
+                id = assignment.id,
+                title = assignment.title,
+                milestones = milestoneViewList
+            };
 
             return viewModel;
         }

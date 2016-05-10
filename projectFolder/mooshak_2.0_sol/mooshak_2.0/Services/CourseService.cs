@@ -14,8 +14,8 @@ namespace mooshak_2._0.Services
 {
     public class CourseService
     {
-        private Dbcontext _db = new Dbcontext();
-        private AssignmentsService _assignmentsService;
+        private readonly Dbcontext _db = new Dbcontext();
+        private readonly AssignmentsService _assignmentsService;
 
         public CourseService(AssignmentsService assignmentsService)
         {
@@ -37,9 +37,9 @@ namespace mooshak_2._0.Services
             foreach (var course in allCourses)
             {
                 CourseViewModel courseViewModel = new CourseViewModel();
-                courseViewModel.title = course.name;
-                courseViewModel.assignments = _assignmentsService.GetAssignmentsInCourse(course.id);
-                courseViewModel.id = course.id;
+                courseViewModel.Title = course.name;
+                courseViewModel.Assignments = _assignmentsService.GetAssignmentsInCourse(course.id);
+                courseViewModel.Id = course.id;
                     //teacher
                 
                 courseViewModelList.Add(courseViewModel);
@@ -64,9 +64,9 @@ namespace mooshak_2._0.Services
 
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new CourseViewModel();
-            viewModel.id = course.id;
-            viewModel.title = course.name;
-            viewModel.assignments = assignments;
+            viewModel.Id = course.id;
+            viewModel.Title = course.name;
+            viewModel.Assignments = assignments;
             return viewModel;
 
         }

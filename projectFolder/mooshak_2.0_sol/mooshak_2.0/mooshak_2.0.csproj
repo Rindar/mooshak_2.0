@@ -326,7 +326,6 @@
     <Content Include="Views\Course\AddToCourse.cshtml" />
     <Content Include="Views\Course\EditCourse.cshtml" />
     <Content Include="Views\Teacher\Submissions.cshtml" />
-    <Content Include="Views\Course\_UsersInCoursePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

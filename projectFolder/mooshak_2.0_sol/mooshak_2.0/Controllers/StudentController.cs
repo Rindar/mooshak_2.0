@@ -16,8 +16,8 @@ namespace mooshak_2._0.Controllers
     [Authorize(Roles = "student")]
     public class StudentController : Controller
     {
-        CourseService _courseService = new CourseService(new AssignmentsService());
-        AssignmentsService _assignmentService = new AssignmentsService();
+        readonly CourseService _courseService = new CourseService(new AssignmentsService());
+        readonly AssignmentsService _assignmentService = new AssignmentsService();
         // GET: Student
         public ActionResult Index()
         {
@@ -45,7 +45,7 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realID = id.Value;
-                AssignmentViewModel model = _assignmentService.GetAssignmentByID(realID);
+                AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
                 return View(model);
             }
             return View("Error");

@@ -29,9 +29,8 @@ namespace mooshak_2._0.Models
         public DbSet<Assignment>          assignments   { get; set; } // NOTE!:we have to do this for all the entity classes
         public DbSet<AssignmentMilestone> milestones    { get; set; } // like this
         public DbSet<Course>              courses       { get; set; }
-        public DbSet<Submissions> submissions { get; set; }
+        public DbSet<Submissions>         submissions   { get; set; }
         public DbSet<UserCourse>          userCourse    { get; set; }
-        //public DbSet<ApplicationUser>     users         { get; set; }
 
         public Dbcontext() : base("DefaultConnection", throwIfV1Schema: false)
         {

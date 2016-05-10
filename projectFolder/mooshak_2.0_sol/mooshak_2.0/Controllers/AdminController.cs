@@ -16,9 +16,9 @@ namespace mooshak_2._0.Controllers
 {
     public class AdminController : Controller
     {
-        Dbcontext db = new Dbcontext();
-        CourseService _courseService = new CourseService(new AssignmentsService());
-        UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new Dbcontext()));
+        readonly Dbcontext db = new Dbcontext();
+        readonly CourseService _courseService = new CourseService(new AssignmentsService());
+        readonly UserManager<ApplicationUser> UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new Dbcontext()));
 
         // GET: Admin
         [Authorize(Roles = "admin")]

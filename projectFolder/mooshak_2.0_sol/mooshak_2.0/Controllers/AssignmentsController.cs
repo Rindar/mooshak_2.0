@@ -9,7 +9,7 @@ namespace mooshak_2._0.Controllers
 {
     public class AssignmentsController : Controller
     {
-        private AssignmentsService _service = new AssignmentsService();
+        private readonly AssignmentsService _service = new AssignmentsService();
         // GET: Assignments
         public ActionResult Index()
         {
@@ -20,7 +20,7 @@ namespace mooshak_2._0.Controllers
         //the method that is called to see details for an assignment
         public ActionResult Details (int id) 
         {
-            var viewModel = _service.GetAssignmentByID(id); // creates a viewmodel for the assignment
+            var viewModel = _service.GetAssignmentById(id); // creates a viewmodel for the assignment
             return View(viewModel);
         }
     }

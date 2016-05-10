@@ -9,7 +9,7 @@ namespace mooshak_2._0.Services
 {
     public class AssignmentMilestoneService
     {
-        public Dbcontext _db;
+        private Dbcontext _db;
 
         public AssignmentMilestoneService()
         {
@@ -26,9 +26,9 @@ namespace mooshak_2._0.Services
             foreach (var milestone in allMilestones)
             {
                 var tempViewModel = new ProblemViewModel();
-                tempViewModel.id = milestone.id;
-                tempViewModel.title = milestone.title;
-                tempViewModel.weight = milestone.weight;
+                tempViewModel.Id = milestone.id;
+                tempViewModel.Title = milestone.title;
+                tempViewModel.Weight = milestone.weight;
                 milestoneViewList.Add(tempViewModel);
             }
             return milestoneViewList;
