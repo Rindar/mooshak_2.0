@@ -8,13 +8,11 @@
         {
             {
                 Response.Redirect("~/Error");
-
             }
         }
         @foreach (var course in Model)
         {
             <li>@Html.ActionLink(course.Title, "About", "Home")</li>
         }
-
     </ul>
 </div>

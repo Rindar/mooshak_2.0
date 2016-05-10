@@ -4,7 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UserList</h2>
+<h2 class="text-center">All Registered Users</h2>
+@Html.ActionLink("Create New User", "Register", "Account", null, new { @class = "btn btn-info" })
 
 <table class="table table-bordered table-condensed">
 <thead>
@@ -28,17 +29,15 @@
 
 <script>
     
-    function deleteUser(Id)
+    function deleteUser(id)
     {
-      var toDelete = confirm("Are you sure you want to delete this User?");
+    var toDelete = confirm("Are you sure you want to delete this User?");
         if(toDelete == true)
         {
-            window.location.assign("/Admin/DeleteUser/"+Id);
+            window.location.assign("/Admin/DeleteUser/"+ Id);
         }
-        
-        
-
     }
+
 </script>
 <style type="text/css">
     .pointer:hover {

@@ -32,43 +32,59 @@
         </div>
     </div>
 }
+<br/>
+<hr/>
 
-<table class="table">
 
-    <h4>Users attending @Html.DisplayFor(modelItem => Model.theCourse.Title)</h4>
+@if (Model.allUsersInCourse.Count == 0)
+{
+    <h4>Nobody is attending this course</h4>
+}
+else
+{
+    <h4>Students attending @Html.DisplayFor(modelItem => Model.theCourse.Title)</h4>
+}
 
-    <div class="list-group">
-        @foreach (var item in Model.allUsersInCourse)
-        {
-            string userName = (from users in Model.listOfUsers where item.userId == users.Id select users.Email).SingleOrDefault();
-            if (userName != default(string))
+
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.allUsersInCourse)
             {
-                <tr>
-                    <td style="text-align: center;">
-                        <a class="list-group-item">@userName</a>
-                    </td>
-                    <td style="text-align: center;">
-                        <a class="pointer-arrow" onclick="deleteFromCourse(@Html.DisplayFor(modelItem => item.id))">Remove</a>
-                    </td>
-                </tr>
+                string userName = (from users in Model.listOfUsers where item.userId == users.Id select users.Email).SingleOrDefault();
+                if (userName != default(string))
+                {
+                    <tr>
+                        <td>
+                            <a>@userName</a>
+                        </td>
+                        <td>
+                            <a class="pointer-arrow" onclick="deleteFromCourse(@Html.DisplayFor(modelItem => item.id))">Remove</a>
+                        </td>
+                    </tr>
+                }
             }
-        }
-    </div>
-
-</table>
-
-<div>
-    @Html.ActionLink("Back to List", "CourseIndex")
+        </tbody>
+    </table>
 </div>
 
-<script>
-    function deleteFromCourse(id)
-    {
-        var toDelete = confirm("Are you sure you want to remove this user from this course?")
-        if(toDelete == true)
-        {
+    <div>
+        @Html.ActionLink("Back to List", "CourseIndex")
+    </div>
+
+    <script>
+        function deleteFromCourse(id) {
             window.location.assign("/Course/RemoveUser/" + id);
         }
+    </script>
 
-    }
-</script>
+    <style type="text/css">
+        .pointer-arrow:hover {
+            cursor: pointer;
+        }
+    </style>

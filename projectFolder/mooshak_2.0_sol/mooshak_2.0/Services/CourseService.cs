@@ -48,23 +48,23 @@ namespace mooshak_2._0.Services
             
         }
 
-        public CourseViewModel GetCourseByID(int CourseID)
+        public CourseViewModel GetCourseByID(int courseID)
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
-            var course = _db.courses.SingleOrDefault(x => x.id == CourseID);
+            var course = _db.courses.SingleOrDefault(x => x.id == courseID);
             if (course == null)
             {
                 //TODO: throw an exeption, an error has occured
             }
             //Does the assignment contain any milestones ?(can return many milestones if the assignment contains multiple parts)
             //Here we recive only the milestone for the assignment with the correct AssignmentID
-            var assignments = _db.assignments.Where(x => x.courseId == CourseID)
+            var assignments = _db.assignments.Where(x => x.courseId == courseID)
                 .Select(x => new AssignmentViewModel { Title = x.title }).ToList();
 
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new CourseViewModel();
             {
-                viewModel.ID = CourseID;
+                viewModel.ID = courseID;
                 viewModel.Title = course.name;
                 viewModel.Assignments = assignments;
             };
