@@ -3,6 +3,8 @@ using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
@@ -51,6 +53,31 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult Submission()
         {
+            foreach (string upload in Request.Files)
+            {
+                //if (!Request.Files[upload].HasFile()) continue;
+
+                string mimeType = Request.Files[upload].ContentType;
+                Stream fileStream = Request.Files[upload].InputStream;
+                string fileName = Path.GetFileName(Request.Files[upload].FileName);
+                string userName = Request.Form["new_item"];
+                int fileLength = Request.Files[upload].ContentLength;
+                byte[] fileData = new byte[fileLength];
+                fileStream.Read(fileData, 0, fileLength);
+
+                const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
+                using (var conn = new SqlConnection(connect))
+                {
+                    var qry = "INSERT INTO Submissions (FileContent, MimeType, FileName, UserName) VALUES (@FileContent, @MimeType, @FileName,@UserName)";
+                    var cmd = new SqlCommand(qry, conn);
+                    cmd.Parameters.AddWithValue("@FileContent", fileData);
+                    cmd.Parameters.AddWithValue("@MimeType", mimeType);
+                    cmd.Parameters.AddWithValue("@FileName", fileName);
+                    cmd.Parameters.AddWithValue("@UserName", userName);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
             return View();
         }
 
