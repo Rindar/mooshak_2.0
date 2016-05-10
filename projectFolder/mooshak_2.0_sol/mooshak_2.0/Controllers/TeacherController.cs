@@ -24,7 +24,7 @@ namespace mooshak_2._0.Controllers
         public ActionResult Index()
         {
             List<CourseViewModel> ListOfCourseViewModels = new ListStack<CourseViewModel>();
-            ListOfCourseViewModels = _courseService.GetAllCourses();
+            ListOfCourseViewModels = _courseService.GetCoursesByUser(User.Identity.GetUserId());
             return View(ListOfCourseViewModels);
         }
 
