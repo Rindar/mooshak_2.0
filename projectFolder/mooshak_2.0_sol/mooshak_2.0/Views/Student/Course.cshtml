@@ -1,16 +1,16 @@
 ﻿@model mooshak_2._0.Models.ViewModels.CourseViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Course";
+    ViewBag.Title = Model.title;
 }
 
-<h2>@Model.Title</h2>
+<h2>@Model.title</h2>
 
 @{
-    foreach (var assignment in Model.Assignments)
+    foreach (var assignment in Model.assignments)
     {
         <div class="col-xs-6 col-sm-4">
-            <h2>@assignment.Title</h2>
+            <h2>@assignment.title</h2>
             <p>Here is the description</p>
             <p>@Html.ActionLink("Details", "Assignment", "Student", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
         </div>

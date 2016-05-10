@@ -7,9 +7,9 @@ namespace mooshak_2._0.Models.ViewModels
 {
     public class CourseViewModel
     {
-        public string Title { get; set; }
-        public List<AssignmentViewModel> Assignments { get; set; }
-        public string Teacher { get; set; }
-        public int ID { get; set; }
+        public string title { get; set; }
+        public List<AssignmentViewModel> assignments { get; set; }
+        public string teacher { get; set; }
+        public int id { get; set; }
     }
 }

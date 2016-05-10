@@ -16,10 +16,21 @@
     @Html.Partial("~/Views/Shared/_HeaderBarLayout.cshtml")
     <div class="container-fluid">
         <div class="row">
-            @if(User.IsInRole("admin"))
-            {
-                @Html.Partial("~/Views/Shared/_SideBarAdmin.cshtml")
+            @{
+                if (User.IsInRole("admin"))
+                {
+                    Html.RenderAction("Sidebar", "Admin");
+                }
+                else if(User.IsInRole("student"))
+                {
+                    Html.RenderAction("Sidebar", "Student");
+                }
+                else if(User.IsInRole("teacher"))
+                {
+                    Html.RenderAction("Sidebar", "Teacher");
+                }
             }
+           
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main container body-content">
                 @RenderBody()
                

@@ -27,7 +27,7 @@ namespace mooshak_2._0.Services
             {
                 var tempViewModel = new ProblemViewModel();
                 tempViewModel.id = milestone.id;
-                tempViewModel.Title = milestone.title;
+                tempViewModel.title = milestone.title;
                 tempViewModel.weight = milestone.weight;
                 milestoneViewList.Add(tempViewModel);
             }

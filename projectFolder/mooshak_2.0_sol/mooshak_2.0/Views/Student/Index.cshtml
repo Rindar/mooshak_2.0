@@ -3,7 +3,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Mooshak Fonseca";
+    ViewBag.Title = "Mooshak - Reykjavík University";
 }
 
 <h1 class="page-header">Mooshak Fonseca</h1>
@@ -18,9 +18,9 @@
         foreach (var course in Model)
         {
             <div class="col-xs-6 col-sm-4">
-                <h2>@course.Title</h2>
+                <h2>@course.title</h2>
                 <p>Here is the description</p>
-                <p>@Html.ActionLink("Details", "Course", "Student", new { id = course.ID }, new { @class = "btn btn-primary btn-large" })</p>
+                <p>@Html.ActionLink("Details", "Course", "Student", new { id = course.id }, new { @class = "btn btn-primary btn-large" })</p>
             </div>
         }
     }*/
