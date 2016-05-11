@@ -40,11 +40,7 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult Assignment(int? id)
         {
-<<<<<<< HEAD
-            /* if (!id.HasValue)
-=======
             if (id.HasValue)
->>>>>>> ec6eb7946858ab7a7b4139938459b91b6bda626c
             {
                 int realId = id.Value;
                 List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
