@@ -5,21 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add new course"</h2>
+<h2>Add new course</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-   /* ------------------
-    @using (Html.BeginForm())
-    {
-        <span>Add a new Course: </span>
-        <input type="text" name="new_item" /><br />
-        <input type="submit" value="Add Item" />
-    }
-    <br />
-        ---------------*/
-    
+
     <div class="form-horizontal">
         <h4>Course</h4>
         <hr />
