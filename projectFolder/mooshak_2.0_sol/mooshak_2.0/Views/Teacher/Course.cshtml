@@ -10,6 +10,9 @@
     {
         <div class="alert">There aren't any assignments in this course yet</div>
     }
+    <div class="form-actions">
+        @Html.ActionLink("Create New Assignment", "CreateAssignment", "Teacher", new { courseId = Model.Id }, new { @class = "btn btn-info" })
+    </div>
     foreach (var assignment in Model.Assignments)
     {
         <div class="col-xs-6 col-sm-4">

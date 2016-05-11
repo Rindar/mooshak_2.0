@@ -43,8 +43,8 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realId = id.Value;
-                //AssignmentViewModel model = _assignmentService.GetSingleAssignmentsInCourse(realId, )
-                List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
+                AssignmentViewModel model = _assignmentService.GetAssignmentById(realId);
+                //List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
                 return PartialView(model);
             }
             return RedirectToAction("Error", "Home");

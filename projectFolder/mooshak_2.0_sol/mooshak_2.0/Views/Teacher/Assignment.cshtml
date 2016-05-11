@@ -1,6 +1,5 @@
-﻿@using mooshak_2._0.Services
-@using mooshak_2._0.Models.ViewModels
-@model List<mooshak_2._0.Models.ViewModels.AssignmentViewModel>
+﻿@model mooshak_2._0.Models.ViewModels.AssignmentViewModel
+
 @{
     ViewBag.Title = "All Assignments";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,15 +9,14 @@
 
 
 <div class="form-actions">
-    @Html.ActionLink("Create New Assignment", "CreateAssignment", "Teacher", new { courseId = Model[0].courseId}, new { @class = "btn btn-info" })
+    @Html.ActionLink("Create New Submission", "CreateSubmission", "Teacher", new { id = Model.courseId}, new { @class = "btn btn-info" })
 </div>
 
-@foreach (var assignment in Model)
+@foreach (var milestone in Model.milestones)
 {
     <div class="col-xs-6 col-sm-4">
-        <h2>@assignment.title</h2>
+        <h2>@milestone.Title</h2>
         <p>Here is the description</p>
-        <p>@Html.ActionLink("Details", "Course", "Teacher", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
+        <p>@Html.ActionLink("Details", "Submissions", "Teacher", new { id = milestone.Id }, new { @class = "btn btn-primary btn-large" })</p>
     </div>
 }
-

@@ -14,7 +14,7 @@
                 foreach (var course in Model)
                 {
                     <li>
-                        @Html.ActionLink(course.Title, "Courses", "Teacher", new { id = course.Id })
+                        @Html.ActionLink(course.Title, "Courses", "Teacher", new { id = course.Id }, new { hidefocus = "hidefocus" })
                     </li>
                 }
             }
@@ -23,7 +23,7 @@
                 foreach (var course in Model)
                 {
                     <li>
-                        @Html.ActionLink(course.Title, "Course", "Student", new { id = course.Id })
+                        @Html.ActionLink(course.Title, "Course", "Student", new { id = course.Id }, new { hidefocus = "hidefocus" })
                     </li>
                 }
             }
