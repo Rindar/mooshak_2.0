@@ -1,19 +1,13 @@
 ﻿@model IEnumerable<mooshak_2._0.Models.Entities.Course>
 @{
-    ViewBag.Title = "CourseIndex";
+    ViewBag.Title = "All Courses";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h1 class="text-center">All Active Courses</h1>
+<div class="form-actions">
+    @Html.ActionLink("Create New Course", "AddNewCourse", "Course", null, new { @class = "btn btn-info" })
+</div>
 <div class="list-group">
-
-
-    @using (Html.BeginForm())
-    {
-        <span>Add a new Course: </span>
-        <input type="text" name="new_item" /><br />
-        <input type="submit" value="Add Item" />
-    }
-    <br />
-
     <table class="table table-bordered table-condensed">
         <thead>
             <tr>

@@ -22,11 +22,9 @@ namespace mooshak_2._0.Controllers
         public ActionResult Index()
         {
             List<CourseViewModel> UserCourse = _courseService.GetCoursesByUser(User.Identity.GetUserId());
-            if(UserCourse.Any())
-            {
-                return View(UserCourse);
-            }
-            return View("Error");
+            
+            return View(UserCourse);
+            
         }
 
         public ActionResult Course(int? id)
