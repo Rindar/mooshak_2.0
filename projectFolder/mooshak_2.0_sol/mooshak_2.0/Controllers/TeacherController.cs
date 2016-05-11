@@ -18,14 +18,9 @@ namespace mooshak_2._0.Controllers
     public class TeacherController : Controller
     {
         readonly CourseService _courseService = new CourseService(new AssignmentsService());
-        readonly AssignmentsService _assignmentService;
+        readonly AssignmentsService _assignmentService = new AssignmentsService();
         readonly Dbcontext _db = new Dbcontext();
-
-        public TeacherController()
-        {
-            _assignmentService = new AssignmentsService();
-        }
-
+        
         public ActionResult Index()
         {
             List<CourseViewModel> listOfCourseViewModels = _courseService.GetCoursesByUser(User.Identity.GetUserId());
@@ -34,26 +29,24 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult Course(int? id)
         {
-            if (!id.HasValue)
+            if (id.HasValue)
             {
-                return View("Error", "Shared");
+                var realId = id.Value;
+                var model = _courseService.GetCourseByID(realId);        
+                return View(model);
             }
-
-            var realId = id.Value;
-            var model = _courseService.GetCourseByID(realId);
-            return View(model);
+            return RedirectToAction("Error", "Home");
         }
 
         public ActionResult Assignment(int? id)
         {
-            if (!id.HasValue)
+            if (id.HasValue)
             {
-                return View("Error", "Shared");
+                int realId = id.Value;
+                List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
+                return PartialView(model);
             }
-
-            int realId = id.Value;
-            List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
-            return PartialView(model);
+            return RedirectToAction("Error", "Home");
         }
 
         public ActionResult Submissions()

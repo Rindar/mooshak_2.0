@@ -35,7 +35,7 @@ namespace mooshak_2._0.Controllers
                 CourseViewModel model = _courseService.GetCourseByID(realID);
                 return View(model);
             }
-            return View("Error", "Shared");
+            return RedirectToAction("Error", "Home");
         }
 
         public ActionResult Assignment(int? id)
@@ -46,7 +46,7 @@ namespace mooshak_2._0.Controllers
                 AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
                 return View(model);
             }
-            return View("Error", "Shared");
+            return RedirectToAction("Error", "Home");
         }
 
         public ActionResult Submission()
