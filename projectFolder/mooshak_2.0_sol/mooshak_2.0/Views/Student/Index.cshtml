@@ -7,9 +7,9 @@
 }
 
 <h1 class="page-header">Mooshak Fonseca</h1>
-<!--
+
 @{
-    /*if (!Model.Any())
+    if (!Model.Any())
     {
         <div class="alert">We're sorry but you aren't in any courses</div>
     }
@@ -18,28 +18,18 @@
         foreach (var course in Model)
         {
             <div class="col-xs-6 col-sm-4">
-                <h2>@course.title</h2>
+                <h2>@course.Title</h2>
                 <p>Here is the description</p>
-                <p>@Html.ActionLink("Details", "Course", "Student", new { id = course.id }, new { @class = "btn btn-primary btn-large" })</p>
+                <p>@Html.ActionLink("Details", "Course", "Student", new { id = course.Id }, new { @class = "btn btn-primary btn-large" })</p>
             </div>
         }
-    }*/
+    }
 }
-    -->
+@*
+    <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li>@Html.ActionLink("Submit Solution", "Submission", "Student")</li>
 
-<div class="col-sm-3 col-md-2 sidebar">
-    <ul class="nav nav-sidebar">
-        <li>@Html.ActionLink("Submit Solution", "Submission", "Student")</li>
-
-    </ul>
-</div>
-<div class="col-xs-6 col-sm-4">
-    <h2>Course 1</h2>
-    <p>Here is the description</p>
-    <p>@Html.ActionLink("Details", "Course", "Student", new { id = 1 }, new { @class = "btn btn-primary btn-large" })</p>
-</div>
-<div class="col-xs-6 col-sm-4">
-    <h2>Course 2</h2>
-    <p>BARA ÚTLIT</p>
-    <p>@Html.ActionLink("Course 2", "Course", "Student", new { id = 2 } , new { @class = "btn btn-primary btn-large" })</p>
-</div>
+        </ul>
+    </div>
+*@

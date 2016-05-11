@@ -35,7 +35,7 @@ namespace mooshak_2._0.Controllers
                 CourseViewModel model = _courseService.GetCourseByID(realID);
                 return View(model);
             }
-            return View("Error");
+            return View("Error", "Shared");
         }
 
         public ActionResult Assignment(int? id)
@@ -43,10 +43,10 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realID = id.Value;
-                List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realID);
+                AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
                 return View(model);
             }
-            return View("Error");
+            return View("Error", "Shared");
         }
 
         public ActionResult Submission()
