@@ -57,7 +57,7 @@ namespace mooshak_2._0.Services
 
             if (course==null)
             {
-                return new CourseViewModel();
+                throw new ArgumentNullException();
             }
 
             List<AssignmentViewModel> assignments = _assignmentsService.GetAssignmentsInCourse(CourseID);
@@ -94,5 +94,6 @@ namespace mooshak_2._0.Services
 
             return allUsersinCourse;
         }
+
     }
 }

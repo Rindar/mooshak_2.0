@@ -6,12 +6,16 @@
 @*
 <h2 class="page-header">@Model.Title</h2>
 @{
+    if(!Model.Assignments.Any())
+    {
+        <div class="alert">There aren't any assignments in this course yet</div>
+    }
     foreach (var assignment in Model.Assignments)
     {
         <div class="col-xs-6 col-sm-4">
             <h2>@assignment.title</h2>
             <p>Here is the description</p>
-            <p>@Html.ActionLink("Details", "Course", "Teacher", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
+            <p>@Html.ActionLink("Details", "Assignment", "Teacher", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
         </div>
     }
 }

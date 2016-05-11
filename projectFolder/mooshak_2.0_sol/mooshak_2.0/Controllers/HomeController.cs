@@ -50,5 +50,11 @@ namespace mooshak_2._0.Controllers
 
             return View();
         }
+        public ActionResult Error()
+        {
+            ViewBag.Message = "Error page";
+
+            return View();
+        }
     }
 }

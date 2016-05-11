@@ -60,7 +60,7 @@ namespace mooshak_2._0.Services
 
             if (assignment == null)
             {
-                // EXCEPTION
+                throw new ArgumentNullException();
             }
             var allMilestones = from milestones in _db.milestones
                                 where milestones.assignmentID.Equals(assignmentId)

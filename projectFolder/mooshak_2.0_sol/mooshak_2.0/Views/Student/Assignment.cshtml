@@ -7,12 +7,16 @@
 <h2>Assignment</h2>
 
 @{
-    foreach (var milestone in Model.Milestones)
+    if(!Model.milestones.Any())
+    {
+        <div>No milestones in this Assignment as of yet.</div>
+    }
+    foreach (var milestone in Model.milestones)
     {
         <div class="col-xs-6 col-sm-4">
             <h2>@milestone.Title</h2>
-            <p>@milestone.weight</p>
-            <p>@Html.ActionLink("Assignment 1", "Course", "Student", new { id = milestone.id }, new { @class = "btn btn-primary btn-large" })</p>
+            <p>@milestone.Weight</p>
+            <p>@Html.ActionLink("Assignment 1", "Submission", "Student", new { id = milestone.Id }, new { @class = "btn btn-primary btn-large" })</p>
         </div>
     }
 }

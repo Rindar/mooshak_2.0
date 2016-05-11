@@ -7,6 +7,10 @@
 <h2>@Model.Title</h2>
 
 @{
+    if(!Model.Assignments.Any())
+    {
+        <div class="alert">There aren't any assignments in this course yet</div>
+    }
     foreach (var assignment in Model.Assignments)
     {
         <div class="col-xs-6 col-sm-4">
