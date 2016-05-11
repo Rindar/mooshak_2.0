@@ -79,7 +79,6 @@ C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\b
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.dll
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.pdb
-C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csprojResolveAssemblyReference.cache
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.dll
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.pdb
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\ApplicationInsights.config

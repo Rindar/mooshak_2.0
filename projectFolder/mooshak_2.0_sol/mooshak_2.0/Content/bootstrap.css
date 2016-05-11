@@ -2195,6 +2195,13 @@ fieldset[disabled] .btn-warning.active {
   background-image: none;
 }
 
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
 .btn-danger.disabled,
 .btn-danger[disabled],
 fieldset[disabled] .btn-danger,

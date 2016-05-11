@@ -17,6 +17,7 @@ using Microsoft.AspNet.Identity;
 
 namespace mooshak_2._0.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CourseController : Controller
     {
         private readonly CourseService _courseService = new CourseService();
@@ -34,27 +35,36 @@ namespace mooshak_2._0.Controllers
             var viewModel = _courseService.GetCourseByID(id); // creates a viewmodel for the assignment
             return View(viewModel);
         }
-
-
+        
         public ActionResult CourseIndex()
         {
             return View(_db.courses.ToList());
         }
 
+        public ActionResult AddNewCourse()
+        {
+            return View();
+        }
+
+
         [HttpPost]
-        public ActionResult CourseIndex(Course courses)
+        public ActionResult AddNewCourse(CourseViewModel model)
         {
             if (ModelState.IsValid)
             {
                 using (_db)
                 {
-                    string new_item = Request.Form["new_item"];
-                    if (new_item.IsNullOrWhiteSpace())
+                    Course newCourse = new Course()
                     {
-                        return View(_db.courses.ToList());
+                        name = model.Title
+                    };
+                    //string newItem = Request.Form["newItem"];
+                    if (newCourse.name.IsNullOrWhiteSpace())
+                    {
+                        return RedirectToAction("AddNewCourse");
                     }
                     var dbList = _db.courses.Create();
-                    dbList.name = new_item;
+                    dbList.name = newCourse.name;
                     _db.courses.Add(dbList);
                     _db.SaveChanges();
                 }
