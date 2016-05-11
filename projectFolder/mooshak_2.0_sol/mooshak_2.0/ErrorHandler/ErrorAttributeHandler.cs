@@ -10,13 +10,36 @@ namespace mooshak_2._0.ErrorHandler
     {
         public override void OnException(ExceptionContext filterContext)
         {
-            // HUGMYNDIR AF ERRORS 
-            // Finnur ekki síðu
-            // Submission virkar ekki
-            // 
+            Exception e = filterContext.Exception;
 
+            Logger.Instance.Log(e);
+
+            string currentController = (string)filterContext.RouteData.Values["controller"];
+            string currentActionName = (string)filterContext.RouteData.Values["action"];
+
+            string viewName = "";
+
+            // Data doesn't exist
+            if (e is ArgumentNullException)
+            {
+                viewName = "Error";
+            }
+
+            HandleErrorInfo model = new HandleErrorInfo(filterContext.Exception,
+                                                        currentController, currentActionName);
+
+            ViewResult result = new ViewResult
+            {
+                ViewName = viewName,
+                ViewData = new ViewDataDictionary<HandleErrorInfo>(model),
+                TempData = filterContext.Controller.TempData
+            };
+
+            filterContext.Result = result;
+            filterContext.ExceptionHandled = true;
 
             base.OnException(filterContext);
         }
     }
 }
+
