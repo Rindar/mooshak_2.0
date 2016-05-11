@@ -11,56 +11,34 @@
 }
 
 <h2>CreateAssignment</h2>
+<h4>Assignment</h4>
 
-<form class="form-horizontal" action="createAssignment" id="createAssignment" method="POST">
-    <div class="form-horizontal">
-        <h4>Assignment</h4>
-        <hr />
-        <div class="form-group">
-            <label for="courseTitle">Name of assignment: </label>
-            <div>
 
-                <input type="text" id="courseTitle" name="courseTitle" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="endDate">Ends at: </label>
-            <div>
-                <input type="date" id="endDate" name="endDate"/>
-            </div>
-        </div>
+<form action="createAssignment" id="createAssignment" method="POST">
+    <input type="hidden" name="courseId" id="courseId" value="@courseId" form="createAssignment" />
+    @Html.AntiForgeryToken()
+    <fieldset class="form-group">
+        <label for="courseTitle">Name of assignment: </label>
+        <input class="form-control" type="text" id="courseTitle" name="courseTitle" />
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="endDate">Ends at: </label>
+        <input class="form-control" type="date" id="endDate" name="endDate" />
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="description">Description: </label>
+        <textarea class="form-control" name="description" id="description" form="createAssignment"></textarea>
+    </fieldset>
 
-        <input type="hidden" name="courseId" id="courseId" value="@courseId" form="createAssignment"/>
+    <fieldset class="form-group">
+        <label for="input">Input: </label>
+        <textarea class="form-control" name="input" id="input" form="createAssignment"></textarea>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="output">Output: </label>
+        <textarea class="form-control" name="output" id="output" form="createAssignment"></textarea>
+    </fieldset>
 
-        <div class="form-group">
-            <label for="description">Description: </label>
-            <div>
-                <textarea rows="10" name="description" id="description" form="createAssignment"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="input">Input: </label>
-            <div>
-                <textarea rows="10" name="input" id="input" form="createAssignment"></textarea>
-            </div>
-        </div>
-
-            <div class="form-group">
-                <label for="output">Output: </label>
-                <div>
-                    <textarea rows="10" name="output" id="output" form="createAssignment"></textarea>
-                </div>
-
-            </div>
-
-        <div class="form-group">
-            <button type="submit" id="Create" value="Create">Create</button>
-        </div>
-    </div>
+    <button type="submit" class="btn btn-primary" id="Create" value="Create">Create</button>
+    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary btn-large" })
 </form>
-
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
