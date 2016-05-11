@@ -39,6 +39,7 @@ namespace mooshak_2._0.Services
                     id = assignment.id,
                     title = assignment.title,
                     courseId = assignment.courseId,
+                    description = assignment.description,
                     milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id)
                 };
                 var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id);
@@ -73,6 +74,7 @@ namespace mooshak_2._0.Services
                     tempViewModel.Title = milestone.title;
                     tempViewModel.Weight = milestone.weight;
                     tempViewModel.AssignmentId = assignmentId;
+                   
                 };
                 milestoneViewList.Add(tempViewModel);
             }
@@ -83,6 +85,7 @@ namespace mooshak_2._0.Services
                 id = assignment.id,
                 title = assignment.title,
                 milestones = milestoneViewList
+                
             };
 
             return viewModel;
@@ -137,6 +140,7 @@ namespace mooshak_2._0.Services
                 title = theAssignment.title,
                 courseId = theAssignment.courseId,
                 milestones = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.id)
+                
             };
 
             var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.id);

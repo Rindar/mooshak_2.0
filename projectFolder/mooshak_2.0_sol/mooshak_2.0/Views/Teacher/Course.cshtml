@@ -13,12 +13,18 @@
     <div class="form-actions">
         @Html.ActionLink("Create New Assignment", "CreateAssignment", "Teacher", new { courseId = Model.Id }, new { @class = "btn btn-info" })
     </div>
+
     foreach (var assignment in Model.Assignments)
     {
         <div class="col-xs-6 col-sm-4">
-            <h2>@assignment.title</h2>
-            <p>Here is the description</p>
-            <p>@Html.ActionLink("Details", "Assignment", "Teacher", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
+            <div class="breadcrumb">
+                <h2>@assignment.title</h2>
+                    <p style="font-size:large">@assignment.description</p>
+                        <br />
+                    <div class="form-horizontal">
+                        <p>@Html.ActionLink("Details", "Assignment", "Teacher", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
+                    </div>
+                </div>
         </div>
     }
 }
