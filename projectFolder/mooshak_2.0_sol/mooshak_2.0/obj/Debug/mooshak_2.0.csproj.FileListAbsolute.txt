@@ -1,4 +1,4 @@
-﻿C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\ApplicationInsights.config
+C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\ApplicationInsights.config
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\roslyn\csc.exe
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
