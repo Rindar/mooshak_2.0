@@ -43,6 +43,7 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realId = id.Value;
+                //AssignmentViewModel model = _assignmentService.GetSingleAssignmentsInCourse(realId, )
                 List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
                 return PartialView(model);
             }
@@ -88,13 +89,13 @@ namespace mooshak_2._0.Controllers
         }
 
         public ActionResult CreateAssignment(int? courseId)
-        {
+       {
             AssignmentViewModel myAssignmentViewModel = new AssignmentViewModel();
             if (courseId != null)
             {
                 myAssignmentViewModel.courseId = (int) courseId;
             }
-            return View(courseId);
+            return View(myAssignmentViewModel);
         }
 
         [HttpPost]
@@ -105,7 +106,8 @@ namespace mooshak_2._0.Controllers
             string getDescription = Request.Form["description"];
             string getInput = Request.Form["input"];
             String getOutput = Request.Form["output"];
-            int getCourseId = int.Parse(Request.Form["courseId"]);
+            string getCourseId = Request.Form["courseId"];
+
 
             var dbList = _db.assignments.Create();
             dbList.title = getTitle;
@@ -114,7 +116,7 @@ namespace mooshak_2._0.Controllers
             dbList.timeEnds = getEndDate;
             dbList.input = getInput;
             dbList.output = getOutput;
-            dbList.courseId = getCourseId; //FIX
+            dbList.courseId = Convert.ToInt32(getCourseId); //FIX
 
             _db.assignments.Add(dbList);
             _db.SaveChanges();

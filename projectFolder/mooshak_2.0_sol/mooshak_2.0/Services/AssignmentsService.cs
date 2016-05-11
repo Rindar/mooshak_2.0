@@ -38,7 +38,7 @@ namespace mooshak_2._0.Services
                 {
                     id = assignment.id,
                     title = assignment.title,
-                    courseId = assignment.id,
+                    courseId = assignment.courseId,
                     milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id)
                 };
                 var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id);
@@ -117,6 +117,31 @@ namespace mooshak_2._0.Services
             _db.SaveChanges();
 
             return viewModeltoReturn;
+        }
+
+        public AssignmentViewModel GetSingleAssignmentsInCourse(int courseID, int assignmentId)
+        {
+            var theAssignment = (from assignments in _db.assignments
+                                 where assignments.courseId.Equals(courseID) && assignments.id.Equals(assignmentId)
+                                 select assignments).SingleOrDefault();
+
+            if (theAssignment == null)
+            {
+                //TODO: throw an exeption, an error has occured
+            }
+            
+            var newViewModel = new AssignmentViewModel
+            {
+                id = theAssignment.id,
+                title = theAssignment.title,
+                courseId = theAssignment.courseId,
+                milestones = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.id)
+            };
+
+            var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.id);
+            newViewModel.milestones = milestoneViewList;
+
+            return newViewModel;
         }
     }
 }
