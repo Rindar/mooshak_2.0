@@ -16,7 +16,14 @@
     }
 }
 
-@Html.ActionLink("Assignment 1", "Assignment", "Student", null, new { @class = "button" })
-@Html.ActionLink("Assignment 2", "Assignment", "Student", null, new { @class = "button" })
+<div class="col-xs-6 col-sm-4">
+    <h2>Assignments</h2>
 
+    <p>@Html.ActionLink("Assignments", "Assignment", "Teacher", new { id = Model.Id  }, new { @class = "btn btn-primary btn-large" })</p>
+</div>
+<div class="col-xs-6 col-sm-4">
+    <h2>View Submissions</h2>
+
+    <p>@Html.ActionLink("Submissions", "Submissions", "Teacher", new { id = Model.Id}, new { @class = "btn btn-primary btn-large" })</p>
+</div>
 

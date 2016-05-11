@@ -51,7 +51,7 @@ namespace mooshak_2._0.Controllers
                 return View("Error");
             }
             */
-            var realId = 1;
+            var realId = id;
             List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
             return PartialView(model);
         }
