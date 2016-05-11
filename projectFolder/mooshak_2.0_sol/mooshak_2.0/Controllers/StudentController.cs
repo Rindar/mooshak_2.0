@@ -45,7 +45,7 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 int realID = id.Value;
-                AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
+                List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realID);
                 return View(model);
             }
             return View("Error");

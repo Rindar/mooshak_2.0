@@ -44,15 +44,16 @@ namespace mooshak_2._0.Controllers
             return View(model);
         }
 
-        public ActionResult Assignment(int? id)
+        public ActionResult Assignment(int id)
         {
-            if (!id.HasValue)
+           /* if (!id.HasValue)
             {
                 return View("Error");
             }
-            var realId = id.Value;
-            AssignmentViewModel model = _assignmentService.GetAssignmentById(realId);
-            return View(model);
+            */
+            var realId = 1;
+            List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
+            return PartialView(model);
         }
 
         public ActionResult Submissions()
