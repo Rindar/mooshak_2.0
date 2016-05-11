@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = Model.Title;
 }
-
+@*
 <h2 class="page-header">@Model.Title</h2>
 @{
     foreach (var assignment in Model.Assignments)
@@ -26,4 +26,7 @@
 
     <p>@Html.ActionLink("Submissions", "Submissions", "Teacher", new { id = Model.Id}, new { @class = "btn btn-primary btn-large" })</p>
 </div>
-
+    *@
+<div class="form-actions">
+    @Html.ActionLink("Create Assignment", "CreateAssignment", "Teacher", null, new { @class = "btn btn-info" })
+</div>

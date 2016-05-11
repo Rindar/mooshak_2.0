@@ -431,3 +431,4 @@ C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bi
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Net.Http.Formatting.xml
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Web.Http.xml
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Web.Http.WebHost.xml
+C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csprojResolveAssemblyReference.cache

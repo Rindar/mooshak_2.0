@@ -1,28 +1,22 @@
 ﻿@model List<mooshak_2._0.Models.ViewModels.AssignmentViewModel>
 @{
-    ViewBag.Title = "Assignment";
+    ViewBag.Title = "All Assignments";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 
-<h2>Assignment</h2>
+<h2 class="text-center">All Assignments</h2>
 
+<div class="form-actions">
+    @Html.ActionLink("Create Assignment", "CreateAssignment", "Teacher", null, new { @class = "btn btn-info" })
+</div>
 
+@foreach (var assignment in Model)
+{
+    <div class="col-xs-6 col-sm-4">
+        <h2>@assignment.title</h2>
+        <p>Here is the description</p>
+        <p>@Html.ActionLink("Details", "Course", "Teacher", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
+    </div>
+}
 
-<table class="table table-bordered table-condensed">
-    <thead>
-        <tr>
-            <th style="text-align: center;">Assignment</th>
-            <th style="text-align: center;">Assignment ID<th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td style="text-align: center;">@Html.DisplayFor(modelItem => item.title)</td>
-                <td style="text-align: center;">@Html.DisplayFor(modelItem => item.id)</td>
-            </tr>
-        }
-    </tbody>
-</table>

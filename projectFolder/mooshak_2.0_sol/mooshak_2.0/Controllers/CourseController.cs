@@ -46,7 +46,6 @@ namespace mooshak_2._0.Controllers
             return View();
         }
 
-
         [HttpPost]
         public ActionResult AddNewCourse(CourseViewModel model)
         {
@@ -72,7 +71,6 @@ namespace mooshak_2._0.Controllers
             else
             {
                 ModelState.AddModelError("", "Incorrect format has been placed");
-
             }
             return RedirectToAction("CourseIndex");
         }

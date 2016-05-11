@@ -1,0 +1,65 @@
+﻿@using mooshak_2._0.Models.ViewModels
+@model mooshak_2._0.Models.ViewModels.AssignmentViewModel
+
+@{
+    ViewBag.Title = "CreateAssignment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateAssignment</h2>
+
+<form class="form-horizontal" action="createAssignment" id="createAssignment" method="POST">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Assignment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label for="courseTitle">Name of assignment: </label>
+            <div>
+
+                <input type="text" id="courseTitle" name="courseTitle" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="endDate">Ends at: </label>
+            <div>
+                <input type="date" id="endDate" name="endDate" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="description">Description: </label>
+            <div>
+                <textarea rows="10" name="description" id="description" form="createAssignment"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="input">Input: </label>
+            <div>
+                <textarea rows="10" name="input" id="input" form="createAssignment"></textarea>
+            </div>
+        </div>
+
+            <div class="form-group">
+                <label for="output">Output: </label>
+                <div>
+                    <textarea rows="10" name="output" id="output" form="createAssignment"></textarea>
+                    @*<p>@Html.ActionLink("Details", "CreateAssignment", "Teacher", new { id = Model.courseId }, new { @class = "btn btn-primary btn-large" })</p>*@
+                </div>
+
+            </div>
+
+        <div class="form-group">
+            <button type="submit" id="Create" value="Create">Create</button>
+        </div>
+    </div>
+</form>
+
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

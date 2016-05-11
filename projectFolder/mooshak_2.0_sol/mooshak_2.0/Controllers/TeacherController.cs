@@ -46,7 +46,7 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult Assignment(int id)
         {
-           /* if (!id.HasValue)
+            /* if (!id.HasValue)
             {
                 return View("Error");
             }
@@ -66,7 +66,8 @@ namespace mooshak_2._0.Controllers
             byte[] fileContent = null;
             var mimeType = "";
             var fileName = "";
-            const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
+            const string connect =
+                @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
 
             using (var conn = new SqlConnection(connect))
             {
@@ -80,7 +81,7 @@ namespace mooshak_2._0.Controllers
                     return File(fileContent, mimeType, fileName);
                 }
                 reader.Read();
-                fileContent = (byte[])reader["FileContent"];
+                fileContent = (byte[]) reader["FileContent"];
                 mimeType = reader["MimeType"].ToString();
                 fileName = reader["FileName"].ToString();
             }
@@ -92,8 +93,36 @@ namespace mooshak_2._0.Controllers
             var model = _courseService.GetCoursesByUser(User.Identity.GetUserId());
             return PartialView("~/Views/Shared/_SideBarTeacherStudent.cshtml", model);
         }
+
+        public ActionResult CreateAssignment()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateAssignment(FormCollection model)
+        {
+            string getTitle = Request.Form["courseTitle"];
+            DateTime getEndDate = DateTime.Parse(Request.Form["endDate"]);
+            string getDescription = Request.Form["description"];
+            string getInput = Request.Form["input"];
+            String getOutput = Request.Form["output"];
+
+            var dbList = _db.assignments.Create();
+            dbList.title = getTitle;
+            dbList.description = getDescription;
+            dbList.timeStarts = DateTime.Now;
+            dbList.timeEnds = getEndDate;
+            dbList.input = getInput;
+            dbList.output = getOutput;
+            dbList.courseId = 1; //FIX
+
+            _db.assignments.Add(dbList);
+            _db.SaveChanges();
+
+            return View();
+        }
     }
-    
 }
 
 
