@@ -50,7 +50,7 @@ namespace mooshak_2._0.Controllers
             return RedirectToAction("Error", "Home");
         }
 
-        public ActionResult Submissions()
+        public ActionResult Submission()
         {
             return View(_db.submissions.ToList());
         }
@@ -89,7 +89,7 @@ namespace mooshak_2._0.Controllers
         }
 
         public ActionResult CreateAssignment(int? courseId)
-       {
+        {
             AssignmentViewModel myAssignmentViewModel = new AssignmentViewModel();
             if (courseId != null)
             {
@@ -123,6 +123,26 @@ namespace mooshak_2._0.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult CreateMilestone(int? assignmentId)
+        {
+            MilestoneViewModel  model = new MilestoneViewModel();
+            if (assignmentId.HasValue)
+            {
+                int realAssignmentId = assignmentId.Value;
+                model.AssignmentId = realAssignmentId;
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateMilestone(FormCollection model)
+        {
+           
+            return RedirectToAction("Index");
+        }
+
+
     }
 }
 

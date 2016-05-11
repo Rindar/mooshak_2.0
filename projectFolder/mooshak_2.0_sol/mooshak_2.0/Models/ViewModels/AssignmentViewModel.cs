@@ -12,7 +12,7 @@ namespace mooshak_2._0.Models.ViewModels
     {
         public int id { get; set; }
         public string title { get; set; }
-        public List<ProblemViewModel> milestones { get; set; }
+        public List<MilestoneViewModel> milestones { get; set; }
         public int courseId { get; set; }
         public Course partOfCourse { get; set; }
         public  string description { get; set; }

@@ -55,7 +55,7 @@ namespace mooshak_2._0.Services
                           where courses.id.Equals(CourseID)
                           select courses).SingleOrDefault();
 
-            if (course==null)
+            if (course == null)
             {
                 throw new ArgumentNullException();
             }

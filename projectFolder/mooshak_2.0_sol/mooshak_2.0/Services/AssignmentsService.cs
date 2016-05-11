@@ -64,14 +64,15 @@ namespace mooshak_2._0.Services
                                 where milestones.assignmentID.Equals(assignmentId)
                                 select milestones;
 
-            var milestoneViewList = new List<ProblemViewModel>();
+            var milestoneViewList = new List<MilestoneViewModel>();
             foreach (var milestone in allMilestones)
             {
-                var tempViewModel = new ProblemViewModel
+                var tempViewModel = new MilestoneViewModel();
                 {
-                    Id = milestone.id,
-                    Title = milestone.title,
-                    Weight = milestone.weight,
+                    tempViewModel.Id = milestone.id;
+                    tempViewModel.Title = milestone.title;
+                    tempViewModel.Weight = milestone.weight;
+                    tempViewModel.AssignmentId = assignmentId;
                 };
                 milestoneViewList.Add(tempViewModel);
             }
@@ -87,7 +88,7 @@ namespace mooshak_2._0.Services
             return viewModel;
         }
 
-        public AssignmentViewModel createAssignment(int courseId)
+     /*   public AssignmentViewModel createAssignment(int courseId)
         {
             Course currentCourse = (from courses in _db.courses
                                  where courses.id == courseId
@@ -117,7 +118,7 @@ namespace mooshak_2._0.Services
             _db.SaveChanges();
 
             return viewModeltoReturn;
-        }
+        }*/
 
         public AssignmentViewModel GetSingleAssignmentsInCourse(int courseID, int assignmentId)
         {

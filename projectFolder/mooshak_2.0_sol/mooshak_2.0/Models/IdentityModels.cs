@@ -27,7 +27,7 @@ namespace mooshak_2._0.Models
     public class Dbcontext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Assignment>          assignments   { get; set; } // NOTE!:we have to do this for all the entity classes
-        public DbSet<AssignmentMilestone> milestones    { get; set; } // like this
+        public DbSet<Milestone>           milestones    { get; set; } // like this
         public DbSet<Course>              courses       { get; set; }
         public DbSet<Submissions>         submissions   { get; set; }
         public DbSet<UserCourse>          userCourse    { get; set; }
@@ -42,5 +42,6 @@ namespace mooshak_2._0.Models
             return new Dbcontext();
         }
 
+        public System.Data.Entity.DbSet<mooshak_2._0.Models.ViewModels.MilestoneViewModel> MilestoneViewModels { get; set; }
     }
 }
