@@ -87,9 +87,14 @@ namespace mooshak_2._0.Controllers
             return PartialView("~/Views/Shared/_SideBarTeacherStudent.cshtml", model);
         }
 
-        public ActionResult CreateAssignment()
+        public ActionResult CreateAssignment(int? courseId)
         {
-            return View();
+            AssignmentViewModel myAssignmentViewModel = new AssignmentViewModel();
+            if (courseId != null)
+            {
+                myAssignmentViewModel.courseId = (int) courseId;
+            }
+            return View(courseId);
         }
 
         [HttpPost]
@@ -100,6 +105,7 @@ namespace mooshak_2._0.Controllers
             string getDescription = Request.Form["description"];
             string getInput = Request.Form["input"];
             String getOutput = Request.Form["output"];
+            int getCourseId = int.Parse(Request.Form["courseId"]);
 
             var dbList = _db.assignments.Create();
             dbList.title = getTitle;
@@ -108,7 +114,7 @@ namespace mooshak_2._0.Controllers
             dbList.timeEnds = getEndDate;
             dbList.input = getInput;
             dbList.output = getOutput;
-            dbList.courseId = 1; //FIX
+            dbList.courseId = getCourseId; //FIX
 
             _db.assignments.Add(dbList);
             _db.SaveChanges();

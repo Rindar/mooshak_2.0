@@ -13,7 +13,6 @@ namespace mooshak_2._0.Services
     {
         private readonly Dbcontext _db;
         private readonly AssignmentMilestoneService _assignmentMilestoneService;
-        private readonly CourseService _courseService;
 
         public AssignmentsService()
         {
@@ -23,9 +22,6 @@ namespace mooshak_2._0.Services
 
         public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
         {
-
-            // TODO: 
-            //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
             var allAssignments = from assignments in _db.assignments
                                  where assignments.courseId.Equals(courseID)
                                  select assignments;
@@ -41,7 +37,9 @@ namespace mooshak_2._0.Services
                 var newViewModel = new AssignmentViewModel
                 {
                     id = assignment.id,
-                    title = assignment.title
+                    title = assignment.title,
+                    courseId = assignment.id,
+                    milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id)
                 };
                 var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id);
                 newViewModel.milestones = milestoneViewList;
@@ -73,7 +71,7 @@ namespace mooshak_2._0.Services
                 {
                     Id = milestone.id,
                     Title = milestone.title,
-                    Weight = milestone.weight
+                    Weight = milestone.weight,
                 };
                 milestoneViewList.Add(tempViewModel);
             }
