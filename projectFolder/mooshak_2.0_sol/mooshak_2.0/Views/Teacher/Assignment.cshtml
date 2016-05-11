@@ -2,13 +2,16 @@
 @{
     ViewBag.Title = "All Assignments";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
 <h2 class="text-center">All Assignments</h2>
 
+@{
+    var courseId = Model[0].courseId;
+}
+
 <div class="form-actions">
-    @Html.ActionLink("Create New Assignment", "CreateAssignment", "Teacher", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("Create New Assignment", "CreateAssignment", "Teacher", new { id = Model[1].courseId }, new { @class = "btn btn-info" })
 </div>
 
 @foreach (var assignment in Model)
