@@ -14,9 +14,17 @@
     foreach (var milestone in Model.Milestones)
     {
         <div class="col-xs-6 col-sm-4">
-            <h2>@milestone.Title</h2>
-            <p>@milestone.Weight</p>
-            <p>@Html.ActionLink("Assignment 1", "Submission", "Student", new { id = milestone.Id }, new { @class = "btn btn-primary btn-large" })</p>
+            <div class="breadcrumb">
+                <h2 class="text-center">@milestone.Title</h2>
+                <p>Description</p>
+                <br />
+                <div class="form-horizontal">
+                    <p class="text-center">@Html.ActionLink("Details", "Submission", "Student", new { id = milestone.Id }, new { @class = "btn btn-primary btn" })</p>
+                </div>
+            </div>
         </div>
     }
+    <div class="actionLinkInBlock">
+        @Html.ActionLink("Back", "Course")
+    </div>
 }

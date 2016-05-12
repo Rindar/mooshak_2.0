@@ -4,7 +4,7 @@
     ViewBag.Title = Model.Title;
 }
 
-<h2 class="page-header">@Model.Title</h2>
+<h2 class="page-header text-center">@Model.Title</h2>
 @{
     if(!Model.Assignments.Any())
     {
@@ -27,4 +27,9 @@
          </div>
      </div>
     }
+    
+
+    <div class="actionLinkInBlock">
+        @Html.ActionLink("Back", "Index")
+    </div>
 }
