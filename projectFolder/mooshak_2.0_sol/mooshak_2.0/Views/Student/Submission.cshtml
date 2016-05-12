@@ -5,7 +5,7 @@
 
 }
 <h2>Submission</h2>
-<<<<<<< HEAD
+
 
 <form action="" method="post" enctype="multipart/form-data">
 
@@ -26,24 +26,6 @@
 
 
 
-=======
 
 
-<div id="theName">
-    @Html.DisplayFor(modelItem => User.Identity.Name)
-</div>
->>>>>>> cc9a3653f8b047671a2a460512bbca5a73185ead
 
-@using (Html.BeginForm("Submission", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-
-    <input type="file" name="FileUpload1" /><br />
-    <input type="submit" name="Submit" id="Submit" value="Upload" />
-    <input type="hidden" name="user_Title" value="@User.Identity.Name" />
-
-    //TODO: breyta út user_Title í userTitle
-}
-
-<div class="actionLinkInBlock">
-    @Html.ActionLink("Back", "Assignment")
-</div>
