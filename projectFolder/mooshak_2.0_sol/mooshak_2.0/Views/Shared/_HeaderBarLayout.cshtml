@@ -15,9 +15,7 @@
                         <!--TODO: tengja action link við account settings page-->
                         @if (Request.IsAuthenticated)
                         {
-                            <li>
-                                @Html.ActionLink("Reset your password", "ResetPassword", "Account")
-                            </li>
+                            <li><a href="#">Account Settings</a></li>
                         }
                         
                         <li>@Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
