@@ -49,31 +49,28 @@ namespace mooshak_2._0.Controllers
         [HttpPost]
         public ActionResult AddNewCourse(CourseViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                using (_db)
-                {
-                    Course newCourse = new Course()
-                    {
-                        Title = model.Title,
-                        Description =  model.Description,
-                        Id = model.Id,
-                        Teacher = model.Teacher
-                    };
-                    //string newItem = Request.Form["newItem"];
-                    if (newCourse.Title.IsNullOrWhiteSpace())
-                    {
-                        return RedirectToAction("AddNewCourse");
-                    }
-                    var dbList = _db.courses.Create();
-                    dbList.Title = newCourse.Title;
-                    _db.courses.Add(dbList);
-                    _db.SaveChanges();
-                }
+                throw new Exception();
             }
-            else
+            using (_db)
             {
-                ModelState.AddModelError("", "Incorrect format has been placed");
+                Course newCourse = new Course()
+                {
+                    Title = model.Title,
+                    Description =  model.Description,
+                    Id = model.Id,
+                    Teacher = model.Teacher
+                };
+                //string newItem = Request.Form["newItem"];
+                if (newCourse.Title.IsNullOrWhiteSpace())
+                {
+                    return RedirectToAction("AddNewCourse");
+                }
+                var dbList = _db.courses.Create();
+                dbList.Title = newCourse.Title;
+                _db.courses.Add(dbList);
+                _db.SaveChanges();
             }
             return RedirectToAction("CourseIndex");
         }

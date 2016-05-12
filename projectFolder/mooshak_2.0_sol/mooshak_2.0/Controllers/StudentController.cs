@@ -47,7 +47,7 @@ namespace mooshak_2._0.Controllers
             AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
             return View(model);
         }
-
+        /*
         public ActionResult Submission()
         {
             if(Request.Files == null) { throw new Exception(); }
@@ -78,7 +78,24 @@ namespace mooshak_2._0.Controllers
             }
             return View();
         }
+        */
+        public ActionResult Submission()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Submission(HttpPostedFileBase file)
+        {
 
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/App_Data/Solution_Uploads"), fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("Index");
+        }
         public ActionResult Sidebar()
         {
             var model = _courseService.GetCoursesByUser(User.Identity.GetUserId());
