@@ -8,10 +8,10 @@
 <h2 class="text-center">All Milestones</h2>
 
 <div class="form-actions">
-    @Html.ActionLink("Create New Milestone", "CreateMilestone", "Teacher", new {id = Model.id}, new {@class = "btn btn-info"})
+    @Html.ActionLink("Create New Milestone", "CreateMilestone", "Teacher", new {assignmentId = Model.Id}, new {@class = "btn btn-info"})
 </div>
 
-@foreach (var milestone in Model.milestones)
+@foreach (var milestone in Model.Milestones)
 {
     <div class="col-xs-6 col-sm-4">
         <h2>@milestone.Title</h2>

@@ -7,11 +7,11 @@
 <h2>Assignment</h2>
 
 @{
-    if(!Model.milestones.Any())
+    if(!Model.Milestones.Any())
     {
         <div>No milestones in this Assignment as of yet.</div>
     }
-    foreach (var milestone in Model.milestones)
+    foreach (var milestone in Model.Milestones)
     {
         <div class="col-xs-6 col-sm-4">
             <h2>@milestone.Title</h2>

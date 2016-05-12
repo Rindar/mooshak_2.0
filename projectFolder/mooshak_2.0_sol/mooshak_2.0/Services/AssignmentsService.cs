@@ -36,14 +36,14 @@ namespace mooshak_2._0.Services
             {
                 var newViewModel = new AssignmentViewModel
                 {
-                    id = assignment.Id,
-                    title = assignment.Title,
-                    courseId = assignment.CourseId,
-                    description = assignment.Description,
-                    milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id)
+                    Id = assignment.Id,
+                    Title = assignment.Title,
+                    CourseId = assignment.CourseId,
+                    Description = assignment.Description,
+                    Milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id)
                 };
                 var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id);
-                newViewModel.milestones = milestoneViewList;
+                newViewModel.Milestones = milestoneViewList;
                 assignmentViewModelList.Add(newViewModel);
 
             }
@@ -57,19 +57,37 @@ namespace mooshak_2._0.Services
                               where assignments.Id.Equals(assignmentId)
                               select assignments).SingleOrDefault();
 
+            if (assignment == null)
+            {
+                throw new ArgumentNullException();
+            }
+            var allMilestones = from milestones in _db.milestones
+                                where milestones.AssignmentId.Equals(assignmentId)
+                                select milestones;
 
-            //Throwing exception
-            if (assignment == null) { throw new ArgumentNullException(); }
-
-            var allMilestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id);
+            var milestoneViewList = new List<MilestoneViewModel>();
+            foreach (var milestone in allMilestones)
+            {
+                var tempViewModel = new MilestoneViewModel();
+                {
+                    tempViewModel.Id = milestone.Id;
+                    tempViewModel.Title = milestone.Title;
+                    tempViewModel.Weight = milestone.Weight;
+                    tempViewModel.AssignmentId = assignmentId;
+                   
+                };
+                milestoneViewList.Add(tempViewModel);
+            }
 
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new AssignmentViewModel
             {
-                id = assignment.Id,
-                title = assignment.Title,
-                milestones = allMilestones,
+                Id = assignment.Id,
+                Title = assignment.Title,
+                Milestones = milestoneViewList
+                
             };
+
             return viewModel;
         }
 
@@ -113,17 +131,20 @@ namespace mooshak_2._0.Services
 
             if (theAssignment == null)
             {
-                throw new ArgumentNullException();
+                //TODO: throw an exeption, an error has occured
             }
             
             var newViewModel = new AssignmentViewModel
             {
-                id = theAssignment.Id,
-                title = theAssignment.Title,
-                courseId = theAssignment.CourseId,
-                milestones = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.Id)
+                Id = theAssignment.Id,
+                Title = theAssignment.Title,
+                CourseId = theAssignment.CourseId,
+                Milestones = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.Id)
                 
             };
+
+            var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.Id);
+            newViewModel.Milestones = milestoneViewList;
 
             return newViewModel;
         }

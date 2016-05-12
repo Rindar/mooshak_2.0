@@ -1540,6 +1540,11 @@ table th[class*="col-"] {
   border-color: #c9e2b3;
 }
 
+.thead-inverse {
+    background-color: rgb(34,34,34);
+    color: white
+}
+
 .table > thead > tr > td.danger,
 .table > tbody > tr > td.danger,
 .table > tfoot > tr > td.danger,
@@ -5580,7 +5585,9 @@ a.list-group-item:focus {
   padding: 9px;
   border-radius: 3px;
 }
-
+.overflow {
+    overflow: hidden;
+}
 .close {
   float: right;
   font-size: 21px;
