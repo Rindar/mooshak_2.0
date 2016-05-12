@@ -6,9 +6,7 @@
             @Html.ActionLink("Mooshak Fonseca", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-            
             <ul class="nav navbar-nav navbar-right">
-
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">@User.Identity.GetUserName() <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -17,7 +15,6 @@
                         {
                             <li><a href="#">Account Settings</a></li>
                         }
-                        
                         <li>@Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
                         <li>
                             @if (Request.IsAuthenticated)
@@ -42,9 +39,7 @@
                         }
                     }
                 </li>
-
             </ul>
-            
         </div>
     </div>
 </nav>

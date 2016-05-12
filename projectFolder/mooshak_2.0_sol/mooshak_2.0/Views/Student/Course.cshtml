@@ -15,9 +15,9 @@
     foreach (var assignment in Model.Assignments)
     {
         <div class="col-xs-6 col-sm-4">
-            <h2>@assignment.title</h2>
-            <p>@assignment.description</p>
-            <p>@Html.ActionLink("Details", "Assignment", "Student", new { id = assignment.id }, new { @class = "btn btn-primary btn-large" })</p>
+            <h2>@assignment.Title</h2>
+            <p>@assignment.Description</p>
+            <p>@Html.ActionLink("Details", "Assignment", "Student", new { id = assignment.Id }, new { @class = "btn btn-primary btn-large" })</p>
         </div>
     }
 }

@@ -19,16 +19,18 @@ namespace mooshak_2._0.Services
         public List<MilestoneViewModel> GetMilestoneInAssignment(int assignmentId)
         {
             var allMilestones = from milestones in _db.milestones
-                where milestones.assignmentID.Equals(assignmentId)
+                where milestones.AssignmentId.Equals(assignmentId)
                 select milestones;
 
             var milestoneViewList = new List<MilestoneViewModel>();
             foreach (var milestone in allMilestones)
             {
                 var tempViewModel = new MilestoneViewModel();
-                tempViewModel.Id = milestone.id;
-                tempViewModel.Title = milestone.title;
-                tempViewModel.Weight = milestone.weight;
+                tempViewModel.Id = milestone.Id;
+                tempViewModel.Title = milestone.Title;
+                tempViewModel.Weight = milestone.Weight;
+                tempViewModel.Input = milestone.Input;
+                tempViewModel.Output = milestone.Output;
                 milestoneViewList.Add(tempViewModel);
             }
             return milestoneViewList;
@@ -37,7 +39,7 @@ namespace mooshak_2._0.Services
         public MilestoneViewModel GetSingleAssignmentsInCourse(int assignmentId)
         {
             var theMilestone = (from milestone in _db.milestones
-                where milestone.assignmentID.Equals(assignmentId)
+                where milestone.AssignmentId.Equals(assignmentId)
                 select milestone).SingleOrDefault();
 
             if (theMilestone == null)
@@ -46,9 +48,9 @@ namespace mooshak_2._0.Services
             }
 
             var tempViewModel = new MilestoneViewModel();
-            tempViewModel.Id = theMilestone.id;
-            tempViewModel.Title = theMilestone.title;
-            tempViewModel.Weight = theMilestone.weight;
+            tempViewModel.Id = theMilestone.Id;
+            tempViewModel.Title = theMilestone.Title;
+            tempViewModel.Weight = theMilestone.Weight;
             tempViewModel.AssignmentId = assignmentId;
 
             return tempViewModel;
