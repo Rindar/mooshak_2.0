@@ -29,7 +29,7 @@ namespace mooshak_2._0.ErrorHandler
                 DateTime.Now, e.Message, e.Source, Environment.NewLine, e.StackTrace);
 
             string LogPath = ConfigurationManager.AppSettings["LogPath"];
-
+            
             StreamWriter writer = new StreamWriter(LogPath, true, Encoding.Default);
             writer.WriteLine(logMessage);
             writer.Close();

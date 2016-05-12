@@ -5581,6 +5581,10 @@ a.list-group-item:focus {
   border-radius: 6px;
 }
 
+.actionLinkInBlock {
+    clear: left;
+}
+
 .well-sm {
   padding: 9px;
   border-radius: 3px;

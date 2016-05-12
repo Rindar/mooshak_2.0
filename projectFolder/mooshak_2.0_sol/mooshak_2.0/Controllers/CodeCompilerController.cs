@@ -23,11 +23,11 @@ namespace mooshak_2._0.Controllers
                         "using namespace std;\n" +
                         "int main()\n" +
                         "{\n" +
-                        "cout << \"Hello World\" << endl;\n" +
-                        "cout << \"The Output should contain two lines\" << endl;\n" +
-                        "int a = 5;"+
-                        "cout << a << endl;\n"+
-                        "return 0;\n" +
+                        "\tcout << \"Hello World\" << endl;\n" +
+                        "\tcout << \"The Output should contain two lines\" << endl;\n" +
+                        "\tint a = 5;\n"+
+                        "\tcout << a << endl;\n"+
+                        "\treturn 0;\n" +
                         "}";
             var workingFolder = Server.MapPath("~/App_Data/Solution_Uploads/");
             var cppFileName = "Hello.cpp";
@@ -67,7 +67,6 @@ namespace mooshak_2._0.Controllers
                     processExe.StartInfo = processInfoExe;
                     processExe.Start();
 
-
                     var lines = new List<string>();
                     while(!processExe.StandardOutput.EndOfStream)
                     {
@@ -76,7 +75,6 @@ namespace mooshak_2._0.Controllers
                     ViewBag.Output = lines;
                 }
             }
-
             return View();
         }
     }

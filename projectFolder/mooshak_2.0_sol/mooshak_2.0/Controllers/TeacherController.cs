@@ -34,7 +34,7 @@ namespace mooshak_2._0.Controllers
             if (id.HasValue)
             {
                 var realId = id.Value;
-                var model = _courseService.GetCourseByID(realId);        
+                var model = _courseService.GetCourseByID(realId);
                 return View(model);
             }
             return RedirectToAction("Error", "Home");
@@ -145,16 +145,14 @@ namespace mooshak_2._0.Controllers
             dbList.Title = title;
             dbList.AssignmentId = assignmentId;
             dbList.Weight = weight;
-            dbList.Input = title;
-            dbList.Output = title;
+            dbList.Input = input;
+            dbList.Output = output;
 
             _db.milestones.Add(dbList);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
         }
-
-
     }
 }
 
