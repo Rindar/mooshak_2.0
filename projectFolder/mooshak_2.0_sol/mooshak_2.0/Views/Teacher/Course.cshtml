@@ -16,15 +16,15 @@
 
     foreach (var assignment in Model.Assignments)
     {
-        <div class="col-xs-6 col-sm-4">
-            <div class="breadcrumb">
-                <h2>@assignment.Title</h2>
-                    <p style="font-size:large">@assignment.Description</p>
-                        <br />
-                    <div class="form-horizontal">
-                        <p>@Html.ActionLink("Details", "Assignment", "Teacher", new { id = assignment.Id }, new { @class = "btn btn-primary btn-large" })</p>
-                    </div>
-                </div>
-        </div>
+     <div class="col-xs-6 col-sm-4">
+        <div class="breadcrumb">
+            <h2>@assignment.Title</h2>
+            <p style="font-size:large">@assignment.Description</p>
+            <br />
+            <div class="form-horizontal">
+                <p>@Html.ActionLink("Details", "Assignment", "Teacher", new { id = assignment.Id }, new { @class = "btn btn-primary btn-large" })</p>
+            </div>
+         </div>
+     </div>
     }
 }
