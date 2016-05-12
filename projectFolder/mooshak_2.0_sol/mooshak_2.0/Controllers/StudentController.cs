@@ -30,7 +30,7 @@ namespace mooshak_2._0.Controllers
         {
             if (!id.HasValue)
             {
-                throw new Exception();
+                throw new EntryPointNotFoundException();
             }
             int realID = id.Value;
             CourseViewModel model = _courseService.GetCourseByID(realID);
@@ -41,7 +41,7 @@ namespace mooshak_2._0.Controllers
         {
             if (!id.HasValue)
             {
-                throw new Exception();
+                throw new EntryPointNotFoundException();
             }
             int realID = id.Value;
             AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);

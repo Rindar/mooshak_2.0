@@ -56,7 +56,7 @@ namespace mooshak_2._0.Services
                           where courses.Id.Equals(CourseID)
                           select courses).SingleOrDefault();
 
-            if (course == null)
+            if (course.Id != CourseID)
             {
                 throw new ArgumentNullException();
             }
@@ -93,6 +93,7 @@ namespace mooshak_2._0.Services
             List<UserCourse> allUsersinCourse = (from usersAndCourses in _db.userCourse
                                                  where usersAndCourses.courseId == courseId
                                                  select usersAndCourses).ToList();
+
 
             return allUsersinCourse;
         }
