@@ -40,6 +40,7 @@ namespace mooshak_2._0.Services
                 courseViewModel.Title = course.name;
                 courseViewModel.Assignments = _assignmentsService.GetAssignmentsInCourse(course.id);
                 courseViewModel.Id = course.id;
+                courseViewModel.description = course.description;
                     //teacher
                 
                 courseViewModelList.Add(courseViewModel);
@@ -67,6 +68,7 @@ namespace mooshak_2._0.Services
             viewModel.Id = course.id;
             viewModel.Title = course.name;
             viewModel.Assignments = assignments;
+            viewModel.description = course.description;
             return viewModel;
 
         }

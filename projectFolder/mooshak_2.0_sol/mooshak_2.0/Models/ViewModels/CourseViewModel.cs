@@ -11,5 +11,6 @@ namespace mooshak_2._0.Models.ViewModels
         public List<AssignmentViewModel> Assignments { get; set; }
         public string Teacher { get; set; }
         public int Id { get; set; }
+        public string description { get; set; }
     }
 }
