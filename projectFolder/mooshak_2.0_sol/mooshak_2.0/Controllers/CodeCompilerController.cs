@@ -23,7 +23,6 @@ namespace mooshak_2._0.Controllers
                         "using namespace std;\n" +
                         "int main()\n" +
                         "{\n" +
-<<<<<<< HEAD
                         "cout << \"Hello World\" << endl;\n" +
                         "cout << \"The Output should contain two lines\" << endl;\n" +
                         "bool x = true;\n"+
@@ -34,13 +33,12 @@ namespace mooshak_2._0.Controllers
                         "else\n"+
                         "cout << \"fucabits\"<<endl;\n"+
                         "return 0;\n" +
-=======
                         "\tcout << \"Hello World\" << endl;\n" +
                         "\tcout << \"The Output should contain two lines\" << endl;\n" +
                         "\tint a = 5;\n"+
                         "\tcout << a << endl;\n"+
                         "\treturn 0;\n" +
->>>>>>> cc9a3653f8b047671a2a460512bbca5a73185ead
+
                         "}";
                         */
 
