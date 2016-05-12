@@ -11,10 +11,12 @@ using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using System.Data.SqlClient;
 using Microsoft.AspNet.Identity;
+using mooshak_2._0.ErrorHandler;
 
 namespace mooshak_2._0.Controllers
 {
     [Authorize(Roles = "teacher")]
+    [ErrorAttributeHandler]
     public class TeacherController : Controller
     {
         readonly CourseService _courseService = new CourseService(new AssignmentsService());
