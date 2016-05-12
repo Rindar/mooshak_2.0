@@ -123,7 +123,7 @@ namespace mooshak_2._0.Controllers
             _db.assignments.Add(dbList);
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("/Course/" + dbList.CourseId);
         }
 
         public ActionResult CreateMilestone(int assignmentId)

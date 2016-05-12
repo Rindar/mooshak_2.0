@@ -10,14 +10,14 @@
 @{
     if(!Model.Assignments.Any())
     {
-        <div class="alert">There aren't any assignments in this course yet</div>
+        <div class="alert text-center">There aren't any assignments in this course yet</div>
     }
     foreach (var assignment in Model.Assignments)
     {
         <div class="col-xs-6 col-sm-4">
             <div class="breadcrumb">
                 <h2 class="text-center">@assignment.Title</h2>
-                <p style="font-size:large" class="text-center">@assignment.Description</p>
+                <p class="text-center">@assignment.Description</p>
                 <br />
                 <div class="form-horizontal">
                     <p class="text-center">@Html.ActionLink("View assignments", "Assignment", "Student", new { id = assignment.Id }, new { @class = "btn btn-primary btn-large" })</p>

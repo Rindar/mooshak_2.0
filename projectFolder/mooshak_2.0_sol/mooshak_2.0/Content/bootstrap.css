@@ -4848,6 +4848,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-radius: .25em;
 }
 
+.span-item-bold {
+    font-weight: bold;
+}
+
 .label[href]:hover,
 .label[href]:focus {
   color: #ffffff;
@@ -4875,10 +4879,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .label-primary[href]:hover,
 .label-primary[href]:focus {
   background-color: #3071a9;
-}
-
-.span-item-bold {
-    font-weight: bold;
 }
 
 .label-success {
