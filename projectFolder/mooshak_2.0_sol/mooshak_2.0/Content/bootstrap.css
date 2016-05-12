@@ -4877,6 +4877,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   background-color: #3071a9;
 }
 
+.span-item-bold {
+    font-weight: bold;
+}
+
 .label-success {
   background-color: #5cb85c;
 }
