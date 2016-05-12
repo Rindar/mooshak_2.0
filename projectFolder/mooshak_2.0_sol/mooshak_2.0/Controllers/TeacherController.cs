@@ -29,25 +29,26 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult Course(int? id)
         {
-            if (id.HasValue)
+            if (!id.HasValue)
             {
-                var realId = id.Value;
-                var model = _courseService.GetCourseByID(realId);        
-                return View(model);
+                throw new Exception();
             }
-            return RedirectToAction("Error", "Home");
+            
+            var realId = id.Value;
+            var model = _courseService.GetCourseByID(realId);        
+            return View(model);
+
         }
 
         public ActionResult Assignment(int? id)
         {
-            if (id.HasValue)
+            if (!id.HasValue)
             {
-                int realId = id.Value;
-                AssignmentViewModel model = _assignmentService.GetAssignmentById(realId);
-                //List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
-                return PartialView(model);
+                throw new Exception();
             }
-            return RedirectToAction("Error", "Home");
+            int realId = id.Value;
+            AssignmentViewModel model = _assignmentService.GetAssignmentById(realId);
+            return PartialView(model);
         }
 
         public ActionResult Submission()
@@ -91,9 +92,9 @@ namespace mooshak_2._0.Controllers
         public ActionResult CreateAssignment(int? courseId)
         {
             AssignmentViewModel myAssignmentViewModel = new AssignmentViewModel();
-            if (courseId != null)
+            if (courseId.HasValue)
             {
-                myAssignmentViewModel.courseId = (int) courseId;
+                myAssignmentViewModel.courseId = courseId.Value;
             }
             return View(myAssignmentViewModel);
         }
@@ -105,9 +106,8 @@ namespace mooshak_2._0.Controllers
             DateTime getEndDate = DateTime.Parse(Request.Form["endDate"]);
             string getDescription = Request.Form["description"];
             string getInput = Request.Form["input"];
-            String getOutput = Request.Form["output"];
+            string getOutput = Request.Form["output"];
             string getCourseId = Request.Form["courseId"];
-
 
             var dbList = _db.assignments.Create();
             dbList.Title = getTitle;
@@ -127,11 +127,12 @@ namespace mooshak_2._0.Controllers
         public ActionResult CreateMilestone(int? assignmentId)
         {
             MilestoneViewModel  model = new MilestoneViewModel();
-            if (assignmentId.HasValue)
+            if (!assignmentId.HasValue)
             {
-                int realAssignmentId = assignmentId.Value;
-                model.AssignmentId = realAssignmentId;
+                throw new Exception();
             }
+            int realAssignmentId = assignmentId.Value;
+            model.AssignmentId = realAssignmentId;
             return View(model);
         }
 
