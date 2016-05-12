@@ -8,19 +8,13 @@ using mooshak_2._0.Models.Entities;
 
 namespace mooshak_2._0.Models.ViewModels
 {
-    public class AssignmentViewModel :IEnumerable
+    public class AssignmentViewModel
     {
-        public int id { get; set; }
-        public string title { get; set; }
-        public List<MilestoneViewModel> milestones { get; set; }
-        public int courseId { get; set; }
-        public Course partOfCourse { get; set; }
-        public  string description { get; set; }
-
-
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public List<MilestoneViewModel> Milestones { get; set; }
+        public int CourseId { get; set; }
+        public Course PartOfCourse { get; set; }
+        public  string Description { get; set; }
     }
 }

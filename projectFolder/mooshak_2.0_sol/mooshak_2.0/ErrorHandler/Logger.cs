@@ -25,8 +25,8 @@ namespace mooshak_2._0.ErrorHandler
 
         public void Log(Exception e)
         {
-            string logMessage = string.Format("Time: {0} Message: {1} Source: {2} Trace: {3}{4}",
-                DateTime.Now, e.Message, e.Source, e.StackTrace, Environment.NewLine);
+            string logMessage = string.Format("Time: {0} Message: {1} Source: {2} Trace:{3}{4}{3}",
+                DateTime.Now, e.Message, e.Source, Environment.NewLine, e.StackTrace);
 
             string LogPath = ConfigurationManager.AppSettings["LogPath"];
 

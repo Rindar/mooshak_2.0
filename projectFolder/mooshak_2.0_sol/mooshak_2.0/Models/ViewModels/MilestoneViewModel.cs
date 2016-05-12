@@ -12,5 +12,7 @@ namespace mooshak_2._0.Models.ViewModels
         public string Title { get; set; }
         public int Weight { get; set; }
         public int AssignmentId { get; set; }
+        public string Input { get; set; }
+        public string Output { get; set; }
     }
 }

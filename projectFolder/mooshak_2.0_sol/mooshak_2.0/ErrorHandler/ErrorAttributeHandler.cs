@@ -20,7 +20,11 @@ namespace mooshak_2._0.ErrorHandler
             string viewName = "";
 
             // Data doesn't exist
-            if (e is ArgumentNullException)
+            if (e is Exception)
+            {
+                viewName = "Error";
+            }
+            else
             {
                 viewName = "Error";
             }

@@ -7,11 +7,11 @@
 <h2 class="text-center">All Active Courses</h2>
 
 <div class="form-actions">
-    @Html.ActionLink("Create New Course", "AddNewCourse", "Course", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Create New Course", "AddNewCourse", "Course", null, new {@class = "btn btn-info"})
 </div>
 <div class="list-group">
-    <table class="table table-bordered table-condensed">
-        <thead>
+    <table class="table table-bordered table-responsive table-striped table-hover">
+        <thead class="thead-inverse">
             <tr>
                 <th style="text-align: center;">Course Name</th>
                 <th style="text-align: center;">Edit</th>
@@ -34,7 +34,6 @@
         </tbody>
     </table>
 </div>
-
 <script>
     function deleteRow(id)
     {

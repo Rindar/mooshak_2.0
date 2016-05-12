@@ -44,7 +44,6 @@ namespace mooshak_2._0.Controllers
             {
                 int realId = id.Value;
                 AssignmentViewModel model = _assignmentService.GetAssignmentById(realId);
-                //List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
                 return PartialView(model);
             }
             return RedirectToAction("Error", "Home");
@@ -93,7 +92,9 @@ namespace mooshak_2._0.Controllers
             AssignmentViewModel myAssignmentViewModel = new AssignmentViewModel();
             if (courseId != null)
             {
-                myAssignmentViewModel.courseId = (int) courseId;
+                int realCourseId = (int) courseId;
+                myAssignmentViewModel.CourseId = realCourseId;
+                myAssignmentViewModel.Title = _courseService.GetCourseByID(realCourseId).Title;
             }
             return View(myAssignmentViewModel);
         }
@@ -104,8 +105,6 @@ namespace mooshak_2._0.Controllers
             string getTitle = Request.Form["courseTitle"];
             DateTime getEndDate = DateTime.Parse(Request.Form["endDate"]);
             string getDescription = Request.Form["description"];
-            string getInput = Request.Form["input"];
-            String getOutput = Request.Form["output"];
             string getCourseId = Request.Form["courseId"];
 
 
@@ -114,7 +113,9 @@ namespace mooshak_2._0.Controllers
             dbList.Description = getDescription;
             dbList.TimeStarts = DateTime.Now;
             dbList.TimeEnds = getEndDate;
+
             dbList.CourseId = Convert.ToInt32(getCourseId); //FIX
+
 
             _db.assignments.Add(dbList);
             _db.SaveChanges();
@@ -122,21 +123,32 @@ namespace mooshak_2._0.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult CreateMilestone(int? assignmentId)
+        public ActionResult CreateMilestone(int assignmentId)
         {
             MilestoneViewModel  model = new MilestoneViewModel();
-            if (assignmentId.HasValue)
-            {
-                int realAssignmentId = assignmentId.Value;
-                model.AssignmentId = realAssignmentId;
-            }
+            model.AssignmentId = assignmentId;
             return View(model);
         }
 
         [HttpPost]
         public ActionResult CreateMilestone(FormCollection model)
         {
-           
+            int assignmentId = Convert.ToInt32(Request.Form["AssignmentId"]);
+            string title = Request.Form["Title"];
+            int weight = Convert.ToInt32(Request.Form["Weight"]);
+            string input = Request.Form["Input"];
+            String output = Request.Form["Output"];
+
+            var dbList = _db.milestones.Create();
+            dbList.Title = title;
+            dbList.AssignmentId = assignmentId;
+            dbList.Weight = weight;
+            dbList.Input = title;
+            dbList.Output = title;
+
+            _db.milestones.Add(dbList);
+            _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

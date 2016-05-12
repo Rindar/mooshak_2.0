@@ -7,37 +7,32 @@
 }
 
 @{
-    var courseId = Model.courseId;
+    var courseId = Model.CourseId;
 }
 
-<h2>Create Assignment</h2>
-
+<h2>Create Assignment for @Model.Title</h2>
 
 <form action="createAssignment" id="createAssignment" method="POST">
-    <input type="hidden" name="courseId" id="courseId" value="@courseId" form="createAssignment" />
     @Html.AntiForgeryToken()
+    <input type="hidden" name="courseId" id="courseId" value="@courseId" form="createAssignment"/>
+
+    <label for="courseTitle">Name of assignment: </label>
     <fieldset class="form-group">
-        <label for="courseTitle">Name of assignment: </label>
-        <input class="form-control" type="text" id="courseTitle" name="courseTitle" />
+        <input class="form-control" type="text" id="courseTitle" name="courseTitle"/>
     </fieldset>
+
+    <label for="endDate">Ends at: </label>
     <fieldset class="form-group">
-        <label for="endDate">Ends at: </label>
-        <input class="form-control" type="date" id="endDate" name="endDate" />
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="description">Description: </label>
-        <textarea class="form-control" name="description" id="description" form="createAssignment"></textarea>
+        <input class="form-control" type="date" id="endDate" name="endDate"/>
     </fieldset>
 
     <fieldset class="form-group">
-        <label for="input">Input: </label>
-        <textarea class="form-control" name="input" id="input" form="createAssignment"></textarea>
-    </fieldset>
-    <fieldset class="form-group">
-        <label for="output">Output: </label>
-        <textarea class="form-control" name="output" id="output" form="createAssignment"></textarea>
+        <label for="description">Description: </label>
+        <textarea class="form-control vresize " name="description" id="description" form="createAssignment"></textarea>
     </fieldset>
 
     <button type="submit" class="btn btn-primary" id="Create" value="Create">Create</button>
-    @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-primary btn-large" })
+    <div>
+        @Html.ActionLink("Back to List", "Index", new {@class = "btn btn-primary btn-large"})
+    </div>
 </form>

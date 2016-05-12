@@ -15,6 +15,5 @@ namespace mooshak_2._0.Models.Entities
         public DateTime? TimeEnds { get; set; }
         public string Description { get; set; }
 
-
     }
 }
