@@ -55,7 +55,10 @@ namespace mooshak_2._0.Controllers
                 {
                     Course newCourse = new Course()
                     {
-                        name = model.Title
+                        name = model.Title,
+                        description =  model.Description,
+                        id = model.Id,
+                        teacher = model.Teacher
                     };
                     //string newItem = Request.Form["newItem"];
                     if (newCourse.name.IsNullOrWhiteSpace())
@@ -135,10 +138,16 @@ namespace mooshak_2._0.Controllers
         public ActionResult Delete(int id)
         {
             var model = _db.courses.Find(id);
-
+            var userCourseModels = _courseService.GetUsersInSomeCourse(id);
             if(model == null)
             {
                 return HttpNotFound();
+            }
+            foreach (var item in userCourseModels)
+            {
+                //Because of reasons unknown to mankind
+                _db.userCourse.Attach(item);
+                _db.userCourse.Remove(item);
             }
             _db.courses.Remove(model);
             _db.SaveChanges();
@@ -163,23 +172,41 @@ namespace mooshak_2._0.Controllers
         public ActionResult EditCourse(int id)
         {
             //Finds course by the id
-            Course model = _db.courses.Find(id);
-            return View(model);
+            Course course = _db.courses.Find(id);
+            //CourseViewModel courseViewmodel = _courseService.GetCourseByID(id);
+            return View(course);
         }
 
         [HttpPost]
-        public ActionResult EditCourse(Course courses)
+        public ActionResult EditCourse(Course model)
         {
-            string newItem = Request.Form["new_item"];
-
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(courses);
-            }
+                using (_db)
+                {
+                    var courseToChange = _db.courses.Find(model.id);
 
-            courses.name = newItem;
-            _db.Entry(courses).State = EntityState.Modified;
-            _db.SaveChanges();
+                    if (!model.name.IsNullOrWhiteSpace())
+                    {
+                        courseToChange.name = model.name;
+                    }
+                    if (!model.description.IsNullOrWhiteSpace())
+                    {
+                        courseToChange.description = model.description;
+                    }
+                    if (!model.teacher.IsNullOrWhiteSpace())
+                    {
+                        courseToChange.teacher = model.teacher;
+                    }
+                    _db.Entry(courseToChange).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
+                }
+                return RedirectToAction("CourseIndex");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Incorrect format has been placed");
+            }
             return RedirectToAction("CourseIndex");
         }
     }

@@ -1,35 +1,43 @@
 ﻿@model mooshak_2._0.Models.ViewModels.CourseViewModel
 
 @{
-    ViewBag.Title = "Add new course";
+    ViewBag.Title = "Create a course";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2 class="text-center">Create a course</h2>
+<hr />
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
+<form  id="createCourse" method="POST">
+    <fieldset class="form-group">
+        @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Add new course</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        <fieldset class="col-md-10 form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" }, id = "newItem" })
-                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </fieldset>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create course" class="btn btn-default" />
-            </div>
-        </div>
+        <fieldset class="col-md-10 form-group">
+            @Html.LabelFor(model => model.Teacher, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.Teacher, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Teacher, "", new { @class = "text-danger" })
+        </fieldset>
+
+        <fieldset class="col-md-10">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.TextAreaFor(model => model.Description, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </fieldset>
+    </fieldset>
+
+    <div class="form-group">
+        <input type="submit" value="Create course" class="btn btn-default"/>
     </div>
-}
+    
+</form>
 
-<div>
-    @Html.ActionLink("Back to List", "CourseIndex", "Course")
-</div>
+    <div>
+        @Html.ActionLink("Back to List", "CourseIndex", "Course")
+    </div>
