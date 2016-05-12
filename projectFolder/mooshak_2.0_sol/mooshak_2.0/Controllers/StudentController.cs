@@ -9,11 +9,12 @@ using System.Linq;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
+using mooshak_2._0.ErrorHandler;
 
 namespace mooshak_2._0.Controllers
 {
-
     [Authorize(Roles = "student")]
+    [ErrorAttributeHandler]
     public class StudentController : Controller
     {
         readonly CourseService _courseService = new CourseService(new AssignmentsService());
@@ -22,35 +23,34 @@ namespace mooshak_2._0.Controllers
         public ActionResult Index()
         {
             List<CourseViewModel> userCourse = _courseService.GetCoursesByUser(User.Identity.GetUserId());
-            
             return View(userCourse);
-            
         }
 
         public ActionResult Course(int? id)
         {
-            if (id.HasValue)
+            if (!id.HasValue)
             {
-                int realID = id.Value;
-                CourseViewModel model = _courseService.GetCourseByID(realID);
-                return View(model);
+                throw new Exception();
             }
-            return RedirectToAction("Error", "Home");
+            int realID = id.Value;
+            CourseViewModel model = _courseService.GetCourseByID(realID);
+            return View(model);
         }
 
         public ActionResult Assignment(int? id)
         {
-            if (id.HasValue)
+            if (!id.HasValue)
             {
-                int realID = id.Value;
-                AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
-                return View(model);
+                throw new Exception();
             }
-            return RedirectToAction("Error", "Home");
+            int realID = id.Value;
+            AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
+            return View(model);
         }
 
         public ActionResult Submission()
         {
+            if(Request.Files == null) { throw new Exception(); }
             foreach (string upload in Request.Files)
             {
                 //if (!Request.Files[upload].HasFile()) continue;
