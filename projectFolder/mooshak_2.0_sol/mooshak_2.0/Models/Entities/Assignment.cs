@@ -6,20 +6,16 @@ using System.Web;
 
 namespace mooshak_2._0.Models.Entities
 {
-    public class Assignment :IEnumerable
+    public class Assignment
     {
-        public int id { get; set; }
-        public int courseId { get; set; }
-        public string title { get; set; }
-        public DateTime? timeStarts { get; set; }
-        public DateTime? timeEnds { get; set; }
-        public string description { get; set; }
-        public string input { get; set; }
-        public string output { get; set; }
+        public int Id { get; set; }
+        public int CourseId { get; set; }
+        public string Title { get; set; }
+        public DateTime? TimeStarts { get; set; }
+        public DateTime? TimeEnds { get; set; }
+        public string Description { get; set; }
+        public string Input { get; set; }
+        public string Output { get; set; }
 
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

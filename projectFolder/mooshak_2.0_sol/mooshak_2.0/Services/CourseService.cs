@@ -37,10 +37,10 @@ namespace mooshak_2._0.Services
             foreach (var course in allCourses)
             {
                 CourseViewModel courseViewModel = new CourseViewModel();
-                courseViewModel.Title = course.name;
-                courseViewModel.Assignments = _assignmentsService.GetAssignmentsInCourse(course.id);
-                courseViewModel.Id = course.id;
-                courseViewModel.Description = course.description;
+                courseViewModel.Title = course.Title;
+                courseViewModel.Assignments = _assignmentsService.GetAssignmentsInCourse(course.Id);
+                courseViewModel.Id = course.Id;
+                courseViewModel.Description = course.Description;
                     //teacher
                 
                 courseViewModelList.Add(courseViewModel);
@@ -53,7 +53,7 @@ namespace mooshak_2._0.Services
         {
 
             var course = (from courses in _db.courses
-                          where courses.id.Equals(CourseID)
+                          where courses.Id.Equals(CourseID)
                           select courses).SingleOrDefault();
 
             if (course == null)
@@ -65,10 +65,10 @@ namespace mooshak_2._0.Services
 
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new CourseViewModel();
-            viewModel.Id = course.id;
-            viewModel.Title = course.name;
+            viewModel.Id = course.Id;
+            viewModel.Title = course.Title;
             viewModel.Assignments = assignments;
-            viewModel.Description = course.description;
+            viewModel.Description = course.Description;
             return viewModel;
 
         }

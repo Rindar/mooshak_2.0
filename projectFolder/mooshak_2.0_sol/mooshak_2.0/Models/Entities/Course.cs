@@ -6,15 +6,11 @@ using System.Web;
 
 namespace mooshak_2._0.Models.Entities
 {
-    public class Course : IEnumerable
+    public class Course
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public string teacher { get; set; }
-        public IEnumerator GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Teacher { get; set; }
     }
 }

@@ -55,18 +55,18 @@ namespace mooshak_2._0.Controllers
                 {
                     Course newCourse = new Course()
                     {
-                        name = model.Title,
-                        description =  model.Description,
-                        id = model.Id,
-                        teacher = model.Teacher
+                        Title = model.Title,
+                        Description =  model.Description,
+                        Id = model.Id,
+                        Teacher = model.Teacher
                     };
                     //string newItem = Request.Form["newItem"];
-                    if (newCourse.name.IsNullOrWhiteSpace())
+                    if (newCourse.Title.IsNullOrWhiteSpace())
                     {
                         return RedirectToAction("AddNewCourse");
                     }
                     var dbList = _db.courses.Create();
-                    dbList.name = newCourse.name;
+                    dbList.Title = newCourse.Title;
                     _db.courses.Add(dbList);
                     _db.SaveChanges();
                 }
@@ -184,19 +184,19 @@ namespace mooshak_2._0.Controllers
             {
                 using (_db)
                 {
-                    var courseToChange = _db.courses.Find(model.id);
+                    var courseToChange = _db.courses.Find(model.Id);
 
-                    if (!model.name.IsNullOrWhiteSpace())
+                    if (!model.Title.IsNullOrWhiteSpace())
                     {
-                        courseToChange.name = model.name;
+                        courseToChange.Title = model.Title;
                     }
-                    if (!model.description.IsNullOrWhiteSpace())
+                    if (!model.Description.IsNullOrWhiteSpace())
                     {
-                        courseToChange.description = model.description;
+                        courseToChange.Description = model.Description;
                     }
-                    if (!model.teacher.IsNullOrWhiteSpace())
+                    if (!model.Teacher.IsNullOrWhiteSpace())
                     {
-                        courseToChange.teacher = model.teacher;
+                        courseToChange.Teacher = model.Teacher;
                     }
                     _db.Entry(courseToChange).State = System.Data.Entity.EntityState.Modified;
                     _db.SaveChanges();

@@ -110,13 +110,13 @@ namespace mooshak_2._0.Controllers
 
 
             var dbList = _db.assignments.Create();
-            dbList.title = getTitle;
-            dbList.description = getDescription;
-            dbList.timeStarts = DateTime.Now;
-            dbList.timeEnds = getEndDate;
-            dbList.input = getInput;
-            dbList.output = getOutput;
-            dbList.courseId = Convert.ToInt32(getCourseId); //FIX
+            dbList.Title = getTitle;
+            dbList.Description = getDescription;
+            dbList.TimeStarts = DateTime.Now;
+            dbList.TimeEnds = getEndDate;
+            dbList.Input = getInput;
+            dbList.Output = getOutput;
+            dbList.CourseId = Convert.ToInt32(getCourseId); //FIX
 
             _db.assignments.Add(dbList);
             _db.SaveChanges();

@@ -23,7 +23,7 @@ namespace mooshak_2._0.Services
         public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
         {
             var allAssignments = from assignments in _db.assignments
-                                 where assignments.courseId.Equals(courseID)
+                                 where assignments.CourseId.Equals(courseID)
                                  select assignments;
 
             if (allAssignments == null)
@@ -36,13 +36,13 @@ namespace mooshak_2._0.Services
             {
                 var newViewModel = new AssignmentViewModel
                 {
-                    id = assignment.id,
-                    title = assignment.title,
-                    courseId = assignment.courseId,
-                    description = assignment.description,
-                    milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id)
+                    id = assignment.Id,
+                    title = assignment.Title,
+                    courseId = assignment.CourseId,
+                    description = assignment.Description,
+                    milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id)
                 };
-                var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.id);
+                var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id);
                 newViewModel.milestones = milestoneViewList;
                 assignmentViewModelList.Add(newViewModel);
 
@@ -54,7 +54,7 @@ namespace mooshak_2._0.Services
         {
             //Gets an assignment link by the assignmentID to the database ( a single assignment will be recived "single or default")
             var assignment = (from assignments in _db.assignments
-                              where assignments.id.Equals(assignmentId)
+                              where assignments.Id.Equals(assignmentId)
                               select assignments).SingleOrDefault();
 
             if (assignment == null)
@@ -82,8 +82,8 @@ namespace mooshak_2._0.Services
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new AssignmentViewModel
             {
-                id = assignment.id,
-                title = assignment.title,
+                id = assignment.Id,
+                title = assignment.Title,
                 milestones = milestoneViewList
                 
             };
@@ -126,7 +126,7 @@ namespace mooshak_2._0.Services
         public AssignmentViewModel GetSingleAssignmentsInCourse(int courseID, int assignmentId)
         {
             var theAssignment = (from assignments in _db.assignments
-                                 where assignments.courseId.Equals(courseID) && assignments.id.Equals(assignmentId)
+                                 where assignments.CourseId.Equals(courseID) && assignments.Id.Equals(assignmentId)
                                  select assignments).SingleOrDefault();
 
             if (theAssignment == null)
@@ -136,14 +136,14 @@ namespace mooshak_2._0.Services
             
             var newViewModel = new AssignmentViewModel
             {
-                id = theAssignment.id,
-                title = theAssignment.title,
-                courseId = theAssignment.courseId,
-                milestones = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.id)
+                id = theAssignment.Id,
+                title = theAssignment.Title,
+                courseId = theAssignment.CourseId,
+                milestones = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.Id)
                 
             };
 
-            var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.id);
+            var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.Id);
             newViewModel.milestones = milestoneViewList;
 
             return newViewModel;

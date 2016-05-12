@@ -50,14 +50,14 @@ namespace mooshak_2._0.Controllers
         public ActionResult UserCourses()
         {
             var q = (from t in db.courses
-                     select new { t.name });
+                     select new { name = t.Title });
 
             var courses = new List<Course>();
             foreach (var t in q)
             {
                 courses.Add(new Course()
                 {
-                    name = t.name,
+                    Title = t.name,
                 });
             }
             return View(db.courses);
