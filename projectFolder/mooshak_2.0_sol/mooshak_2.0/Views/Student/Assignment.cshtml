@@ -4,7 +4,8 @@
     ViewBag.Title = "Assignment";
 }
 
-<h2>Assignment</h2>
+<h2 class="page-header text-center">@Model.Title</h2>
+<h4 class="page-header text-center">Milestones</h4>
 
 @{
     if(!Model.Milestones.Any())
@@ -16,7 +17,7 @@
         <div class="col-xs-6 col-sm-4">
             <div class="breadcrumb">
                 <h2 class="text-center">@milestone.Title</h2>
-                <p>Description</p>
+                <p class="text-center">@Model.Description</p>
                 <br />
                 <div class="form-horizontal">
                     <p class="text-center">@Html.ActionLink("Details", "Submission", "Student", new { id = milestone.Id }, new { @class = "btn btn-primary btn" })</p>
