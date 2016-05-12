@@ -11,10 +11,12 @@ using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using System.Data.SqlClient;
 using Microsoft.AspNet.Identity;
+using mooshak_2._0.ErrorHandler;
 
 namespace mooshak_2._0.Controllers
 {
     [Authorize(Roles = "teacher")]
+    [ErrorAttributeHandler]
     public class TeacherController : Controller
     {
         readonly CourseService _courseService = new CourseService(new AssignmentsService());
@@ -29,24 +31,24 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult Course(int? id)
         {
-            if (id.HasValue)
+            if (!id.HasValue)
             {
-                var realId = id.Value;
-                var model = _courseService.GetCourseByID(realId);
-                return View(model);
+                return RedirectToAction("Error", "Home");
             }
-            return RedirectToAction("Error", "Home");
+            var realId = id.Value;
+            var model = _courseService.GetCourseByID(realId);
+            return View(model);
         }
 
         public ActionResult Assignment(int? id)
         {
-            if (id.HasValue)
+            if (!id.HasValue)
             {
-                int realId = id.Value;
-                AssignmentViewModel model = _assignmentService.GetAssignmentById(realId);
-                return PartialView(model);
+                throw new EntryPointNotFoundException();
             }
-            return RedirectToAction("Error", "Home");
+            int realId = id.Value;
+            AssignmentViewModel model = _assignmentService.GetAssignmentById(realId);
+            return PartialView(model);
         }
 
         public ActionResult Submission()
@@ -89,13 +91,14 @@ namespace mooshak_2._0.Controllers
 
         public ActionResult CreateAssignment(int? courseId)
         {
-            AssignmentViewModel myAssignmentViewModel = new AssignmentViewModel();
-            if (courseId != null)
+            if (!courseId.HasValue)
             {
-                int realCourseId = (int) courseId;
-                myAssignmentViewModel.CourseId = realCourseId;
-                myAssignmentViewModel.Title = _courseService.GetCourseByID(realCourseId).Title;
+                throw new EntryPointNotFoundException();
             }
+            AssignmentViewModel myAssignmentViewModel = new AssignmentViewModel();
+            int realCourseId = (int) courseId;
+            myAssignmentViewModel.CourseId = realCourseId;
+            myAssignmentViewModel.Title = _courseService.GetCourseByID(realCourseId).Title;
             return View(myAssignmentViewModel);
         }
 
