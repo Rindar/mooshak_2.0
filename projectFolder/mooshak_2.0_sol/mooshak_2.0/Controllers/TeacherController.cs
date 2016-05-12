@@ -44,7 +44,6 @@ namespace mooshak_2._0.Controllers
             {
                 int realId = id.Value;
                 AssignmentViewModel model = _assignmentService.GetAssignmentById(realId);
-                //List<AssignmentViewModel> model = _assignmentService.GetAssignmentsInCourse(realId);
                 return PartialView(model);
             }
             return RedirectToAction("Error", "Home");
@@ -114,7 +113,7 @@ namespace mooshak_2._0.Controllers
             dbList.Description = getDescription;
             dbList.TimeStarts = DateTime.Now;
             dbList.TimeEnds = getEndDate;
-            dbList.CourseId = Convert.ToInt32(getCourseId); //FIX
+            dbList.CourseId = Convert.ToInt32(getCourseId);
 
             _db.assignments.Add(dbList);
             _db.SaveChanges();

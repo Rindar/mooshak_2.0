@@ -14,9 +14,13 @@
 @foreach (var milestone in Model.Milestones)
 {
     <div class="col-xs-6 col-sm-4">
-        <h2>@milestone.Title</h2>
-        <p>Description</p>
-        <br />
-        <p>@Html.ActionLink("Details", "Submission", "Teacher", new { id = milestone.Id }, new { @class = "btn btn-primary btn" })</p>
+        <div class="breadcrumb">
+            <h2>@milestone.Title</h2>
+            <p>Description</p>
+            <br/>
+        <div class="form-horizontal">
+            <p>@Html.ActionLink("Details", "Submission", "Teacher", new {id = milestone.Id}, new {@class = "btn btn-primary btn"})</p>
+        </div>
+        </div>
     </div>
 }
