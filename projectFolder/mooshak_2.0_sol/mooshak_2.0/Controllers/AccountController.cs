@@ -241,7 +241,12 @@ namespace mooshak_2._0.Controllers
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
-            return code == null ? View("Error") : View();
+            string newCode = UserManager.GeneratePasswordResetToken(User.Identity.GetUserId());
+            if (newCode == null)
+            {
+                RedirectToAction("Error", "Home");
+            }
+            return View();
         }
 
         //
