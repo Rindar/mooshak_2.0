@@ -5,17 +5,17 @@
 
 }
 <h2>Submission</h2>
-
-
 <div id="theName">@Html.DisplayFor(modelItem => User.Identity.Name)</div>
-    @using (Html.BeginForm("Submission", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
+<form action="" method="post" enctype="multipart/form-data">
 
-        <input type="file" name="FileUpload1" /><br />
-        <input type="submit" name="Submit" id="Submit" value="Upload" />
-        <input type="hidden" name="user_Title" value="@User.Identity.Name" />
+    <label for="file">Filename:</label>
+    <input type="file" name="file" id="file" />
 
-        //TODO: breyta út user_Title í userTitle
-    }
+    <input type="submit" />
+</form>
+
+
+
+
 
 

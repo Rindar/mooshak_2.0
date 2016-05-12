@@ -114,8 +114,6 @@ namespace mooshak_2._0.Controllers
             dbList.Description = getDescription;
             dbList.TimeStarts = DateTime.Now;
             dbList.TimeEnds = getEndDate;
-            dbList.Input = getInput;
-            dbList.Output = getOutput;
             dbList.CourseId = Convert.ToInt32(getCourseId); //FIX
 
             _db.assignments.Add(dbList);

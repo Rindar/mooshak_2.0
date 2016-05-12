@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "CompilerIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CompilerIndex</h2>
+<div class="row">
+  
+        @using (Html.BeginForm())
+        {
+        <input type="Submit" class="btn-primary" value="Compile Test Code" />
+        }
+    
+        @if (ViewBag.Output != null)
+        {
+            <ul>
+                @foreach (var line in ViewBag.Output)
+                {
+                    <li>@line</li>
+                  
+                }
+            </ul>
+
+        }
+
+    </div>
+
