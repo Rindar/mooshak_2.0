@@ -28,7 +28,7 @@ namespace mooshak_2._0.Services
 
             if (allAssignments == null)
             {
-                //TODO: throw an exeption, an error has occured
+                throw new ArgumentNullException();
             }
             
             var assignmentViewModelList = new List<AssignmentViewModel>();
@@ -131,7 +131,7 @@ namespace mooshak_2._0.Services
 
             if (theAssignment == null)
             {
-                //TODO: throw an exeption, an error has occured
+                throw new ArgumentNullException();
             }
             
             var newViewModel = new AssignmentViewModel

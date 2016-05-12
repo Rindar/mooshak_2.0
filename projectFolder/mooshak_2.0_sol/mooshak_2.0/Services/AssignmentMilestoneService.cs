@@ -44,7 +44,7 @@ namespace mooshak_2._0.Services
 
             if (theMilestone == null)
             {
-                //TODO: throw an exeption, an error has occured
+                throw new ArgumentNullException();
             }
 
             var tempViewModel = new MilestoneViewModel();
