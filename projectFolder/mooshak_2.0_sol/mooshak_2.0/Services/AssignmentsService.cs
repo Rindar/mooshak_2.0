@@ -57,37 +57,19 @@ namespace mooshak_2._0.Services
                               where assignments.Id.Equals(assignmentId)
                               select assignments).SingleOrDefault();
 
-            if (assignment == null)
-            {
-                throw new ArgumentNullException();
-            }
-            var allMilestones = from milestones in _db.milestones
-                                where milestones.assignmentID.Equals(assignmentId)
-                                select milestones;
 
-            var milestoneViewList = new List<MilestoneViewModel>();
-            foreach (var milestone in allMilestones)
-            {
-                var tempViewModel = new MilestoneViewModel();
-                {
-                    tempViewModel.Id = milestone.id;
-                    tempViewModel.Title = milestone.title;
-                    tempViewModel.Weight = milestone.weight;
-                    tempViewModel.AssignmentId = assignmentId;
-                   
-                };
-                milestoneViewList.Add(tempViewModel);
-            }
+            //Throwing exception
+            if (assignment == null) { throw new ArgumentNullException(); }
+
+            var allMilestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id);
 
             //create a viewmodel fot the assignment that has a milestone
             var viewModel = new AssignmentViewModel
             {
                 id = assignment.Id,
                 title = assignment.Title,
-                milestones = milestoneViewList
-                
+                milestones = allMilestones,
             };
-
             return viewModel;
         }
 
@@ -131,7 +113,7 @@ namespace mooshak_2._0.Services
 
             if (theAssignment == null)
             {
-                //TODO: throw an exeption, an error has occured
+                throw new ArgumentNullException();
             }
             
             var newViewModel = new AssignmentViewModel
@@ -142,9 +124,6 @@ namespace mooshak_2._0.Services
                 milestones = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.Id)
                 
             };
-
-            var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(theAssignment.Id);
-            newViewModel.milestones = milestoneViewList;
 
             return newViewModel;
         }
