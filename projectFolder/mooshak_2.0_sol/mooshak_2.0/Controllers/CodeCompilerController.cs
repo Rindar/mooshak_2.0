@@ -19,16 +19,26 @@ namespace mooshak_2._0.Controllers
         [HttpPost]
         public ActionResult CompilerIndex(FormCollection data)
         {
-            var code = "#include <iostream>\n" +
+            /*var code = "#include <iostream>\n" +
                         "using namespace std;\n" +
                         "int main()\n" +
                         "{\n" +
                         "cout << \"Hello World\" << endl;\n" +
                         "cout << \"The Output should contain two lines\" << endl;\n" +
-                        "int a = 5;"+
-                        "cout << a << endl;\n"+
+                        "bool x = true;\n"+
+                        "if(x == true)\n"+
+                        "{\n"+
+                        "cout << \"WHATAP\"<<endl;\n"+
+                        "}\n"+
+                        "else\n"+
+                        "cout << \"fucabits\"<<endl;\n"+
                         "return 0;\n" +
                         "}";
+                        */
+
+            var dasBoot = Server.MapPath("~/App_Data/TestCode/MyCode.txt");
+            string code = System.IO.File.ReadAllText(dasBoot);
+           
             var workingFolder = Server.MapPath("~/App_Data/Solution_Uploads/");
             var cppFileName = "Hello.cpp";
             //directory.createdirectory (so we can create a folder for each user)
