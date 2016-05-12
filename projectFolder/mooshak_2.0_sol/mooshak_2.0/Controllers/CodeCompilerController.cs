@@ -29,7 +29,7 @@ namespace mooshak_2._0.Controllers
                         "cout << a << endl;\n"+
                         "return 0;\n" +
                         "}";
-            var workingFolder = "C:\\Users\\Andri\\Documents\\mooshak_2.0\\projectFolder\\mooshak_2.0_sol\\mooshak_2.0\\App_Data\\Solution_Uploads\\";
+            var workingFolder = Server.MapPath("~/App_Data/Solution_Uploads/");
             var cppFileName = "Hello.cpp";
             //directory.createdirectory (so we can create a folder for each user)
             var exeFilePath = workingFolder + "Hello.exe";
