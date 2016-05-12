@@ -90,11 +90,11 @@ namespace mooshak_2._0.Controllers
             if (file.ContentLength > 0)
             {
                 var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/App_Data/Solution_Uploads"), fileName);
+                var path = Path.Combine(Server.MapPath("~/App_Data/TestCode"), fileName);
                 file.SaveAs(path);
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("CompilerIndex", "CodeCompiler", new { area = "" });
         }
         public ActionResult Sidebar()
         {

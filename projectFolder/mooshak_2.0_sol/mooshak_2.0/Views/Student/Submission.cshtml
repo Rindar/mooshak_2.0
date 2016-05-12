@@ -1,15 +1,38 @@
-﻿
+﻿@model mooshak_2._0.Controllers.CodeCompilerController
 @{
     ViewBag.Title = "Submission";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 <h2>Submission</h2>
+<<<<<<< HEAD
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    <label for="file">Filename:</label>
+
+    <input type="file" name="file" id="file" />
+    <br />
+
+    <input type="submit" class="btn-info" />
+        
+   
+    
+</form>
+
+
+<br />
+
+
+
+
+=======
 
 
 <div id="theName">
     @Html.DisplayFor(modelItem => User.Identity.Name)
 </div>
+>>>>>>> cc9a3653f8b047671a2a460512bbca5a73185ead
 
 @using (Html.BeginForm("Submission", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
