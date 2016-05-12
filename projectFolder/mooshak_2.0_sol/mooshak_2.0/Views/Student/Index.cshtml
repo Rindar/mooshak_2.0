@@ -6,8 +6,13 @@
     ViewBag.Title = "Mooshak - Reykjavík University";
 }
 
+<<<<<<< HEAD
 <h1 class="page-header">Mooshak Fonseca</h1>
 <p>@Html.ActionLink("Submit a solution", "Submission", "Student", new { @class = "btn btn-primary btn-large" })</p>
+=======
+<h1 class="page-header text-center">Mooshak Fonseca</h1>
+
+>>>>>>> cc9a3653f8b047671a2a460512bbca5a73185ead
 @{
     if (!Model.Any())
     {
@@ -18,18 +23,16 @@
         foreach (var course in Model)
         {
             <div class="col-xs-6 col-sm-4">
-                <h2>@course.Title</h2>
-                <p>Here is the description</p>
-                <p>@Html.ActionLink("Details", "Course", "Student", new { id = course.Id }, new { @class = "btn btn-primary btn-large" })</p>
+                <div class="breadcrumb">
+                    <h2 class="text-center">@course.Title</h2>
+                    @*<p>@course.Description</p>*@
+                    <br />
+                    <div class="form-horizontal">
+                        <p class="text-center">@Html.ActionLink("Details", "Course", "Student", new { id = course.Id }, new { @class = "btn btn-primary btn-large" })</p>
+                    </div>
+                </div>
             </div>
         }
     }
 }
-@*
-    <div class="col-sm-3 col-md-2 sidebar">
-        <ul class="nav nav-sidebar">
-            <li>@Html.ActionLink("Submit Solution", "Submission", "Student")</li>
 
-        </ul>
-    </div>
-*@

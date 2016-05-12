@@ -16,12 +16,12 @@
 
             <div class="breadcrumb">
                 <div class="overflow">
-                    <h2>@course.Title</h2>
+                    <h2 class="text-center">@course.Title</h2>
                 </div>
-                <p class="container-fluid">@course.Description</p>
+                @*<p class="container-fluid">@course.Description</p>*@
                 <br/>
                 <div class="form-horizontal">
-                    <p>@Html.ActionLink("Details", "Course", "Teacher", new {id = course.Id}, new {@class = "btn btn-primary btn-large"})</p>
+                    <p class="text-center">@Html.ActionLink("Details", "Course", "Teacher", new {id = course.Id}, new {@class = "btn btn-primary btn-large"})</p>
                 </div>
             </div>
 
