@@ -1,11 +1,11 @@
 ﻿@model mooshak_2._0.Models.ViewModels.MilestoneViewModel
 
 @{
-    ViewBag.Title = "CreateMilestone";
+    ViewBag.Title = "Create a Milestone";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateMilestone</h2>
+<h2>Create a milestone</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -51,12 +51,10 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default"/>
+                    @Html.ActionLink("Cancel", "Assignment", new { id = Model.AssignmentId }, new { @class = "btn btn-danger btn-inline-right" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

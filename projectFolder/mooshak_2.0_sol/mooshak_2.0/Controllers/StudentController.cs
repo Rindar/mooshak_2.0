@@ -33,7 +33,7 @@ namespace mooshak_2._0.Controllers
                 throw new EntryPointNotFoundException();
             }
             int realID = id.Value;
-            CourseViewModel model = _courseService.GetCourseByID(realID);
+            CourseViewModel model = _courseService.GetCourseById(realID);
             return View(model);
         }
 

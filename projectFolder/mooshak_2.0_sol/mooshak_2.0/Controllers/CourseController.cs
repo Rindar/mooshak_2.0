@@ -12,6 +12,7 @@ using System.Security.Claims;
 using mooshak_2._0.Models.ViewModels;
 using System.Collections;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 
@@ -32,7 +33,7 @@ namespace mooshak_2._0.Controllers
         //the method that is called to see details for an assignment
         public ActionResult Details(int id)
         {
-            var viewModel = _courseService.GetCourseByID(id); // creates a viewmodel for the assignment
+            var viewModel = _courseService.GetCourseById(id); // creates a viewmodel for the assignment
             return View(viewModel);
         }
         
@@ -80,7 +81,7 @@ namespace mooshak_2._0.Controllers
         {
             AllUsersAndSomeCourseViewModel allUsersAndSomeCourseViewModel = new AllUsersAndSomeCourseViewModel()
             {
-                TheCourse = _courseService.GetCourseByID(id),
+                TheCourse = _courseService.GetCourseById(id),
                 ListOfUsers = _db.Users.ToList(),
                 AllUsersInCourse = _courseService.GetUsersInSomeCourse(id)
              };
@@ -169,9 +170,16 @@ namespace mooshak_2._0.Controllers
         public ActionResult EditCourse(int id)
         {
             //Finds course by the id
-            Course course = _db.courses.Find(id);
-            //CourseViewModel courseViewmodel = _courseService.GetCourseByID(id);
-            return View(course);
+            if (_db.courses != null)
+            {
+                Course course = _db.courses.Find(id);
+                //CourseViewModel courseViewmodel = _courseService.GetCourseByID(id);
+                return View(course);
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
         }
 
         [HttpPost]

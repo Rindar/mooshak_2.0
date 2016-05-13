@@ -36,7 +36,7 @@ namespace mooshak_2._0.Controllers
                 return RedirectToAction("Error", "Home");
             }
             var realId = id.Value;
-            var model = _courseService.GetCourseByID(realId);
+            var model = _courseService.GetCourseById(realId);
             return View(model);
         }
 
@@ -98,7 +98,7 @@ namespace mooshak_2._0.Controllers
             AssignmentViewModel myAssignmentViewModel = new AssignmentViewModel();
             int realCourseId = (int) courseId;
             myAssignmentViewModel.CourseId = realCourseId;
-            myAssignmentViewModel.Title = _courseService.GetCourseByID(realCourseId).Title;
+            myAssignmentViewModel.Title = _courseService.GetCourseById(realCourseId).Title;
             return View(myAssignmentViewModel);
         }
 
