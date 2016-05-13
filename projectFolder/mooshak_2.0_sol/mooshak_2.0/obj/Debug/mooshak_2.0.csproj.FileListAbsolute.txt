@@ -432,3 +432,11 @@ C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\ob
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csproj.GenerateResource.Cache
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.dll
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.pdb
+E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Net.Http.Formatting.dll
+E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Web.Http.dll
+E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Web.Http.WebHost.dll
+E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Net.Http.Formatting.xml
+E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Web.Http.xml
+E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\System.Web.Http.WebHost.xml
+E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2._0.Migrations.SorryGuys.resources
+E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csproj.GenerateResource.Cache
