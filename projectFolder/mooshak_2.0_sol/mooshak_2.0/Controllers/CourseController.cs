@@ -77,13 +77,22 @@ namespace mooshak_2._0.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddToCourse(int id)
+        public ActionResult AddToCourse(int? id)
         {
+            int realId;
+            if (id != null)
+            {
+                realId = (int) id;
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
             AllUsersAndSomeCourseViewModel allUsersAndSomeCourseViewModel = new AllUsersAndSomeCourseViewModel()
             {
-                TheCourse = _courseService.GetCourseById(id),
+                TheCourse = _courseService.GetCourseById(realId),
                 ListOfUsers = _db.Users.ToList(),
-                AllUsersInCourse = _courseService.GetUsersInSomeCourse(id)
+                AllUsersInCourse = _courseService.GetUsersInSomeCourse(realId)
              };
             return View(allUsersAndSomeCourseViewModel);
         }
@@ -96,7 +105,6 @@ namespace mooshak_2._0.Controllers
                 using (_db)
                 {
                     var newConnection = _db.userCourse.Create();
-                    //var theUser = db.Users.Find(model.selectedUserId).ToString();
                     string theUserId = model.SelectedUserId;
 
                     newConnection.userId = theUserId;
@@ -105,18 +113,12 @@ namespace mooshak_2._0.Controllers
                         return Redirect("/Course/AddToCourse/" + model.TheCourse.Id);
                     }
                     
-                    //TODO: If user is already in course, dont add him 
-                    /*if (model.theCourse.ID == db.userCourse.Find(theUserId).id)
-                    {
-                        System.Diagnostics.Debug.WriteLine("works");
-                    }*/
                     var allUsersInCourse = _courseService.GetUsersInSomeCourse(model.TheCourse.Id);
                     foreach (var user in allUsersInCourse)
                     {
                         //Check if user is already in the course
                         if (theUserId == user.userId)
                         {
-                            //TODO: Alert user is already in course
                             return Redirect("/Course/AddToCourse/" + model.TheCourse.Id);
                         }
                     }
@@ -126,12 +128,10 @@ namespace mooshak_2._0.Controllers
                     _db.SaveChanges();
                 }
             }
-            //TODO: Redirect to the same course again
             //Redirect back to the same page
             return Redirect("/Course/AddToCourse/" + model.TheCourse.Id);
         }
-
-
+        
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -143,7 +143,7 @@ namespace mooshak_2._0.Controllers
             }
             foreach (var item in userCourseModels)
             {
-                //Because of reasons unknown to mankind
+                //Because of reasons unknown
                 _db.userCourse.Attach(item);
                 _db.userCourse.Remove(item);
             }
