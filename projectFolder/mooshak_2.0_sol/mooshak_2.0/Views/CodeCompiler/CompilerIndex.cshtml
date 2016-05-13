@@ -2,35 +2,55 @@
 @{
     ViewBag.Title = "CompilerIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
+  
 }
 
-<h2>CompilerIndex</h2>
+<h2 class="page-header">Your solution</h2>
 <div class="row">
+    @using (Html.BeginForm())
+    {
+            <input type="hidden" name="milestoneId" value="@Model.Id">
 
-    <p class="text-center font-large">Output: @Model.Output<p>
-        @using (Html.BeginForm())
-        {
-            <div id="hide">
-                <input type="number" name="milestoneId" value="@Model.Id">
-            </div>
-        <input type="Submit" class="btn-primary" value="Compile Test Code" />
-        }
-    
-        @if (ViewBag.Output != null) {
-            <ul>
-
-                @foreach (var line in ViewBag.Output)
-                {
-                    <li>@line</li>
-      
-                }
-            </ul>
-        }
-    </div>
-
-
-<style type="text/css">
-    #hide {
-        visibility: hidden;
+            <input type="Submit" class="btn btn-success" value="Compile Test Code" />
     }
-</style>
+    <br />
+    @{ 
+        var solutionOutput = Model.Output;
+        //var lineCount = Length(solutionOutput);
+
+    }
+        @if (ViewBag.Output != null)
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>Your Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        @foreach (var line in ViewBag.Output)
+                        {
+                            <tr>
+                                <td>@line</td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+        }
+        <table>
+                <thead>
+                    <tr>
+                        <th>Expected Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @solutionOutput
+                        </td>
+                    </tr>
+                    
+                </tbody>
+        </table>
+    </div>

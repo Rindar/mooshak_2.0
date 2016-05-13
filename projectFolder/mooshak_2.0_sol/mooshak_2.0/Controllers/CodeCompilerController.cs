@@ -1,4 +1,6 @@
-﻿using mooshak_2._0.Models.ViewModels;
+﻿using mooshak_2._0.ErrorHandler;
+using mooshak_2._0.Models;
+using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using System;
 using System.Collections.Generic;
@@ -10,9 +12,12 @@ using System.Web.Mvc;
 
 namespace mooshak_2._0.Controllers
 {
+    [ErrorAttributeHandler]
+    [Authorize]
     public class CodeCompilerController : Controller
     {
         // GET: CodeCompiler
+        Dbcontext _db = new Dbcontext();
         readonly CourseService _courseService = new CourseService(new AssignmentsService());
         readonly AssignmentsService _assignmentService = new AssignmentsService();
         readonly AssignmentMilestoneService _assignmentMilestoneService = new AssignmentMilestoneService();
@@ -28,19 +33,27 @@ namespace mooshak_2._0.Controllers
         }
         [HttpPost]
         public ActionResult CompilerIndex(FormCollection data)
-        { 
-            var dasBoot = Server.MapPath("~/App_Data/TestCode/MyCode.txt");
-            string code = System.IO.File.ReadAllText(dasBoot);
+        {
+            string stringToParse = Request.Form["milestoneId"];
+            int milestoneId = int.Parse(stringToParse);
+            var userName = User.Identity.Name;
+            var cppFileName = userName + ".cpp";
+            var tableData = (from theFileName in _db.submissions
+                             where theFileName.MileStoneId.Equals(milestoneId) && theFileName.UserName.Equals(userName)
+                             select theFileName).FirstOrDefault();
+            var fileName = tableData.FileName;
+
+            var thePath = Server.MapPath("~/App_Data/TestCode/" + fileName);
+            string code = System.IO.File.ReadAllText(thePath);
             
             var workingFolder = Server.MapPath("~/App_Data/Solution_Uploads/");
-            var cppFileName = "Hello.cpp";
+            
             //directory.createdirectory (so we can create a folder for each user)
-            var exeFilePath = workingFolder + "Hello.exe";
+            var exeFilePath = workingFolder + userName + ".exe";
 
             System.IO.File.WriteAllText(workingFolder + cppFileName, code);
             var compilerFolder = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\";
-            string stringToParse = Request.Form["milestoneId"];
-            int milestoneId = int.Parse(stringToParse);
+            
           
             Process compiler = new Process();
             compiler.StartInfo.FileName                 = "cmd.exe";
@@ -56,11 +69,9 @@ namespace mooshak_2._0.Controllers
             string output = compiler.StandardOutput.ReadToEnd();
             compiler.WaitForExit();
             compiler.Close();
-
-
+            
             if(System.IO.File.Exists(exeFilePath))
             {
-
                 var processInfoExe = new ProcessStartInfo(exeFilePath, "");
                 processInfoExe.UseShellExecute          = false;
                 processInfoExe.RedirectStandardOutput   = true;
@@ -79,7 +90,6 @@ namespace mooshak_2._0.Controllers
                     ViewBag.Output = lines;
                 }
             }
-            
             MilestoneViewModel model = _assignmentMilestoneService.GetSingleMilestoneInAssignment(milestoneId);
             return View(model);
         }

@@ -1,10 +1,9 @@
-﻿@model mooshak_2._0.Models.ViewModels.AssignmentViewModel
+﻿@model mooshak_2._0.Models.ViewModels.MilestoneViewModel
 @{
     ViewBag.Title = "Submission";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
-<h2>Submit Solution</h2>
+<h2 class="page-header">Submit Solution</h2>
 
 
 <form action="" method="post" enctype="multipart/form-data">
@@ -13,23 +12,13 @@
     <input type="file" name="file" id="file" />
  
     <div id="hide">
-        <input type="number" name="MileStoneId" value="@Model.Id">
+        <input type="hidden" name="MileStoneId" value="@Model.Id">
     </div>
  
-    <input type="submit" class="btn-info" />
-    
+    <input type="submit" class="btn btn-primary" />
 </form>
-
-
 <br />
 
-<style type="text/css">
-    #hide
-    {
-        
-        visibility:hidden;
-    }
-</style>
 
 
 

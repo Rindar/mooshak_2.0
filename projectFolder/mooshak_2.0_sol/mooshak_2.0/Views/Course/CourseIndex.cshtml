@@ -4,29 +4,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-center">All active courses</h2>
+<h2 class="text-center page-header">All active courses</h2>
 
 <div class="form-actions">
     @Html.ActionLink("Create New Course", "AddNewCourse", "Course", null, new {@class = "btn btn-info"})
 </div>
 <div class="list-group">
     <table class="table table-bordered table-responsive table-striped table-hover">
-        <thead class="thead-inverse">
+        <thead>
             <tr>
-                <th style="text-align: center;">Course Name</th>
-                <th style="text-align: center;">Edit</th>
-                <th style="text-align: center;">Add Users</th>
-                <th style="text-align: center;">Delete</th>
+                <th class="text-center">Course Name</th>
+                <th class="text-center">Edit</th>
+                <th class="text-center">Add Users</th>
+                <th class="text-center">Delete</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
-                    <td style="text-align: center;">@Html.DisplayFor(modelItem => item.Title)</td>
-                    <td style="text-align: center;"><a href="@Url.Action("EditCourse", "Course")/@Html.DisplayFor(modelItem => item.Id)">Edit</a></td>
-                    <td style="text-align: center;"><a href="@Url.Action("AddToCourse", "Course")/@Html.DisplayFor(modelItem => item.Id)">Add to course</a></td>
-                    <td style="text-align: center;"><a class="pointer-arrow" onclick="deleteRow(@Html.DisplayFor(modelItem => item.Id))">Delete</a></td>
+                    <td class="text-center">@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td class="text-center"><a href="@Url.Action("EditCourse", "Course")/@Html.DisplayFor(modelItem => item.Id)">Edit</a></td>
+                    <td class="text-center"><a href="@Url.Action("AddToCourse", "Course")/@Html.DisplayFor(modelItem => item.Id)">Add to course</a></td>
+                    <td class="text-center"><a class="pointer-arrow" onclick="deleteRow(@Html.DisplayFor(modelItem => item.Id))">Delete</a></td>
                 </tr>
             }
         </tbody>

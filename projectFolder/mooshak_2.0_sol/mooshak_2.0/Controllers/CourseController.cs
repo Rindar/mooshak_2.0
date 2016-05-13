@@ -15,9 +15,12 @@ using System.Web.Security;
 using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
+using mooshak_2._0.ErrorHandler;
 
 namespace mooshak_2._0.Controllers
 {
+    [ErrorAttributeHandler]
+
     [Authorize(Roles = "admin")]
     public class CourseController : Controller
     {

@@ -1,4 +1,5 @@
-﻿using mooshak_2._0.Services;
+﻿using mooshak_2._0.ErrorHandler;
+using mooshak_2._0.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace mooshak_2._0.Controllers
 {
+    [ErrorAttributeHandler]
     public class AssignmentsController : Controller
     {
         private readonly AssignmentsService _service = new AssignmentsService();

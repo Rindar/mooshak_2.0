@@ -11,9 +11,11 @@ using mooshak_2._0.Models.ViewModels;
 using mooshak_2._0.Services;
 using mooshak_2._0.Models.Entities;
 using System.Data.Entity;
+using mooshak_2._0.ErrorHandler;
 
 namespace mooshak_2._0.Controllers
 {
+    [ErrorAttributeHandler]
     [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {

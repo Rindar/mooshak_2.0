@@ -19,6 +19,7 @@ namespace mooshak_2._0.Controllers
     {
         readonly CourseService _courseService = new CourseService(new AssignmentsService());
         readonly AssignmentsService _assignmentService = new AssignmentsService();
+        readonly AssignmentMilestoneService _assignmentMilestoneService = new AssignmentMilestoneService();
         // GET: Student
         public ActionResult Index()
         {
@@ -82,7 +83,8 @@ namespace mooshak_2._0.Controllers
         public ActionResult Submission(int ? id)
         {
             int realID = id.Value;
-            AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
+            //AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
+            MilestoneViewModel model = _assignmentMilestoneService.GetSingleMilestoneInAssignment(realID);
             return View(model);
         }
         [HttpPost]
@@ -94,8 +96,8 @@ namespace mooshak_2._0.Controllers
             {
                 file.SaveAs(path);
             }
-            
-            string fileName = path;
+            string fileName = file.FileName;
+            string filePath = path;
             string theUserName = User.Identity.Name;
             string stringToParse = Request.Form["MileStoneId"];
             int mileStoneId = int.Parse(stringToParse);
@@ -103,13 +105,14 @@ namespace mooshak_2._0.Controllers
             const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
             using (var conn = new SqlConnection(connect))
             {
-                var qry = "INSERT INTO Submissions (FileName,UserName,MileStoneId) VALUES (@FileName,@UserName,@MileStoneId)";
+                var qry = "INSERT INTO Submissions (FilePath,UserName,MileStoneId,FileName) VALUES (@FilePath,@UserName,@MileStoneId,@FileName)";
                 var cmd = new SqlCommand(qry, conn);
                 
-                cmd.Parameters.AddWithValue("@FileName", fileName);
+                cmd.Parameters.AddWithValue("@FilePath", filePath);
                 cmd.Parameters.AddWithValue("@UserName", theUserName);
                 cmd.Parameters.AddWithValue("@MileStoneId", mileStoneId);
-                
+                cmd.Parameters.AddWithValue("@FileName", fileName);
+
                 conn.Open();
                 cmd.ExecuteNonQuery();
 
