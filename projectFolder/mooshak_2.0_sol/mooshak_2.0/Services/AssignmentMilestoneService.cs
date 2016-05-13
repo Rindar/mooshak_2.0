@@ -36,10 +36,10 @@ namespace mooshak_2._0.Services
             return milestoneViewList;
         }
 
-        public MilestoneViewModel GetSingleAssignmentsInCourse(int assignmentId)
+        public MilestoneViewModel GetSingleMilestoneInAssignment(int milestoneId)
         {
             var theMilestone = (from milestone in _db.milestones
-                where milestone.AssignmentId.Equals(assignmentId)
+                where milestone.Id.Equals(milestoneId)
                 select milestone).SingleOrDefault();
 
             if (theMilestone == null)
@@ -51,10 +51,14 @@ namespace mooshak_2._0.Services
             tempViewModel.Id = theMilestone.Id;
             tempViewModel.Title = theMilestone.Title;
             tempViewModel.Weight = theMilestone.Weight;
-            tempViewModel.AssignmentId = assignmentId;
+            tempViewModel.AssignmentId = milestoneId;
+            tempViewModel.Output = theMilestone.Output;
+            tempViewModel.Input = theMilestone.Input;
+            
 
             return tempViewModel;
 
         }
+      
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model mooshak_2._0.Models.ViewModels.MilestoneViewModel
 @{
     ViewBag.Title = "CompilerIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,14 +6,19 @@
 
 <h2>CompilerIndex</h2>
 <div class="row">
-  
+
+    <p class="text-center font-large">Output: @Model.Output<p>
         @using (Html.BeginForm())
         {
+            <div id="hide">
+                <input type="number" name="milestoneId" value="@Model.Id">
+            </div>
         <input type="Submit" class="btn-primary" value="Compile Test Code" />
         }
     
-        @if (ViewBag.Output != null) { 
+        @if (ViewBag.Output != null) {
             <ul>
+
                 @foreach (var line in ViewBag.Output)
                 {
                     <li>@line</li>
@@ -23,3 +28,9 @@
         }
     </div>
 
+
+<style type="text/css">
+    #hide {
+        visibility: hidden;
+    }
+</style>

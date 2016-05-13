@@ -1,4 +1,6 @@
-﻿using System;
+﻿using mooshak_2._0.Models.ViewModels;
+using mooshak_2._0.Services;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,17 +13,25 @@ namespace mooshak_2._0.Controllers
     public class CodeCompilerController : Controller
     {
         // GET: CodeCompiler
-
-        public ActionResult CompilerIndex()
+        readonly CourseService _courseService = new CourseService(new AssignmentsService());
+        readonly AssignmentsService _assignmentService = new AssignmentsService();
+        readonly AssignmentMilestoneService _assignmentMilestoneService = new AssignmentMilestoneService();
+        public ActionResult CompilerIndex(int ? id)
         {
-            return View();
+            if (!id.HasValue)
+            {
+                throw new EntryPointNotFoundException();
+            }
+            int realID = id.Value;
+            MilestoneViewModel model = _assignmentMilestoneService.GetSingleMilestoneInAssignment(realID);
+            return View(model);
         }
         [HttpPost]
         public ActionResult CompilerIndex(FormCollection data)
         { 
             var dasBoot = Server.MapPath("~/App_Data/TestCode/MyCode.txt");
             string code = System.IO.File.ReadAllText(dasBoot);
-           
+            
             var workingFolder = Server.MapPath("~/App_Data/Solution_Uploads/");
             var cppFileName = "Hello.cpp";
             //directory.createdirectory (so we can create a folder for each user)
@@ -29,8 +39,9 @@ namespace mooshak_2._0.Controllers
 
             System.IO.File.WriteAllText(workingFolder + cppFileName, code);
             var compilerFolder = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\";
-
-
+            string stringToParse = Request.Form["milestoneId"];
+            int milestoneId = int.Parse(stringToParse);
+          
             Process compiler = new Process();
             compiler.StartInfo.FileName                 = "cmd.exe";
             compiler.StartInfo.WorkingDirectory         = workingFolder;
@@ -68,7 +79,9 @@ namespace mooshak_2._0.Controllers
                     ViewBag.Output = lines;
                 }
             }
-            return View();
+            
+            MilestoneViewModel model = _assignmentMilestoneService.GetSingleMilestoneInAssignment(milestoneId);
+            return View(model);
         }
     }
 }

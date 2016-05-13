@@ -98,7 +98,7 @@ namespace mooshak_2._0.Controllers
             string fileName = path;
             string theUserName = User.Identity.Name;
             string stringToParse = Request.Form["MileStoneId"];
-            int MileStoneId = int.Parse(stringToParse);
+            int mileStoneId = int.Parse(stringToParse);
           
             const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
             using (var conn = new SqlConnection(connect))
@@ -108,12 +108,12 @@ namespace mooshak_2._0.Controllers
                 
                 cmd.Parameters.AddWithValue("@FileName", fileName);
                 cmd.Parameters.AddWithValue("@UserName", theUserName);
-                cmd.Parameters.AddWithValue("@MileStoneId", MileStoneId);
+                cmd.Parameters.AddWithValue("@MileStoneId", mileStoneId);
                 
                 conn.Open();
                 cmd.ExecuteNonQuery();
 
-                return RedirectToAction("CompilerIndex", "CodeCompiler", new { area = "" });
+                return RedirectToAction("CompilerIndex", "CodeCompiler", new { id = mileStoneId });
             }
         }
         public ActionResult Sidebar()
