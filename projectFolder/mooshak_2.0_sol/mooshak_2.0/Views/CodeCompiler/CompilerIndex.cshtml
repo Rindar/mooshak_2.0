@@ -12,12 +12,12 @@
         <input type="Submit" class="btn-primary" value="Compile Test Code" />
         }
     
-        @if (ViewBag.Output != null)
-        {
+        @if (ViewBag.Output != null) { 
             <ul>
                 @foreach (var line in ViewBag.Output)
                 {
                     <li>@line</li>
+      
                 }
             </ul>
         }
