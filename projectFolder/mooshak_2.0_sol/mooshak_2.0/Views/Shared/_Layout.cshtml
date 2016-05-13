@@ -16,19 +16,9 @@
     @{
         Html.RenderAction("Navbar", "Home");
     }
-    <div class="container-fluid">
-        <div class="row">
-            @{
-                if (User.IsInRole("admin"))
-                {
-                    Html.RenderPartial("~/Views/Shared/_SideBarAdmin.cshtml");
-                }
-            }
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main container body-content">
-                @RenderBody()
-               
-            </div>
-        </div>
+
+    <div class="container">
+        @RenderBody()     
     </div>
 
     <footer></footer>

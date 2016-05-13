@@ -18,18 +18,15 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="hidden active">
-                    <a href="#page-top"></a>
-                </li>
-                <li>
-                @Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })
-                </li>
-                <li>
-                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
-                </li>
+            <ul class="nav navbar-nav navbar-left">
                 @{
-                    if (Model != null & (User.IsInRole("teacher") || User.IsInRole("student"))) { 
+                    if(User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Users", "Userlist", "Admin", new { area = "" }, new { @class = "list item in nav bar" })</li>
+                        <li>@Html.ActionLink("Courses", "CourseIndex", "Course", new { area = "" }, new { @class = "list item in nav bar" })</li>
+                    }
+
+                    if (Model != null & (User.IsInRole("teacher") || User.IsInRole("student"))) {
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses<span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -38,7 +35,7 @@
                                     foreach (var course in Model)
                                     {
                                         <li>
-                                            @Html.ActionLink(course.Title, "Course", "Teacher", new { id = course.Id }, new { })
+                                            @Html.ActionLink(course.Title, "Course", "Teacher", new { id = course.Id }, new { @class = "list item in nav bar" })
                                         </li>
                                     }
                                 }
@@ -47,30 +44,37 @@
                                     foreach (var course in Model)
                                     {
                                         <li>
-                                            @Html.ActionLink(course.Title, "Course", "Student", new { id = course.Id }, new { })
+                                            @Html.ActionLink(course.Title, "Course", "Student", new { id = course.Id }, new { @class = "list item in nav bar" })
                                         </li>
                                     }
                                 }
                             </ul>
                         </li>
+                        }
                     }
-                    if (Request.IsAuthenticated)
-                    {
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">@User.Identity.GetUserName() <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <!--TODO: tengja action link við account settings page-->
-                                <li><a href="#">Account Settings</a></li>
-                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "list item in nav bar" }))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
-                                }
-                            </ul>
-                        </li>
-                    }
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden active">
+                    <a href="#page-top"></a>
+                </li>
+                <li>@Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
+                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
+                    
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">@User.Identity.GetUserName() <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <!--TODO: tengja action link við account settings page-->
+                            <li><a href="#">Account Settings</a></li>
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "list item in nav bar" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
+                            }
+                        </ul>
+                    </li>
                 }
-
             </ul>
         </div>
         <!-- /.navbar-collapse -->
