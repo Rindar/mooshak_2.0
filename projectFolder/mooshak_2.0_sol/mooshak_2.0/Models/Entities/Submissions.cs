@@ -10,9 +10,8 @@ namespace mooshak_2._0.Models.Entities
     {
         public int Id { get; set; }
         public string FileName { get; set; }
-     
+        public  int AssignmentId { get; set; }
         public string UserName { get; set; }
-        //public int AssignmentId { get; set; }
         public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();
