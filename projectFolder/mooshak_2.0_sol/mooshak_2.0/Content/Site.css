@@ -10,3 +10,7 @@
 .span-item-bold {
     font-weight: bold;
 }
+
+.pointer-arrow:hover{
+    cursor:pointer;
+}
