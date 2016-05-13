@@ -4,8 +4,11 @@
     ViewBag.Title = Model.Title;
 }
 
-<h2 class="text-center">All assignments in @Model.Title</h2>
-<p>@Model.Description</p>
+<div class="jumbotron">
+    <h1 class="page-header text-center">@Model.Title</h1>
+    <h2 class="page-header text-center">Assignments</h2>
+</div>
+
 
 @{
     if(!Model.Assignments.Any())

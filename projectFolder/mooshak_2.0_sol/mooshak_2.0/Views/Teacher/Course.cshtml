@@ -5,7 +5,13 @@
     ViewBag.Title = Model.Title;
 }
 
-<h2 class="page-header text-center">@Model.Title</h2>
+<div class="jumbotron">
+    <h1 class="page-header text-center">@Model.Title</h1>
+    <h2 class="page-header text-center">Assignments</h2>
+</div>
+
+
+
 @{
     if(!Model.Assignments.Any())
     {

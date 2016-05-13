@@ -5,7 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="text-center">All Milestones</h2>
+<div class="jumbotron">
+    <h1 class="page-header text-center">@Model.Title</h1>
+    <h2 class="page-header text-center">Milestones</h2>
+</div>
 
 <div class="form-actions">
     @Html.ActionLink("Create New Milestone", "CreateMilestone", "Teacher", new {assignmentId = Model.Id}, new {@class = "btn btn-info"})
