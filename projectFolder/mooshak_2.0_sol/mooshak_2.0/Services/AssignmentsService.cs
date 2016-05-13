@@ -84,8 +84,8 @@ namespace mooshak_2._0.Services
             {
                 Id = assignment.Id,
                 Title = assignment.Title,
+                CourseId = assignment.CourseId,
                 Milestones = milestoneViewList
-                
             };
 
             return viewModel;

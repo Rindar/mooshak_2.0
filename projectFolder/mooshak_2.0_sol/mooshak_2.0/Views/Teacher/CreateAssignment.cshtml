@@ -24,7 +24,7 @@
     <label for="endDate">Ends at: </label>
     <fieldset class="form-group">
         <input class="form-control" type="date" id="endDate" name="endDate"/>
-    </fieldset>
+    </fieldset> 
 
     <fieldset class="form-group">
         <label for="description">Description: </label>
@@ -33,6 +33,6 @@
 
     <button type="submit" class="btn btn-primary" id="Create" value="Create">Create</button>
     <div>
-        @Html.ActionLink("Back to List", "Index", new {@class = "btn btn-primary btn-large"})
+        @Html.ActionLink("Cancel", "Course", new { id = courseId }, new {@class = "btn btn-danger btn-inline-right"})
     </div>
 </form>

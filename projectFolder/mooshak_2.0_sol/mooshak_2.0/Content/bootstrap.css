@@ -4848,6 +4848,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   border-radius: .25em;
 }
 
+.span-item-bold {
+    font-weight: bold;
+}
+
 .label[href]:hover,
 .label[href]:focus {
   color: #ffffff;
