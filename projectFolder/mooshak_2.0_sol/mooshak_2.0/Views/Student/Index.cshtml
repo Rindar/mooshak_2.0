@@ -6,17 +6,16 @@
     ViewBag.Title = "Mooshak - Reykjavík University";
 }
 
-
-<h1 class="page-header">Mooshak Fonseca</h1>
-
-
-<h1 class="page-header text-center">Mooshak Fonseca</h1>
+<div class="jumbotron">
+    <h1 class="page-header text-center">Mooshak Fonseca</h1>
+    <h2 class="page-header text-center">Courses</h2>
+</div>
 
 
 @{
     if (!Model.Any())
     {
-        <div class="alert">We're sorry but you aren't in any courses</div>
+        <div class="row">We're sorry but you aren't in any courses</div>
     }
     else
     {

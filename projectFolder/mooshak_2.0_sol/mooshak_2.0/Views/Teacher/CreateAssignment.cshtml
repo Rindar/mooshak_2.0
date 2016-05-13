@@ -9,8 +9,10 @@
 @{
     var courseId = Model.CourseId;
 }
-
-<h2>Create Assignment for @Model.Title</h2>
+<div class="jumbotron">
+    <h1 class="page-header text-center">@Model.Title</h1>
+    <h2 class="page-header text-center">Create Assignment</h2>
+</div>
 
 <form action="createAssignment" id="createAssignment" method="POST">
     @Html.AntiForgeryToken()

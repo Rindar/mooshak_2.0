@@ -5,7 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create a milestone</h2>
+<div class="jumbotron">
+    <h1 class="page-header text-center">@Model.Title</h1>
+    <h2 class="page-header text-center">Create Milestone</h2>
+</div>
 
 @using (Html.BeginForm()) 
 {
