@@ -13,7 +13,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">Mooshak Fonseca</a>
+            @Html.ActionLink("Mooshak Fonseca", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,10 +23,10 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="~/Views/Home/Help.cshtml">Help</a>
+                @Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })
                 </li>
                 <li>
-                    <a class="page-scroll" href="~/Views/Home/About.cshtml">About</a>
+                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
                 </li>
                 @{
                     if (Model != null & (User.IsInRole("teacher") || User.IsInRole("student"))) { 
@@ -64,7 +64,7 @@
                                 @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "list item in nav bar" }))
                                 {
                                     @Html.AntiForgeryToken()
-                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
                                 }
                             </ul>
                         </li>

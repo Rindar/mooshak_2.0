@@ -89,10 +89,5 @@ namespace mooshak_2._0.Controllers
             db.SaveChanges();
             return RedirectToAction("UserList");
         }
-
-        public ActionResult Sidebar()
-        {
-            return PartialView("~/Views/Shared/_SideBarAdmin.cshtml");
-        }
     }
 }
