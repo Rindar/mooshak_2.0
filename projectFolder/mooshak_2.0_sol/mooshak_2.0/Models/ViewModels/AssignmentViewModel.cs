@@ -15,6 +15,7 @@ namespace mooshak_2._0.Models.ViewModels
         public List<MilestoneViewModel> Milestones { get; set; }
         public int CourseId { get; set; }
         public Course PartOfCourse { get; set; }
-        public  string Description { get; set; }
+        public string Description { get; set; }
+        public DateTime TimeEnds { get; set; }
     }
 }
