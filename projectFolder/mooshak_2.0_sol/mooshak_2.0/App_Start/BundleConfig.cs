@@ -25,7 +25,8 @@ namespace mooshak_2._0
                       "~/Content/bootstrap.css",
                       "~/Content/usebootstrap.css",
                       "~/Content/usebootstrap.min.css",
-                      "~/Content/usebootstrap.min.css"));
+                      "~/Content/usebootstrap.min.css",
+                      "~/Content/Site.css"));
         }
     }
 }
