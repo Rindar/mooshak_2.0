@@ -2,55 +2,55 @@
 @{
     ViewBag.Title = "CompilerIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
-  
+
 }
 
 <h2 class="page-header">Your solution</h2>
 <div class="row">
     @using (Html.BeginForm())
     {
-            <input type="hidden" name="milestoneId" value="@Model.Id">
+        <input type="hidden" name="milestoneId" value="@Model.Id">
 
-            <input type="Submit" class="btn btn-success" value="Compile Test Code" />
+        <input type="Submit" class="btn btn-success" value="Compile Test Code" />
     }
     <br />
-    @{ 
+    @{
         var solutionOutput = Model.Output;
         //var lineCount = Length(solutionOutput);
 
     }
-        @if (ViewBag.Output != null)
-        {
-            <table>
-                <thead>
-                    <tr>
-                        <th>Your Output</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                        @foreach (var line in ViewBag.Output)
-                        {
-                            <tr>
-                                <td>@line</td>
-                            </tr>
-                        }
-                </tbody>
-            </table>
-        }
+    @if (ViewBag.Output != null)
+    {
         <table>
-                <thead>
+            <thead>
+                <tr>
+                    <th>Your Output</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var line in ViewBag.Output)
+                {
                     <tr>
-                        <th>Expected Output</th>
+                        <td>@line</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            @solutionOutput
-                        </td>
-                    </tr>
-                    
-                </tbody>
+                }
+            </tbody>
         </table>
-    </div>
+    }
+    <table>
+        <thead>
+            <tr>
+                <th>Expected Output</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @solutionOutput
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
