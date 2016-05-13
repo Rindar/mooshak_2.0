@@ -59,25 +59,19 @@
                 </li>
                 <li>@Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
                 <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
-                    
+                <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a>
+                </li>
                 @if (Request.IsAuthenticated)
                 {
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">@User.Identity.GetUserName() <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <!--TODO: tengja action link við account settings page-->
-                            <li><a href="#">Account Settings</a></li>
-                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "list item in nav bar" }))
-                            {
-                                @Html.AntiForgeryToken()
-                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
-                            }
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
                         </ul>
                     </li>
                 }
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
 </nav>

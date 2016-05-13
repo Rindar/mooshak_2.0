@@ -16,8 +16,7 @@
     <br />
     @{
         var solutionOutput = Model.Output;
-        //var lineCount = Length(solutionOutput);
-
+        var checkString = "";
     }
     @if (ViewBag.Output != null)
     {
@@ -33,6 +32,7 @@
                 {
                     <tr>
                         <td>@line</td>
+                        @checkString = line;
                     </tr>
                 }
             </tbody>
