@@ -18,30 +18,7 @@ namespace mooshak_2._0.Controllers
         }
         [HttpPost]
         public ActionResult CompilerIndex(FormCollection data)
-        {
-            /*var code = "#include <iostream>\n" +
-                        "using namespace std;\n" +
-                        "int main()\n" +
-                        "{\n" +
-                        "cout << \"Hello World\" << endl;\n" +
-                        "cout << \"The Output should contain two lines\" << endl;\n" +
-                        "bool x = true;\n"+
-                        "if(x == true)\n"+
-                        "{\n"+
-                        "cout << \"WHATAP\"<<endl;\n"+
-                        "}\n"+
-                        "else\n"+
-                        "cout << \"fucabits\"<<endl;\n"+
-                        "return 0;\n" +
-                        "\tcout << \"Hello World\" << endl;\n" +
-                        "\tcout << \"The Output should contain two lines\" << endl;\n" +
-                        "\tint a = 5;\n"+
-                        "\tcout << a << endl;\n"+
-                        "\treturn 0;\n" +
-
-                        "}";
-                        */
-
+        { 
             var dasBoot = Server.MapPath("~/App_Data/TestCode/MyCode.txt");
             string code = System.IO.File.ReadAllText(dasBoot);
            
@@ -74,10 +51,10 @@ namespace mooshak_2._0.Controllers
             {
 
                 var processInfoExe = new ProcessStartInfo(exeFilePath, "");
-                processInfoExe.UseShellExecute = false;
-                processInfoExe.RedirectStandardOutput = true;
-                processInfoExe.RedirectStandardError = true;
-                processInfoExe.CreateNoWindow = true;
+                processInfoExe.UseShellExecute          = false;
+                processInfoExe.RedirectStandardOutput   = true;
+                processInfoExe.RedirectStandardError    = true;
+                processInfoExe.CreateNoWindow           = true;
                 using (var processExe = new Process())
                 {
                     processExe.StartInfo = processInfoExe;

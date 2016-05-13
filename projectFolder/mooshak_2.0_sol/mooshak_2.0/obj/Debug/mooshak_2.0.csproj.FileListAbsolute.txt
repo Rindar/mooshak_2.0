@@ -324,7 +324,6 @@ E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\moo
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csprojResolveAssemblyReference.cache
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.dll
 E:\Users\roi\Documents\Git Monseca\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.pdb
-C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csprojResolveAssemblyReference.cache
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2._0.Migrations.SorryGuys.resources
 C:\Users\Skúli\Desktop\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csproj.GenerateResource.Cache
 C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2._0.Migrations.SorryGuys.resources
@@ -433,3 +432,4 @@ C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\ob
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.dll
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.pdb
 C:\Users\TL15\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Andri\Documents\mooshak_2.0\projectFolder\mooshak_2.0_sol\mooshak_2.0\obj\Debug\mooshak_2.0.csprojResolveAssemblyReference.cache
