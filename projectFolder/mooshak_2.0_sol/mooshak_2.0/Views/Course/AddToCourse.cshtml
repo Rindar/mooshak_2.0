@@ -10,12 +10,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add users to @Model.TheCourse.Title</h2>
+<h2 class="page-header text-center">Add users to @Model.TheCourse.Title</h2>
 @using (Html.BeginForm("AddTheUserToTheCourse", "Course", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <hr/>
         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         <div class="form-group">
             @Html.Label("User", htmlAttributes: new {@class = "control-label col-md-2"})

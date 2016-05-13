@@ -26,6 +26,6 @@
         </div>
     }
     <div class="actionLinkInBlock">
-        @Html.ActionLink("Back", "Course")
+         @Html.ActionLink("Back", null, null, null, new { href = Request.UrlReferrer })
     </div>
 }

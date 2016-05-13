@@ -5,9 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit Course @Model.Title</h2>
+<h2 class="page-header text-center">Edit Course @Model.Title</h2>
 
-<hr />
 <form id="EditCourse" method="POST">
     <fieldset class="form-group">
         @Html.AntiForgeryToken()
