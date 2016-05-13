@@ -16,14 +16,15 @@
     <div class="col-xs-6 col-sm-4">
         <div class="breadcrumb">
             <h2 class="text-center">@milestone.Title</h2>
-            <p>@Model.Description</p>
+            <p class="text-center font-large">Weight: @milestone.Weight %</p>
             <br/>
-        <div class="form-horizontal">
-            <p class="text-center">@Html.ActionLink("Details", "Submission", "Teacher", new {id = milestone.Id}, new {@class = "btn btn-primary btn"})</p>
-        </div>
+            <div class="form-horizontal">
+                <p class="text-center btn-inline">@Html.ActionLink("Details", "Submission", "Teacher", new { id = milestone.Id }, new { @class = "btn btn-primary btn" })</p>
+                <p class="text-center btn-inline-right">@Html.ActionLink("Delete Milestone", "DeleteMilestone", "Teacher", new {milestoneId = milestone.Id}, new {@class = "btn btn-danger btn"})</p>
+            </div>
         </div>
     </div>
 }
 <div class="actionLinkInBlock">
-    @Html.ActionLink("Back", "Course",  new { courseId = Model.Id })
+    @Html.ActionLink("Back", "Course",  new { id = Model.CourseId })
 </div>

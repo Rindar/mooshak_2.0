@@ -123,7 +123,7 @@ namespace mooshak_2._0.Controllers
             _db.assignments.Add(dbList);
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("/Course/" + dbList.CourseId);
         }
 
         public ActionResult CreateMilestone(int assignmentId)
@@ -154,6 +154,35 @@ namespace mooshak_2._0.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult DeleteAssingment(int assignmentId)//hvaða id
+        {
+            var assignmentToDelete = _db.assignments.Find(assignmentId);
+
+            if (assignmentToDelete == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            _db.assignments.Remove(assignmentToDelete);
+            _db.SaveChanges();
+            return RedirectToAction("/Course/" + assignmentToDelete.CourseId);
+        }
+
+        public ActionResult DeleteMilestone(int milestoneId)//hvaða id
+        {
+            var milestoneToDelete = _db.milestones.Find(milestoneId);
+
+            if (milestoneToDelete == null)
+            {
+                return HttpNotFound();
+            } 
+
+            _db.milestones.Remove(milestoneToDelete);
+            _db.SaveChanges();
+            return RedirectToAction("/Assignment/" + milestoneToDelete.AssignmentId);
+        }
+        
     }
 }
 

@@ -14,6 +14,7 @@ using System.Data.Entity;
 
 namespace mooshak_2._0.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class AdminController : Controller
     {
         readonly Dbcontext db = new Dbcontext();

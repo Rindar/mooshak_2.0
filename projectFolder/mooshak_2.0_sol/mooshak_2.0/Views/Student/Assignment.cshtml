@@ -17,7 +17,7 @@
         <div class="col-xs-6 col-sm-4">
             <div class="breadcrumb">
                 <h2 class="text-center">@milestone.Title</h2>
-                <p class="text-center">@Model.Description</p>
+                <p class="text-center font-large">Weight: @milestone.Weight %</p>
                 <br />
                 <div class="form-horizontal">
                     <p class="text-center">@Html.ActionLink("Details", "Submission", "Student", new { id = milestone.Id }, new { @class = "btn btn-primary btn" })</p>

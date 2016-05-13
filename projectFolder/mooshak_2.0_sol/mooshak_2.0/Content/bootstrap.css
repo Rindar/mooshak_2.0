@@ -2061,6 +2061,15 @@ fieldset[disabled] .btn {
   border-color: #cccccc;
 }
 
+.btn-inline {
+    display: inline;
+}
+
+.btn-inline-right {
+    display: inline;
+    float: right;
+}
+
 .btn-default:hover,
 .btn-default:focus,
 .btn-default:active,
@@ -2412,6 +2421,10 @@ input[type="button"].btn-block {
   font-family: 'Glyphicons Halflings';
   src: url('../fonts/glyphicons-halflings-regular.eot');
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+.font-large {
+    font-size: 20px
 }
 
 .glyphicon {
@@ -4833,6 +4846,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
+}
+
+.span-item-bold {
+    font-weight: bold;
 }
 
 .label[href]:hover,
