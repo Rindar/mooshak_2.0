@@ -41,6 +41,8 @@ namespace mooshak_2._0.Services
                     CourseId = assignment.CourseId,
                     Description = assignment.Description,
                     Milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id)
+                    //TimeEnds = assignment.TimeEnds.Value
+                  
                 };
                 var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id);
                 newViewModel.Milestones = milestoneViewList;

@@ -43,5 +43,7 @@ namespace mooshak_2._0.Models
         }
 
         public System.Data.Entity.DbSet<mooshak_2._0.Models.ViewModels.MilestoneViewModel> MilestoneViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<mooshak_2._0.Models.ViewModels.AssignmentViewModel> AssignmentViewModels { get; set; }
     }
 }

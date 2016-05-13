@@ -313,7 +313,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Assignments\Details.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
@@ -333,6 +332,8 @@
     <Content Include="Views\Teacher\CreateAssignment.cshtml" />
     <Content Include="Views\Teacher\CreateMilestone.cshtml" />
     <Content Include="Views\CodeCompiler\CompilerIndex.cshtml" />
+    <Content Include="Views\Teacher\EditAssignment.cshtml" />
+    <Content Include="Views\Shared\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
