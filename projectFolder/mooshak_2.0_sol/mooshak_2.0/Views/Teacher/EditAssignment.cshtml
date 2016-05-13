@@ -1,18 +1,17 @@
 ﻿@model mooshak_2._0.Models.Entities.Assignment
 
 @{
-    ViewBag.Title = "EditAssignment";
+    ViewBag.Title = "Edit Assignment";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EditAssignment</h2>
+<h2>Edit assignment</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AssignmentViewModel</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

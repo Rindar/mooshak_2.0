@@ -34,21 +34,22 @@ namespace mooshak_2._0.Services
             var assignmentViewModelList = new List<AssignmentViewModel>();
             foreach (var assignment in allAssignments)
             {
-                var newViewModel = new AssignmentViewModel
-                {
-                    Id = assignment.Id,
-                    Title = assignment.Title,
-                    CourseId = assignment.CourseId,
-                    Description = assignment.Description,
-                    Milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id)
-                    //TimeEnds = assignment.TimeEnds.Value
-                  
-                };
-                var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id);
-                newViewModel.Milestones = milestoneViewList;
-                assignmentViewModelList.Add(newViewModel);
 
-            }
+                var newViewModel = new AssignmentViewModel
+                    {
+                        Id = assignment.Id,
+                        Title = assignment.Title,
+                        CourseId = assignment.CourseId,
+                        Description = assignment.Description,
+                        Milestones = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id),
+                        TimeEnds = (DateTime) assignment.TimeEnds
+                  
+                    };
+                    var milestoneViewList = _assignmentMilestoneService.GetMilestoneInAssignment(assignment.Id);
+                    newViewModel.Milestones = milestoneViewList;
+                    assignmentViewModelList.Add(newViewModel);
+                }
+            
             return assignmentViewModelList;
            
         }
