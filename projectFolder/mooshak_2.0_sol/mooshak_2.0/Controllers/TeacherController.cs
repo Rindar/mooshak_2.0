@@ -12,6 +12,7 @@ using mooshak_2._0.Services;
 using System.Data.SqlClient;
 using Microsoft.AspNet.Identity;
 using mooshak_2._0.ErrorHandler;
+using Microsoft.Ajax.Utilities;
 
 namespace mooshak_2._0.Controllers
 {
@@ -176,7 +177,54 @@ namespace mooshak_2._0.Controllers
             _db.SaveChanges();
             return RedirectToAction("/Assignment/" + milestoneToDelete.AssignmentId);
         }
-        
+
+        [HttpGet]
+        public ActionResult EditAssignment(int id)
+        {
+            //Finds course by the id
+            if (_db.assignments != null)
+            {
+                Assignment assignment = _db.assignments.Find(id);
+                return View(assignment);
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditAssignment(Assignment model)
+        {
+            if (ModelState.IsValid)
+            {
+                using (_db)
+                {
+                    var assignmentToChange = _db.assignments.Find(model.Id);
+
+                    if (!model.Title.IsNullOrWhiteSpace())
+                    {
+                        assignmentToChange.Title = model.Title;
+                    }
+                    if (!model.Description.IsNullOrWhiteSpace())
+                    {
+                        assignmentToChange.Description = model.Description;
+                    }
+                    if (model.TimeEnds.HasValue)
+                    {
+                        assignmentToChange.TimeEnds = model.TimeEnds;
+                    }
+                    _db.Entry(assignmentToChange).State = System.Data.Entity.EntityState.Modified;
+                    _db.SaveChanges();
+                    return RedirectToAction("/Course/" + assignmentToChange.CourseId);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Incorrect format has been placed");
+            }
+            return RedirectToAction("/Course/" + model.CourseId);
+        }
     }
 }
 
