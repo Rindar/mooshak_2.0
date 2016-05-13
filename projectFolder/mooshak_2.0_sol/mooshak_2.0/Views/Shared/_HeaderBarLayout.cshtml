@@ -1,45 +1,79 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@model List<CourseViewModel>
+@using System.Web.UI.WebControls
+@using mooshak_2._0.Models.ViewModels
+@using Microsoft.AspNet.Identity
 
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            @Html.ActionLink("Mooshak Fonseca", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Mooshak Fonseca", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">@User.Identity.GetUserName() <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <!--TODO: tengja action link við account settings page-->
-                        @if (Request.IsAuthenticated)
-                        {
-                            <li><a href="#">Account Settings</a></li>
-                        }
-                        <li>@Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
-                        <li>
-                            @if (Request.IsAuthenticated)
-                            {
-                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "list item in nav bar" }))
-                            {
-                                @Html.AntiForgeryToken()
-                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                            }
-                        }
-                    </ul>
+                <li class="hidden active">
+                    <a href="#page-top"></a>
                 </li>
                 <li>
-                    @if (Request.IsAuthenticated)
-                    {
-                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm", @class = "navbar-right"}))
-                        {
-                            @Html.AntiForgeryToken()
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                            </ul>
-                        }
-                    }
+                @Html.ActionLink("Help", "Help", "Home", new { area = "" }, new { @class = "list item in nav bar" })
                 </li>
+                <li>
+                <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "list item in nav bar" })</li>
+                </li>
+                @{
+                    if (Model != null & (User.IsInRole("teacher") || User.IsInRole("student"))) { 
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (User.IsInRole("teacher"))
+                                {
+                                    foreach (var course in Model)
+                                    {
+                                        <li>
+                                            @Html.ActionLink(course.Title, "Course", "Teacher", new { id = course.Id }, new { })
+                                        </li>
+                                    }
+                                }
+                                else if (User.IsInRole("student"))
+                                {
+                                    foreach (var course in Model)
+                                    {
+                                        <li>
+                                            @Html.ActionLink(course.Title, "Course", "Student", new { id = course.Id }, new { })
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    }
+                    if (Request.IsAuthenticated)
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">@User.Identity.GetUserName() <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <!--TODO: tengja action link við account settings page-->
+                                <li><a href="#">Account Settings</a></li>
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "list item in nav bar" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log Out</a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+
             </ul>
         </div>
+        <!-- /.navbar-collapse -->
     </div>
+    <!-- /.container-fluid -->
 </nav>

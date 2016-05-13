@@ -45,33 +45,29 @@
 }
 else
 {
-    <h4>Students attending @Html.DisplayFor(modelItem => Model.TheCourse.Title)</h4>
+    <h4>All Students attending @Html.DisplayFor(modelItem => Model.TheCourse.Title)</h4>
 
 
 
     <div class="table-responsive">
-        <table class="table">
-            <thead class="thead-inverse">
-            <tr>
-                <th>UserTitle</th>
-            </tr>
-            </thead>
+        <table class="table table-bordered table-responsive table-striped table-hover">
+
             <tbody>
-            @foreach (var item in Model.AllUsersInCourse)
-            {
-                string userName = (from users in Model.ListOfUsers where item.userId == users.Id select users.Email).SingleOrDefault();
-                if (userName != default(string))
+                @foreach (var item in Model.AllUsersInCourse)
                 {
-                    <tr>
-                        <td>
-                            <a>@userName</a>
-                        </td>
-                        <td>
-                            <a class="pointer-arrow" onclick="deleteFromCourse(@Html.DisplayFor(modelItem => item.id))">Remove</a>
-                        </td>
-                    </tr>
+                    string userName = (from users in Model.ListOfUsers where item.userId == users.Id select users.Email).SingleOrDefault();
+                    if (userName != default(string))
+                    {
+                        <tr>
+                            <td>
+                                <a>@userName</a>
+                            </td>
+                            <td>
+                                <a class="pointer-arrow" onclick="deleteFromCourse(@Html.DisplayFor(modelItem => item.id))">Remove</a>
+                            </td>
+                        </tr>
+                    }
                 }
-            }
             </tbody>
         </table>
     </div>

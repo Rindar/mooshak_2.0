@@ -41,7 +41,6 @@ namespace mooshak_2._0.Services
                 courseViewModel.Assignments = _assignmentsService.GetAssignmentsInCourse(course.Id);
                 courseViewModel.Id = course.Id;
                 courseViewModel.Description = course.Description;
-                    //teacher
                 
                 courseViewModelList.Add(courseViewModel);
             }
@@ -49,21 +48,21 @@ namespace mooshak_2._0.Services
             
         }
 
-        public CourseViewModel GetCourseByID(int CourseID)
+        public CourseViewModel GetCourseById(int courseId)
         {
 
             var course = (from courses in _db.courses
-                          where courses.Id.Equals(CourseID)
+                          where courses.Id.Equals(courseId)
                           select courses).SingleOrDefault();
 
-            if (course.Id != CourseID)
+            if (course.Id != courseId)
             {
                 throw new ArgumentNullException();
             }
 
-            List<AssignmentViewModel> assignments = _assignmentsService.GetAssignmentsInCourse(CourseID);
+            List<AssignmentViewModel> assignments = _assignmentsService.GetAssignmentsInCourse(courseId);
 
-            //create a viewmodel fot the assignment that has a milestone
+            //Create a viewmodel fot the assignment that has a milestone
             var viewModel = new CourseViewModel();
             viewModel.Id = course.Id;
             viewModel.Title = course.Title;
@@ -82,7 +81,7 @@ namespace mooshak_2._0.Services
             List<CourseViewModel> userCourses = new List<CourseViewModel>();
             foreach(var item in allUserCourses)
             {
-                CourseViewModel tmpModel = GetCourseByID(item.courseId);
+                CourseViewModel tmpModel = GetCourseById(item.courseId);
                 userCourses.Add(tmpModel);
             }
             return userCourses;

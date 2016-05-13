@@ -1,50 +1,46 @@
 ﻿@using mooshak_2._0.Helpers
 @model mooshak_2._0.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Create a new user";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2 class="page-header">@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form"}))
 {
     @Html.AntiForgeryToken()
     <fieldset>
-        <legend>Register a new user</legend>
         @Html.ValidationSummary("", new {@class = "text-danger"})
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new {@class = "col-md-2 control-label"})
-            <div class="col-md-10">
+            <div class="col-md-3">
                 @Html.TextBoxFor(m => m.Email, new {@class = "form-control"})
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Password, new {@class = "col-md-2 control-label"})
-            <div class="col-md-10">
+            <div class="col-md-3">
                 @Html.PasswordFor(m => m.Password, new {@class = "form-control"})
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.ConfirmPassword, new {@class = "col-md-2 control-label"})
-            <div class="col-md-10">
+            <div class="col-md-3">
                 @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control"})
             </div>
         </div>
-
-
-        
-           @Html.Label("Role")
-           @Html.DropDownListFor(x => x.Role, ListItemController.SelectListItemHelper.getRoleListItems())
-        
-
+        <div class="form-group">
+            @Html.LabelFor(m => m.Role , new { @class = "col-md-2 control-label" })
+            <div class="col-md-3">
+                @Html.DropDownListFor(x => x.Role, ListItemController.SelectListItemHelper.getRoleListItems(), new {@class = "form-control"})
+            </div>
+       </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Register"/>
+                <input type="submit" class="btn btn-default" value="Create user" />
             </div>
         </div>
-    </fieldset>
+</fieldset>
 }
-@*section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}*@
+

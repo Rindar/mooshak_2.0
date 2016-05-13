@@ -33,7 +33,7 @@ namespace mooshak_2._0.Controllers
                 throw new EntryPointNotFoundException();
             }
             int realID = id.Value;
-            CourseViewModel model = _courseService.GetCourseByID(realID);
+            CourseViewModel model = _courseService.GetCourseById(realID);
             return View(model);
         }
 
@@ -92,10 +92,9 @@ namespace mooshak_2._0.Controllers
             var path = Path.Combine(Server.MapPath("~/App_Data/TestCode"), theFileName);
             if (file.ContentLength > 0)
             {
-
                 file.SaveAs(path);
-
             }
+            
             string fileName = path;
             string theUserName = User.Identity.Name;
             string stringToParse = Request.Form["MileStoneId"];
@@ -107,7 +106,6 @@ namespace mooshak_2._0.Controllers
                 var qry = "INSERT INTO Submissions (FileName,UserName,MileStoneId) VALUES (@FileName,@UserName,@MileStoneId)";
                 var cmd = new SqlCommand(qry, conn);
                 
-           
                 cmd.Parameters.AddWithValue("@FileName", fileName);
                 cmd.Parameters.AddWithValue("@UserName", theUserName);
                 cmd.Parameters.AddWithValue("@MileStoneId", MileStoneId);
