@@ -79,38 +79,38 @@ namespace mooshak_2._0.Controllers
             return View();
         }
         */
-        public ActionResult Submission()
+        public ActionResult Submission(int ? id)
         {
-            return View();
+            int realID = id.Value;
+            AssignmentViewModel model = _assignmentService.GetAssignmentById(realID);
+            return View(model);
         }
         [HttpPost]
         public ActionResult Submission(HttpPostedFileBase file)
         {
             var theFileName = Path.GetFileName(file.FileName);
             var path = Path.Combine(Server.MapPath("~/App_Data/TestCode"), theFileName);
-          if (file.ContentLength > 0)
+            if (file.ContentLength > 0)
             {
 
-                
                 file.SaveAs(path);
 
-
             }
-            
-        
-
             string fileName = path;
             string theUserName = User.Identity.Name;
+            string stringToParse = Request.Form["MileStoneId"];
+            int MileStoneId = int.Parse(stringToParse);
+          
             const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
             using (var conn = new SqlConnection(connect))
             {
-                var qry = "INSERT INTO Submissions (FileName,UserName,AssignmentId) VALUES (@FileName,@UserName,@AssignmentId)";
+                var qry = "INSERT INTO Submissions (FileName,UserName,MileStoneId) VALUES (@FileName,@UserName,@MileStoneId)";
                 var cmd = new SqlCommand(qry, conn);
                 
            
                 cmd.Parameters.AddWithValue("@FileName", fileName);
                 cmd.Parameters.AddWithValue("@UserName", theUserName);
-                cmd.Parameters.AddWithValue("@AssignmentId", 32);
+                cmd.Parameters.AddWithValue("@MileStoneId", MileStoneId);
                 
                 conn.Open();
                 cmd.ExecuteNonQuery();

@@ -1,4 +1,4 @@
-﻿
+﻿@model mooshak_2._0.Models.ViewModels.AssignmentViewModel
 @{
     ViewBag.Title = "Submission";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,15 +11,25 @@
 
     <label for="file">Filename:</label>
     <input type="file" name="file" id="file" />
-        <br />
+ 
+    <div id="hide">
+        <input type="number" name="MileStoneId" value="@Model.Id">
+    </div>
+ 
     <input type="submit" class="btn-info" />
-
+    
 </form>
 
 
 <br />
 
-
+<style type="text/css">
+    #hide
+    {
+        
+        visibility:hidden;
+    }
+</style>
 
 
 
