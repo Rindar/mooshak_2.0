@@ -8,13 +8,15 @@ using mooshak_2._0.Models;
 using mooshak_2._0.Models.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using mooshak_2._0.Services;
 
 namespace mooshak_2._0.Controllers
 {
     [Authorize]
     public class HomeController : Controller
     {
+        readonly CourseService _courseService = new CourseService(new AssignmentsService());
+
         public ActionResult Index()
         {
             if (User.IsInRole("student"))
@@ -55,6 +57,11 @@ namespace mooshak_2._0.Controllers
             ViewBag.Message = "Error page";
 
             return View();
+        }
+        public ActionResult Layout()
+        {
+            var model = _courseService.GetCoursesByUser(User.Identity.GetUserId());
+            return PartialView("~/Views/Shared/_HeaderBarLayout.cshtml", model);
         }
     }
 }

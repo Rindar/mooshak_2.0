@@ -86,15 +86,37 @@ namespace mooshak_2._0.Controllers
         [HttpPost]
         public ActionResult Submission(HttpPostedFileBase file)
         {
-
-            if (file.ContentLength > 0)
+            var theFileName = Path.GetFileName(file.FileName);
+            var path = Path.Combine(Server.MapPath("~/App_Data/TestCode"), theFileName);
+          if (file.ContentLength > 0)
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/App_Data/TestCode"), fileName);
-                file.SaveAs(path);
-            }
 
-            return RedirectToAction("CompilerIndex", "CodeCompiler", new { area = "" });
+                
+                file.SaveAs(path);
+
+
+            }
+            
+        
+
+            string fileName = path;
+            string theUserName = User.Identity.Name;
+            const string connect = @"Data Source=hrnem.ru.is;Initial Catalog=VLN2_2016_H17;User ID=VLN2_2016_H17_usr;Password=tinynight17";
+            using (var conn = new SqlConnection(connect))
+            {
+                var qry = "INSERT INTO Submissions (FileName,UserName,AssignmentId) VALUES (@FileName,@UserName,@AssignmentId)";
+                var cmd = new SqlCommand(qry, conn);
+                
+           
+                cmd.Parameters.AddWithValue("@FileName", fileName);
+                cmd.Parameters.AddWithValue("@UserName", theUserName);
+                cmd.Parameters.AddWithValue("@AssignmentId", 32);
+                
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+                return RedirectToAction("CompilerIndex", "CodeCompiler", new { area = "" });
+            }
         }
         public ActionResult Sidebar()
         {

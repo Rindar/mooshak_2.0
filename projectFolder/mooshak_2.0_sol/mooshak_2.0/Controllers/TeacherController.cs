@@ -83,12 +83,6 @@ namespace mooshak_2._0.Controllers
             return File(fileContent, mimeType, fileName);
         }
 
-        public ActionResult Sidebar()
-        {
-            var model = _courseService.GetCoursesByUser(User.Identity.GetUserId());
-            return PartialView("~/Views/Shared/_SideBarTeacherStudent.cshtml", model);
-        }
-
         public ActionResult CreateAssignment(int? courseId)
         {
             if (!courseId.HasValue)
