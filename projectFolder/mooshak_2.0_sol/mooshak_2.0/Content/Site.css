@@ -14,3 +14,7 @@
 .pointer-arrow:hover{
     cursor:pointer;
 }
+
+.display-table{
+    display: table;
+}

@@ -8,26 +8,27 @@
     <h1 class="page-header text-center">@Model.Title</h1>
     <h2 class="page-header text-center">Milestones</h2>
 </div>
-
-@{
-    if(!Model.Milestones.Any())
-    {
-        <div>No milestones in this Assignment as of yet.</div>
-    }
-    foreach (var milestone in Model.Milestones)
-    {
-        <div class="col-xs-6 col-sm-4">
-            <div class="breadcrumb">
-                <h2 class="text-center">@milestone.Title</h2>
-                <p class="text-center font-large">Weight: @milestone.Weight %</p>
-                <br />
-                <div class="form-horizontal">
-                    <p class="text-center">@Html.ActionLink("Details", "Submission", "Student", new { id = milestone.Id }, new { @class = "btn btn-primary btn" })</p>
+<div class="row">
+    @{
+        if (!Model.Milestones.Any())
+        {
+            <div>No milestones in this Assignment as of yet.</div>
+        }
+        foreach (var milestone in Model.Milestones)
+        {
+            <div class="col-xs-6 col-sm-4">
+                <div class="breadcrumb">
+                    <h2 class="text-center">@milestone.Title</h2>
+                    <p class="text-center font-large">Weight: @milestone.Weight %</p>
+                    <br />
+                    <div class="form-horizontal">
+                        <p class="text-center">@Html.ActionLink("Details", "Submission", "Student", new { id = milestone.Id }, new { @class = "btn btn-primary btn" })</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     }
-    <div class="actionLinkInBlock">
-         @Html.ActionLink("Back", null, null, null, new { href = Request.UrlReferrer })
-    </div>
-}
+</div>
+<div>
+    <p>@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary" })</p>
+</div>

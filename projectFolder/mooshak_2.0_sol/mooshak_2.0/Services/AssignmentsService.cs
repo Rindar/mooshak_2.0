@@ -94,38 +94,6 @@ namespace mooshak_2._0.Services
             return viewModel;
         }
 
-     /*   public AssignmentViewModel createAssignment(int courseId)
-        {
-            Course currentCourse = (from courses in _db.courses
-                                 where courses.id == courseId
-                                 select courses).SingleOrDefault();
-            
-            Assignment newAssignment = new Assignment()
-            {
-                courseId = currentCourse.id,
-                timeStarts = DateTime.Now,
-                timeEnds = DateTime.MaxValue
-            };
-
-
-            AssignmentViewModel viewModeltoReturn = new AssignmentViewModel()
-            {
-                courseId = newAssignment.courseId,
-                partOfCourse = currentCourse,
-                title = newAssignment.title,
-                milestones = _assignmentMilestoneService.GetMilestoneInAssignment(newAssignment.id)
-
-            };
-
-            var dbList = _db.assignments.Create();
-            dbList.title = newAssignment.title;
-            dbList.courseId = newAssignment.courseId;
-            _db.assignments.Add(dbList);
-            _db.SaveChanges();
-
-            return viewModeltoReturn;
-        }*/
-
         public AssignmentViewModel GetSingleAssignmentsInCourse(int courseID, int assignmentId)
         {
             var theAssignment = (from assignments in _db.assignments
