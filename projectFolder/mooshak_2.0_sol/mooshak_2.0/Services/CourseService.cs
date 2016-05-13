@@ -41,7 +41,6 @@ namespace mooshak_2._0.Services
                 courseViewModel.Assignments = _assignmentsService.GetAssignmentsInCourse(course.Id);
                 courseViewModel.Id = course.Id;
                 courseViewModel.Description = course.Description;
-                    //teacher
                 
                 courseViewModelList.Add(courseViewModel);
             }
@@ -63,7 +62,7 @@ namespace mooshak_2._0.Services
 
             List<AssignmentViewModel> assignments = _assignmentsService.GetAssignmentsInCourse(courseId);
 
-            //create a viewmodel fot the assignment that has a milestone
+            //Create a viewmodel fot the assignment that has a milestone
             var viewModel = new CourseViewModel();
             viewModel.Id = course.Id;
             viewModel.Title = course.Title;
