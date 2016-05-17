@@ -29,10 +29,12 @@
                     <p class="text-center"><span class="span-item-bold">Ends at:</span> @assignment.TimeEnds</p>
                     <p class="text-center"><span class="span-item-bold">Description:</span> @assignment.Description</p>
                     <br />
+                    <div>
+                    <p class="text-center btn-">@Html.ActionLink("Details", "Assignment", "Teacher", new {id = assignment.Id}, new {@class = "btn btn-primary btn-large"})</p>
+                    </div>
                     <div class="form-horizontal">
-                        <p class="text-center btn-inline">@Html.ActionLink("Details", "Assignment", "Teacher", new { id = assignment.Id }, new { @class = "btn btn-primary btn-large" })</p>
                         <p class="text-center btn-inline">@Html.ActionLink("Edit", "EditAssignment", "Teacher", new { id = assignment.Id }, new { @class = "btn btn-primary btn-large" })</p>
-                        <p class="text-center btn-inline-right">@Html.ActionLink("Delete Assignment", "DeleteAssingment", "Teacher", new { assignmentId = assignment.Id }, new { @class = "btn btn-danger btn-large" })</p>
+                        <p class="text-center btn-inline-right">@Html.ActionLink("Delete", "DeleteAssingment", "Teacher", new { assignmentId = assignment.Id }, new { @class = "btn btn-danger btn-large" })</p>
                     </div>
                 </div>
             </div>

@@ -12,14 +12,20 @@
 <form action="" method="post" enctype="multipart/form-data">
 
     <label for="file">Filename:</label>
-    <input type="file" name="file" id="file" />
- 
+    <input type="file" name="file" id="file"/>
+
     <div id="hide">
         <input type="hidden" name="MileStoneId" value="@Model.Id">
     </div>
- 
-    <input type="submit" class="btn btn-primary" />
+    <br/>
+    <input type="submit" class="btn btn-success"/>
 </form>
+
+<br/>
+<div>
+    <p>@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary" })</p>
+</div>
+
 
 
 

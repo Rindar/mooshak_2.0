@@ -14,7 +14,6 @@
     <tr>
         <th class="text-center">User</th>
         <th class="text-center">Solution Name</th>
-        <th class="text-center">Download Solution</th>
     </tr>
     </thead>
     <tbody>
@@ -23,10 +22,10 @@
         <tr>
             <td class="text-center">@Html.DisplayFor(modelItem => item.UserName)</td>
             <td class="text-center">@Html.DisplayFor(modelItem => item.FileName)</td>
-            <td class="text-center"><a href="/Teacher/GetFile/@item.Id">Download</a></td>
         </tr>
     }
     </tbody>
 </table>
-
-
+<div>
+    <p>@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary" })</p>
+</div>

@@ -10,26 +10,30 @@
 </div>
 
 <div class="form-actions">
-    @Html.ActionLink("Create New User", "Register", "Account", null, new {@class = "btn btn-info"})
+    <p class="text-center">@Html.ActionLink("Create New User", "Register", "Account", null, new { @class = "btn btn-info" })</p>
 </div>
 
 <table class="table table-bordered table-condensed">
     <thead>
-        <tr>
-            <th class="text-center">User Name</th>
-            <th class="text-center">Delete</th>
-        </tr>
-    </thead>    
+    <tr>
+        <th class="text-center">User Name</th>
+        <th class="text-center">Delete</th>
+    </tr>
+    </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="text-center">@Html.DisplayFor(modelItem => item.Email)</td>
-                <td class="text-center"><a class="pointer-arrow" onclick="deleteUser('@Html.DisplayFor(modelItem => item.Id)')">Delete</a></td>
-            </tr>
-        }
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">@Html.DisplayFor(modelItem => item.Email)</td>
+            <td class="text-center"><a class="pointer-arrow" onclick="deleteUser('@Html.DisplayFor(modelItem => item.Id)')">Delete</a></td>
+        </tr>
+    }
     </tbody>
 </table>
+
+<div>
+    <p>@Html.ActionLink("Back", "Index", "Admin", null, new { @class = "btn btn-primary" })</p>
+</div>
 
 
 

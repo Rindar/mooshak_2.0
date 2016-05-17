@@ -38,8 +38,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Create course"/>
+                <input type="submit" class="btn btn-success" value="Create course"/>
             </div>
         </div>
     </fieldset>
 }
+<div>
+    <p>@Html.ActionLink("Cancel", "CourseIndex", "Course", null, new { @class = "btn btn-danger" })</p>
+</div>
